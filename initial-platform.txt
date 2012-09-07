@@ -1,0 +1,41 @@
+The first question when starting a software project is:
+    What platform is this targetted at?
+
+Which in turn asks a more basic question: What are the requirements?
+
+Basic conflict: The iPad is in some sense, natural medium for this, but ultimately I'd like to be more cross platform.
+
+No matter what, we'll need to build libraries for constructing pages or sections or something. The question is, is that a set of libraries in some language or a custom document format.
+
+Choices:
+- Obj-C
+    + Comfortable
+    + Good APIs
+    + Ideal for books
+    - Bad distribution story
+    - Bad cross platofrm story
+
+- HTML/CSS
+    - Terrible support for sound.
+    - No types.
+    + Universal
+
+- Flash
+    + Cross platform
+    + Has the APIs
+    + Dying
+
+- Libraries for haXe?
+    - Need to build an abstraction layer for display
+    - Doesn't target iPad
+
+- Something custom
+    + More fun.
+    + Can be retargetted.
+    - Much more work up front.
+    - Unclear what is necessary at this point.
+
+It seems like I really want to build an authoring tool, but that I'm not ready to do that yet.
+
+Conclusion:
+    Chapter 1 is done in ObjC. Use that to determine what the custom thing should be.
