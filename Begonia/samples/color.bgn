@@ -1,0 +1,11 @@
+backend Cocoa
+
+extern Class Color
+
+module Color
+
+local nsColor = # Cocoa.class.NSColor : CocoaClass
+
+wa {white : Float, alpha : Float} =  # nsColor {colorWithWhite = white, alpha = _} : Color
+rgba {red : Float, green : Float, blue : Float, alpha : Float} = # NSColor {colorWithRed = red, green = _, blue = _, alpha = _} : Color
+

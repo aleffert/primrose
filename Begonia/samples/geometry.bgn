@@ -1,0 +1,8 @@
+
+
+
+type Point = {x : Float, y : Float}
+
+pt (x : Float) (y : Float) = {x = x, y = y}
+
+type Rect = {origin : Point, size : Point}
