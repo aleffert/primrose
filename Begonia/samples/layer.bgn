@@ -1,0 +1,13 @@
+import Color
+import Path
+import Font
+
+type Layer = ShapeLayer {
+	stroke : Color
+	fillColor : Color
+	lineWidth : Float
+	path : Path
+}
+| TextLayer {
+	font : Font
+}

@@ -1,14 +1,10 @@
-import Geometry
-
 backend Cocoa
 
-module Path
-
-extern Class Path
+external type Path
 
 local uiBezierPath = # Cocoa UIBezierPath : CocoaClass
 
-make {} = {
+let make {} = {
 	path = # uiBezierPath bezierPath : Path
 	addLine {to : Point} = # path {addLineToPoint = to} : Unit
 	move {to : Point} = # path {moveToPoint = to} : Unit

@@ -1,0 +1,7 @@
+backend Cocoa
+
+external type Font
+
+local uiFont = # Cocoa.class.UIFont : CocoaClass
+
+let default {size : Float} = # uiFont boldSystemFontOfSize size : Font

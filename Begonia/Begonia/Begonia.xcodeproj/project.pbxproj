@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		773EC344160EAE8D00DF8624 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EC343160EAE8D00DF8624 /* Cocoa.framework */; };
+		773EC34E160EAE8D00DF8624 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EC34C160EAE8D00DF8624 /* InfoPlist.strings */; };
+		773EC350160EAE8D00DF8624 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC34F160EAE8D00DF8624 /* main.m */; };
+		773EC354160EAE8D00DF8624 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 773EC352160EAE8D00DF8624 /* Credits.rtf */; };
+		773EC357160EAE8D00DF8624 /* ADLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC356160EAE8D00DF8624 /* ADLAppDelegate.m */; };
+		773EC35A160EAE8D00DF8624 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773EC358160EAE8D00DF8624 /* MainMenu.xib */; };
+		773EC368160EB45A00DF8624 /* ADLFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC367160EB45A00DF8624 /* ADLFileWatcher.m */; };
+		773EC36B160EBA6400DF8624 /* ADLViewerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC36A160EBA6400DF8624 /* ADLViewerWindowController.m */; };
+		773EC36E160EBCDA00DF8624 /* ADLFileAcceptorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC36D160EBCD900DF8624 /* ADLFileAcceptorView.m */; };
+		773EC370160EBDF300DF8624 /* ADLViewerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773EC36F160EBDF300DF8624 /* ADLViewerWindowController.xib */; };
+		773EC389160EC1ED00DF8624 /* ADLFileAcceptorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773EC388160EC1ED00DF8624 /* ADLFileAcceptorView.xib */; };
+		773EC38B160EC4BD00DF8624 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EC38A160EC4BD00DF8624 /* QuartzCore.framework */; };
+		773EC38E160EC51300DF8624 /* ADLGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC38D160EC51300DF8624 /* ADLGradientView.m */; };
+		773EC391160F541C00DF8624 /* BGNInterpreter.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC390160F541C00DF8624 /* BGNInterpreter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		773EC33F160EAE8D00DF8624 /* Begonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Begonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		773EC343160EAE8D00DF8624 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		773EC346160EAE8D00DF8624 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		773EC347160EAE8D00DF8624 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		773EC348160EAE8D00DF8624 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		773EC34B160EAE8D00DF8624 /* Begonia-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Begonia-Info.plist"; sourceTree = "<group>"; };
+		773EC34D160EAE8D00DF8624 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		773EC34F160EAE8D00DF8624 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		773EC351160EAE8D00DF8624 /* Begonia-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Begonia-Prefix.pch"; sourceTree = "<group>"; };
+		773EC353160EAE8D00DF8624 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		773EC355160EAE8D00DF8624 /* ADLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADLAppDelegate.h; sourceTree = "<group>"; };
+		773EC356160EAE8D00DF8624 /* ADLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADLAppDelegate.m; sourceTree = "<group>"; };
+		773EC359160EAE8D00DF8624 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		773EC366160EB45A00DF8624 /* ADLFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLFileWatcher.h; sourceTree = "<group>"; };
+		773EC367160EB45A00DF8624 /* ADLFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLFileWatcher.m; sourceTree = "<group>"; };
+		773EC369160EBA6400DF8624 /* ADLViewerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLViewerWindowController.h; sourceTree = "<group>"; };
+		773EC36A160EBA6400DF8624 /* ADLViewerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLViewerWindowController.m; sourceTree = "<group>"; };
+		773EC36C160EBCD900DF8624 /* ADLFileAcceptorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLFileAcceptorView.h; sourceTree = "<group>"; };
+		773EC36D160EBCD900DF8624 /* ADLFileAcceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLFileAcceptorView.m; sourceTree = "<group>"; };
+		773EC36F160EBDF300DF8624 /* ADLViewerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADLViewerWindowController.xib; sourceTree = "<group>"; };
+		773EC388160EC1ED00DF8624 /* ADLFileAcceptorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADLFileAcceptorView.xib; sourceTree = "<group>"; };
+		773EC38A160EC4BD00DF8624 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		773EC38C160EC51300DF8624 /* ADLGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLGradientView.h; sourceTree = "<group>"; };
+		773EC38D160EC51300DF8624 /* ADLGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLGradientView.m; sourceTree = "<group>"; };
+		773EC38F160F541C00DF8624 /* BGNInterpreter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNInterpreter.h; sourceTree = "<group>"; };
+		773EC390160F541C00DF8624 /* BGNInterpreter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNInterpreter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		773EC33C160EAE8D00DF8624 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EC38B160EC4BD00DF8624 /* QuartzCore.framework in Frameworks */,
+				773EC344160EAE8D00DF8624 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		773EC334160EAE8D00DF8624 = {
+			isa = PBXGroup;
+			children = (
+				773EC349160EAE8D00DF8624 /* Begonia */,
+				773EC342160EAE8D00DF8624 /* Frameworks */,
+				773EC340160EAE8D00DF8624 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		773EC340160EAE8D00DF8624 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				773EC33F160EAE8D00DF8624 /* Begonia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		773EC342160EAE8D00DF8624 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773EC38A160EC4BD00DF8624 /* QuartzCore.framework */,
+				773EC343160EAE8D00DF8624 /* Cocoa.framework */,
+				773EC345160EAE8D00DF8624 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		773EC345160EAE8D00DF8624 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773EC346160EAE8D00DF8624 /* AppKit.framework */,
+				773EC347160EAE8D00DF8624 /* CoreData.framework */,
+				773EC348160EAE8D00DF8624 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		773EC349160EAE8D00DF8624 /* Begonia */ = {
+			isa = PBXGroup;
+			children = (
+				773EC369160EBA6400DF8624 /* ADLViewerWindowController.h */,
+				773EC36A160EBA6400DF8624 /* ADLViewerWindowController.m */,
+				773EC392160F542000DF8624 /* Lang */,
+				773EC355160EAE8D00DF8624 /* ADLAppDelegate.h */,
+				773EC356160EAE8D00DF8624 /* ADLAppDelegate.m */,
+				773EC38C160EC51300DF8624 /* ADLGradientView.h */,
+				773EC38D160EC51300DF8624 /* ADLGradientView.m */,
+				773EC36C160EBCD900DF8624 /* ADLFileAcceptorView.h */,
+				773EC36D160EBCD900DF8624 /* ADLFileAcceptorView.m */,
+				773EC366160EB45A00DF8624 /* ADLFileWatcher.h */,
+				773EC367160EB45A00DF8624 /* ADLFileWatcher.m */,
+				773EC358160EAE8D00DF8624 /* MainMenu.xib */,
+				773EC388160EC1ED00DF8624 /* ADLFileAcceptorView.xib */,
+				773EC36F160EBDF300DF8624 /* ADLViewerWindowController.xib */,
+				773EC34A160EAE8D00DF8624 /* Supporting Files */,
+			);
+			path = Begonia;
+			sourceTree = "<group>";
+		};
+		773EC34A160EAE8D00DF8624 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				773EC34B160EAE8D00DF8624 /* Begonia-Info.plist */,
+				773EC34C160EAE8D00DF8624 /* InfoPlist.strings */,
+				773EC34F160EAE8D00DF8624 /* main.m */,
+				773EC351160EAE8D00DF8624 /* Begonia-Prefix.pch */,
+				773EC352160EAE8D00DF8624 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		773EC392160F542000DF8624 /* Lang */ = {
+			isa = PBXGroup;
+			children = (
+				773EC38F160F541C00DF8624 /* BGNInterpreter.h */,
+				773EC390160F541C00DF8624 /* BGNInterpreter.m */,
+			);
+			name = Lang;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		773EC33E160EAE8D00DF8624 /* Begonia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773EC35D160EAE8D00DF8624 /* Build configuration list for PBXNativeTarget "Begonia" */;
+			buildPhases = (
+				773EC33B160EAE8D00DF8624 /* Sources */,
+				773EC33C160EAE8D00DF8624 /* Frameworks */,
+				773EC33D160EAE8D00DF8624 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Begonia;
+			productName = Begonia;
+			productReference = 773EC33F160EAE8D00DF8624 /* Begonia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		773EC336160EAE8D00DF8624 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ADL;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Akiva Leffert";
+			};
+			buildConfigurationList = 773EC339160EAE8D00DF8624 /* Build configuration list for PBXProject "Begonia" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 773EC334160EAE8D00DF8624;
+			productRefGroup = 773EC340160EAE8D00DF8624 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				773EC33E160EAE8D00DF8624 /* Begonia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		773EC33D160EAE8D00DF8624 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EC34E160EAE8D00DF8624 /* InfoPlist.strings in Resources */,
+				773EC354160EAE8D00DF8624 /* Credits.rtf in Resources */,
+				773EC35A160EAE8D00DF8624 /* MainMenu.xib in Resources */,
+				773EC370160EBDF300DF8624 /* ADLViewerWindowController.xib in Resources */,
+				773EC389160EC1ED00DF8624 /* ADLFileAcceptorView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		773EC33B160EAE8D00DF8624 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EC350160EAE8D00DF8624 /* main.m in Sources */,
+				773EC357160EAE8D00DF8624 /* ADLAppDelegate.m in Sources */,
+				773EC368160EB45A00DF8624 /* ADLFileWatcher.m in Sources */,
+				773EC36B160EBA6400DF8624 /* ADLViewerWindowController.m in Sources */,
+				773EC36E160EBCDA00DF8624 /* ADLFileAcceptorView.m in Sources */,
+				773EC38E160EC51300DF8624 /* ADLGradientView.m in Sources */,
+				773EC391160F541C00DF8624 /* BGNInterpreter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		773EC34C160EAE8D00DF8624 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EC34D160EAE8D00DF8624 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		773EC352160EAE8D00DF8624 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EC353160EAE8D00DF8624 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		773EC358160EAE8D00DF8624 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EC359160EAE8D00DF8624 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		773EC35B160EAE8D00DF8624 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		773EC35C160EAE8D00DF8624 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		773EC35E160EAE8D00DF8624 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		773EC35F160EAE8D00DF8624 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		773EC339160EAE8D00DF8624 /* Build configuration list for PBXProject "Begonia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773EC35B160EAE8D00DF8624 /* Debug */,
+				773EC35C160EAE8D00DF8624 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		773EC35D160EAE8D00DF8624 /* Build configuration list for PBXNativeTarget "Begonia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773EC35E160EAE8D00DF8624 /* Debug */,
+				773EC35F160EAE8D00DF8624 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 773EC336160EAE8D00DF8624 /* Project object */;
+}

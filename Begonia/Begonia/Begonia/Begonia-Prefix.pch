@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'Begonia' target in the 'Begonia' project
+//
+
+#ifdef __OBJC__
+
+#import <Cocoa/Cocoa.h>
+#import <QuartzCore/QuartzCore.h>
+
+#endif

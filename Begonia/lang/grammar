@@ -1,0 +1,52 @@
+// queu exp 
+
+module ::=
+	(BACKEND cocoa)?
+	IMPORT*
+	top-decl*
+
+
+scope ::= LOCAL | LET
+
+terminator ::= EOF EOL
+
+sequencer ::= COMMA | EOL
+
+type ::= Float | type ARROW type | LBRACKET record-type-list RBRACKET
+
+record-type-list ::=
+	record-type-list IDENT COLON type EQUALS exp
+	| record-type-list IDENT COLON type sequencer 
+
+
+
+imports ::= IMPORT IDENT
+
+top-decl ::= 
+	terminator
+	| EXTERNAL TYPE IDENT terminator
+	| scope val-bindings exp terminator
+	| exp terminator
+
+
+val-binding ::=
+	arg val-binding
+	| EQUALS
+
+arg ::=
+	LPAREN IDENT COLON type RPAREN
+	| record-binding
+
+
+record-binding ::= LBRACKET record-binding-list RBRACKET
+record-fields ::= record-fields IDENT EQUALS exp
+	|
+
+
+exp ::= exp atom
+	| exp
+
+atom ::= NUM | IDENT | OP | BANG LBRACKET stmts RBRACKET
+
+stmts ::= stmts sequencer stmt
+stmt ::= LET pat EQUAL exp

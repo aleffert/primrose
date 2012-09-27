@@ -1,33 +1,31 @@
-import Geometry
-import Color
-import BezierPath
 
-module Fireflies
 
 local fullCloudPath {} = !{
-	margin = 10.
-	width = 1024.
-	minY = -margin
-	maxY = 440.
-	minX = -margin
-	maxX = width + margin
-	bumpCount = 5.
-	bumpHeight = 30.
-	bumpWidth = (mixX - minX) / bumpCount
-	path = Path.make{}
-	path.move{to = pt minX $ maxY}
-	path.addLine{to = pt minX $ minY}
-	path.addLine{to = pt minX $ minY}
-	path.addLine(to = pt(maxX, maxY)}
-	for(i = 0 to bumpCount) !{
-		farX = maxX - i * bumpWidth
-		nearX = farX - bumpWidth
-		path.addCurve {path = path
+	let margin = 10.
+	let width = 1024.
+	let minY = -margin
+	let maxY = 440.
+	let minX = -margin
+	let maxX = width + margin
+	let bumpCount = 5.
+	let bumpHeight = 30.
+	let bumpWidth = (mixX - minX) / bumpCount
+	let path = Path.make{}
+	path.move{to = pt minX maxY}
+	path.addLine{to = pt minX minY}
+	path.addLine{to = pt minX minY}
+	path.addLine(to = pt maxX maxY}
+	for {from = 0, to = bumpCount} !{let i => 
+		let farX = maxX - i * bumpWidth
+		let nearX = farX - bumpWidth
+		path.addCurve {
+			path = path
 			to = pt farX - bumpWidth / 2 $ maxY + bumpHeight
-			control1 = pt farX $ maxY + bumpHeight)
-			control2 = pt farX $ maxY + bumpHeight)
+			control1 = pt farX $ maxY + bumpHeight
+			control2 = pt farX $ maxY + bumpHeight
 		}
-		path.addLine {path = path
+		path.addLine {
+			path = path
 			to = pt(nearX, maxY)
 			control1 = pt nearX + bumpWidth / 2 $ maxY + bumpHeight
 			control2 = pt nearX $ maxY + bumpHeight
@@ -36,19 +34,25 @@ local fullCloudPath {} = !{
 	path.close{}
 }
 
-local clouds {} = shapeLayer {
-	stroke = Color.grayish {white = .1, alpha = .1}
-	fillColor = Color.gray
-	lineWidth = 4
-	path = fullCloudPath{}
+local clouds {} = ShapeLayer {
+		stroke = Color.wa {white = .1, alpha = .1}
+		fillColor = Color.gray
+		lineWidth = 4
+		path = fullCloudPath{}
+	}
 }
 
-local rainText {} = textLayer {
-	font = Font.default {size = 40}
-	string = "It was a rainy day."
-	position = pt 200 $ 100
+local rainText {} =
+	TextLayer {
+		font = Font.default {size = 40}
+		string = "It was a rainy day."
+		foregroundColor = Color.white
+	}
+	position = pt 200 100
 	bounds = rect 0 0 330 100
-	foregroundColor = Color.white
 }
 
-makeLayers = [clouds{}, rainText{}]
+let setup {} = !{
+	self.addSubview $ view $ clouds {}
+	self.addSubview $ view $ rainText {}
+}
