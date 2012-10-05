@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class BGNParserResult;
+@protocol BGNParserResult;
 
 @interface BGNParser : NSObject
 
-- (BGNParserResult*)parseFile:(NSString*)path;
-- (BGNParserResult*)parseString:(NSString*)string sourceName:(NSString*)sourceName;
+- (id <BGNParserResult>)parseFile:(NSString*)path;
+- (id <BGNParserResult>)parseString:(NSString*)string sourceName:(NSString*)sourceName;
 
 @end

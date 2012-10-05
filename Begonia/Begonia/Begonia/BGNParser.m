@@ -17,7 +17,7 @@
 
 @implementation BGNParser
 
-- (BGNParserResult*)parseFile:(NSString *)path {
+- (id <BGNParserResult>)parseFile:(NSString *)path {
     NSError* error = nil;
     NSString* contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     if(error != nil) {
@@ -39,7 +39,7 @@
     return result;
 }
 
-- (BGNParserResult*)parseString:(NSString *)string sourceName:(NSString *)sourceName {
+- (id <BGNParserResult>)parseString:(NSString *)string sourceName:(NSString *)sourceName {
     NSArray* tokens = [self tokenizeString:string sourceName:sourceName];
     NSLog(@"got tokens! %@", tokens);
     return [BGNParserResult resultWithError:nil];

@@ -15,9 +15,9 @@
 
 - (void)interpretFile:(NSString*)path {
     BGNParser* parser = [[BGNParser alloc] init];
-    BGNParserResult* result = [parser parseFile:path];
-    [result caseNode:^(BGNNode* node) {
-        NSLog(@"parsed: %@", node);
+    id <BGNParserResult> result = [parser parseFile:path];
+    [result caseModule:^(BGNModule* module) {
+        NSLog(@"parsed: %@", module);
     } error:^(NSError* error) {
         NSLog(@"parse error %@", error);
     }];

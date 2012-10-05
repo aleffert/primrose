@@ -2,7 +2,7 @@ import Cocoa
 
 external type Path
 
-local uiBezierPath = # Cocoa.class.UIBezierPath : CocoaClass
+local uiBezierPath = # Cocoa.class UIBezierPath : CocoaClass
 
 let make {} = {
 	path = # uiBezierPath bezierPath : Path,

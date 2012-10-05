@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class BGNNode;
+@class BGNModule;
 
-@interface BGNParserResult : NSObject
+@protocol BGNParserResult <NSObject>
 
-+ (BGNParserResult*)resultWithNode:(BGNNode*)node;
-+ (BGNParserResult*)resultWithError:(NSError*)error;
+- (void)caseModule:(void(^)(BGNModule*))module error:(void(^)(NSError*))error;
 
-- (void)caseNode:(void(^)(BGNNode*))node error:(void(^)(NSError*))error;
+@end
+
+@interface BGNParserResult
+
++ (id <BGNParserResult>)resultWithModule:(BGNModule*)module;
++ (id <BGNParserResult>)resultWithError:(NSError*)error;
 
 @end

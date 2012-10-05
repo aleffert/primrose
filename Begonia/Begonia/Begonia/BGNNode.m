@@ -7,7 +7,3 @@
 //
 
 #import "BGNNode.h"
-
-@implementation BGNNode
-
-@end

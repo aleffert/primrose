@@ -8,26 +8,26 @@
 
 #import "BGNParserResult.h"
 
-@interface BGNNodeParserResult : BGNParserResult
-@property (retain, nonatomic) BGNNode* node;
+@interface BGNModuleParserResult : NSObject <BGNParserResult>
+@property (retain, nonatomic) BGNModule* module;
 @end
 
-@implementation BGNNodeParserResult
+@implementation BGNModuleParserResult
 
-- (void)caseNode:(void (^)(BGNNode *))node error:(void (^)(NSError *))error {
-    node(self.node);
+- (void)caseModule:(void (^)(BGNModule *))module error:(void (^)(NSError *))error {
+    module(self.module);
 }
 
 @end
 
 
-@interface BGNErrorParserResult : BGNParserResult
+@interface BGNErrorParserResult : NSObject <BGNParserResult>
 @property (retain, nonatomic) NSError* error;
 @end
 
 @implementation BGNErrorParserResult
 
-- (void)caseNode:(void (^)(BGNNode *))node error:(void (^)(NSError *))error {
+- (void)caseModule:(void (^)(BGNModule *))module error:(void (^)(NSError *))error {
     error(self.error);
 }
 
@@ -35,20 +35,16 @@
 
 @implementation BGNParserResult
 
-+ (BGNParserResult*)resultWithNode:(BGNNode*)node {
-    BGNNodeParserResult* result = [[BGNNodeParserResult alloc] init];
-    result.node = node;
++ (id <BGNParserResult>)resultWithModule:(BGNModule *)module {
+    BGNModuleParserResult* result = [[BGNModuleParserResult alloc] init];
+    result.module = module;
     return result;
 }
 
-+ (BGNParserResult*)resultWithError:(NSError*)error {
++ (id <BGNParserResult>)resultWithError:(NSError*)error {
     BGNErrorParserResult* result = [[BGNErrorParserResult alloc] init];
     result.error = error;
     return result;
-}
-
-- (void)caseNode:(void(^)(BGNNode*))node error:(void(^)(NSError*))error {
-    NSAssert(NO, @"Abstract method", nil);
 }
 
 @end
