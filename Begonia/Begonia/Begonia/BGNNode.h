@@ -28,17 +28,33 @@
 @class BGNExternalTypeDeclaration;
 @class BGNScopedFunctionBinding;
 @class BGNScopedValueBinding;
+@class BGNDatatypeBinding;
 @protocol BGNExpression;
 
 @protocol BGNTopLevelDeclaration
 
-- (void)caseExternalType:(BGNExternalTypeDeclaration*)typeDeclaration funBinding:(BGNScopedFunctionBinding*)funBinding valBinding:(BGNScopedValueBinding*)valBinding exp:(id <BGNExpression>)exp;
+- (void)caseExternalType:(BGNExternalTypeDeclaration*)typeDeclaration datatypeBinding:(BGNDatatypeBinding*)typeBinding funBinding:(BGNScopedFunctionBinding*)funBinding valBinding:(BGNScopedValueBinding*)valBinding exp:(id <BGNExpression>)exp;
 
 @end
 
 @interface BGNExternalTypeDeclaration : NSObject <BGNTopLevelDeclaration>
 
 @property (copy, nonatomic) NSString* name;
+
+@end
+
+
+@interface BGNDatatypeBinding : NSObject <BGNTopLevelDeclaration>
+
+@property (retain, nonatomic) NSString* name;
+@property (copy, nonatomic) NSArray* arms; // BGNDatatypeArm
+
+@end
+
+@interface BGNDatatypeArm : NSObject
+
+@property (retain, nonatomic) NSString* name;
+@property (copy, nonatomic) NSArray* fields; // BGNRecordBindingField
 
 @end
 
@@ -164,6 +180,8 @@ typedef enum {
 @end
 
 @interface BGNExpPath : NSObject <BGNExpression>
+
+@property (retain, nonatomic) id <BGNExpression> base;
 
 @property (copy, nonatomic) NSArray* parts;
 
