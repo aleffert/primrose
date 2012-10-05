@@ -21,11 +21,16 @@
 		773EC38B160EC4BD00DF8624 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EC38A160EC4BD00DF8624 /* QuartzCore.framework */; };
 		773EC38E160EC51300DF8624 /* ADLGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC38D160EC51300DF8624 /* ADLGradientView.m */; };
 		773EC391160F541C00DF8624 /* BGNInterpreter.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC390160F541C00DF8624 /* BGNInterpreter.m */; };
+		773EC3D2161BECA500DF8624 /* BGNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3D1161BECA500DF8624 /* BGNParser.m */; };
+		773EC3D6161BF53E00DF8624 /* BGNNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3D5161BF53E00DF8624 /* BGNNode.m */; };
+		773EC3D9161BF59C00DF8624 /* BGNParserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3D8161BF59C00DF8624 /* BGNParserResult.m */; };
+		773EC3E7161D516500DF8624 /* BGNEndOfLineTokenizerState.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */; };
+		BDCAB08E5BF243A4B39342A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7F98A2839141F3A9137BE6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		773EC33F160EAE8D00DF8624 /* Begonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Begonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		773EC343160EAE8D00DF8624 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		773EC343160EAE8D00DF8624 /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		773EC346160EAE8D00DF8624 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		773EC347160EAE8D00DF8624 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		773EC348160EAE8D00DF8624 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -45,11 +50,22 @@
 		773EC36D160EBCD900DF8624 /* ADLFileAcceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLFileAcceptorView.m; sourceTree = "<group>"; };
 		773EC36F160EBDF300DF8624 /* ADLViewerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADLViewerWindowController.xib; sourceTree = "<group>"; };
 		773EC388160EC1ED00DF8624 /* ADLFileAcceptorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADLFileAcceptorView.xib; sourceTree = "<group>"; };
-		773EC38A160EC4BD00DF8624 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		773EC38A160EC4BD00DF8624 /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		773EC38C160EC51300DF8624 /* ADLGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLGradientView.h; sourceTree = "<group>"; };
 		773EC38D160EC51300DF8624 /* ADLGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLGradientView.m; sourceTree = "<group>"; };
 		773EC38F160F541C00DF8624 /* BGNInterpreter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNInterpreter.h; sourceTree = "<group>"; };
 		773EC390160F541C00DF8624 /* BGNInterpreter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNInterpreter.m; sourceTree = "<group>"; };
+		773EC3D0161BECA500DF8624 /* BGNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNParser.h; sourceTree = "<group>"; };
+		773EC3D1161BECA500DF8624 /* BGNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNParser.m; sourceTree = "<group>"; };
+		773EC3D4161BF53E00DF8624 /* BGNNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNNode.h; sourceTree = "<group>"; };
+		773EC3D5161BF53E00DF8624 /* BGNNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNNode.m; sourceTree = "<group>"; };
+		773EC3D7161BF59C00DF8624 /* BGNParserResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNParserResult.h; sourceTree = "<group>"; };
+		773EC3D8161BF59C00DF8624 /* BGNParserResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNParserResult.m; sourceTree = "<group>"; };
+		773EC3E5161D516500DF8624 /* BGNEndOfLineTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNEndOfLineTokenizerState.h; sourceTree = "<group>"; };
+		773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNEndOfLineTokenizerState.m; sourceTree = "<group>"; };
+		7F7F98A2839141F3A9137BE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB1E54DE29BB4536B3849353 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD9B61116D894D3887D364CF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,7 @@
 			files = (
 				773EC38B160EC4BD00DF8624 /* QuartzCore.framework in Frameworks */,
 				773EC344160EAE8D00DF8624 /* Cocoa.framework in Frameworks */,
+				BDCAB08E5BF243A4B39342A5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +88,7 @@
 				773EC349160EAE8D00DF8624 /* Begonia */,
 				773EC342160EAE8D00DF8624 /* Frameworks */,
 				773EC340160EAE8D00DF8624 /* Products */,
+				DD9B61116D894D3887D364CF /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +106,8 @@
 				773EC38A160EC4BD00DF8624 /* QuartzCore.framework */,
 				773EC343160EAE8D00DF8624 /* Cocoa.framework */,
 				773EC345160EAE8D00DF8624 /* Other Frameworks */,
+				DB1E54DE29BB4536B3849353 /* libPods.a */,
+				7F7F98A2839141F3A9137BE6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,6 +159,14 @@
 		773EC392160F542000DF8624 /* Lang */ = {
 			isa = PBXGroup;
 			children = (
+				773EC3E5161D516500DF8624 /* BGNEndOfLineTokenizerState.h */,
+				773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */,
+				773EC3D0161BECA500DF8624 /* BGNParser.h */,
+				773EC3D7161BF59C00DF8624 /* BGNParserResult.h */,
+				773EC3D8161BF59C00DF8624 /* BGNParserResult.m */,
+				773EC3D1161BECA500DF8624 /* BGNParser.m */,
+				773EC3D4161BF53E00DF8624 /* BGNNode.h */,
+				773EC3D5161BF53E00DF8624 /* BGNNode.m */,
 				773EC38F160F541C00DF8624 /* BGNInterpreter.h */,
 				773EC390160F541C00DF8624 /* BGNInterpreter.m */,
 			);
@@ -155,6 +183,7 @@
 				773EC33B160EAE8D00DF8624 /* Sources */,
 				773EC33C160EAE8D00DF8624 /* Frameworks */,
 				773EC33D160EAE8D00DF8624 /* Resources */,
+				72FBA8096C06473F85849F40 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +236,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		72FBA8096C06473F85849F40 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		773EC33B160EAE8D00DF8624 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -219,6 +265,10 @@
 				773EC36E160EBCDA00DF8624 /* ADLFileAcceptorView.m in Sources */,
 				773EC38E160EC51300DF8624 /* ADLGradientView.m in Sources */,
 				773EC391160F541C00DF8624 /* BGNInterpreter.m in Sources */,
+				773EC3D2161BECA500DF8624 /* BGNParser.m in Sources */,
+				773EC3D6161BF53E00DF8624 /* BGNNode.m in Sources */,
+				773EC3D9161BF59C00DF8624 /* BGNParserResult.m in Sources */,
+				773EC3E7161D516500DF8624 /* BGNEndOfLineTokenizerState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +357,13 @@
 		};
 		773EC35E160EAE8D00DF8624 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD9B61116D894D3887D364CF /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -319,10 +372,13 @@
 		};
 		773EC35F160EAE8D00DF8624 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD9B61116D894D3887D364CF /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -348,6 +404,7 @@
 				773EC35F160EAE8D00DF8624 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

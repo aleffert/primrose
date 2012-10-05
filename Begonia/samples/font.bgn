@@ -1,4 +1,4 @@
-backend Cocoa
+import Cocoa
 
 external type Font
 

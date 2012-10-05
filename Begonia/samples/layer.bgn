@@ -3,9 +3,9 @@ import Path
 import Font
 
 type Layer = ShapeLayer {
-	stroke : Color
-	fillColor : Color
-	lineWidth : Float
+	stroke : Color,
+	fillColor : Color,
+	lineWidth : Float,
 	path : Path
 }
 | TextLayer {

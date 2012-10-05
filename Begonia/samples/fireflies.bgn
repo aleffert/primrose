@@ -19,14 +19,12 @@ local fullCloudPath {} = !{
 		let farX = maxX - i * bumpWidth
 		let nearX = farX - bumpWidth
 		path.addCurve {
-			path = path
 			to = pt farX - bumpWidth / 2 $ maxY + bumpHeight
 			control1 = pt farX $ maxY + bumpHeight
 			control2 = pt farX $ maxY + bumpHeight
 		}
 		path.addLine {
-			path = path
-			to = pt(nearX, maxY)
+			to = pt nearX maxY
 			control1 = pt nearX + bumpWidth / 2 $ maxY + bumpHeight
 			control2 = pt nearX $ maxY + bumpHeight
 		}
@@ -35,24 +33,19 @@ local fullCloudPath {} = !{
 }
 
 local clouds {} = ShapeLayer {
-		stroke = Color.wa {white = .1, alpha = .1}
-		fillColor = Color.gray
-		lineWidth = 4
-		path = fullCloudPath{}
-	}
+	stroke = Color.wa {white = .1, alpha = .1},
+	fillColor = Color.gray,
+	lineWidth = 4,
+	path = fullCloudPath {}
 }
 
-local rainText {} =
-	TextLayer {
-		font = Font.default {size = 40}
-		string = "It was a rainy day."
-		foregroundColor = Color.white
-	}
-	position = pt 200 100
-	bounds = rect 0 0 330 100
+local rainText {} = TextLayer {
+	font = Font.default {size = 40},
+	string = "It was a rainy day.",
+	foregroundColor = Color.white
 }
 
 let setup {} = !{
-	self.addSubview $ view $ clouds {}
-	self.addSubview $ view $ rainText {}
+	self.addSubview (view $ clouds {})
+	self.addSubview (view $ rainText {})
 }

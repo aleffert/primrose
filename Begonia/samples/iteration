@@ -1,0 +1,6 @@
+let for {from : Float = 0, to : Float} (f : Int -> {}) = !{
+	f from
+	if from < to then for {from = from + 1, to = to} f
+	else ()
+	
+}

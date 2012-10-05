@@ -58,6 +58,7 @@ void ADLFileWatcherPathChanged(
     FSEventStreamScheduleWithRunLoop(self.streamRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
     FSEventStreamStart(self.streamRef);
     CFRelease(paths);
+    self.changedAction(self);
 }
 
 - (void)setWatchPath:(NSString*)path{

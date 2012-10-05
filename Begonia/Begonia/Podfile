@@ -1,0 +1,2 @@
+platform :osx
+pod 'ParseKit', '~> 0.0.2'

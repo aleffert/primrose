@@ -1,32 +1,32 @@
-// queu exp 
-
 module ::=
-	(BACKEND cocoa)?
-	IMPORT*
+	imports
 	top-decl*
-
+	EOF
 
 scope ::= LOCAL | LET
 
 terminator ::= EOF EOL
 
-sequencer ::= COMMA | EOL
-
 type ::= Float | type ARROW type | LBRACKET record-type-list RBRACKET
 
 record-type-list ::=
-	record-type-list IDENT COLON type EQUALS exp
-	| record-type-list IDENT COLON type sequencer 
+	record-type-list question-option IDENT COLON type
+	| record-type-list IDENT COLON type COMMA 
+
+question-option ::= QUESTION_MARK
+	| // nothing
 
 
+imports ::= imports import
+	| //nothing
 
-imports ::= IMPORT IDENT
+import ::= IMPORT IDENT
 
 top-decl ::= 
-	terminator
-	| EXTERNAL TYPE IDENT terminator
-	| scope val-bindings exp terminator
-	| exp terminator
+	EOL
+	| EXTERNAL TYPE IDENT
+	| scope val-bindings exp
+	| exp
 
 
 val-binding ::=
@@ -46,7 +46,7 @@ record-fields ::= record-fields IDENT EQUALS exp
 exp ::= exp atom
 	| exp
 
-atom ::= NUM | IDENT | OP | BANG LBRACKET stmts RBRACKET
+atom ::= NUM | PATH | OP | BANG LBRACKET stmts RBRACKET | IF eols exp eols THEN eols exp eols ELSE eols exp
 
 stmts ::= stmts sequencer stmt
 stmt ::= LET pat EQUAL exp
