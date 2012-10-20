@@ -8,6 +8,7 @@
 
 #import "ADLAppDelegate.h"
 
+#import "BGNPrecedenceParser.h"
 #import "ADLViewerWindowController.h"
 
 @interface ADLAppDelegate ()
@@ -22,6 +23,8 @@
 {
     self.controller = [[ADLViewerWindowController alloc] initWithWindowNibName:@"ADLViewerWindowController"];
     [self.controller.window makeKeyAndOrderFront:nil];
+    
+    [BGNPrecedenceParser test];
 }
 
 @end

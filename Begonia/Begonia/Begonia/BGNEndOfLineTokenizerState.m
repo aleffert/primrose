@@ -43,7 +43,7 @@
         [r unread];
     }
     
-    PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWhitespace stringValue:@"\n" floatValue:0.0];
+    PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"\n" floatValue:0.0];
     tok.offset = offset;
     return tok;
 

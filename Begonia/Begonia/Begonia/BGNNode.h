@@ -29,11 +29,12 @@
 @class BGNScopedFunctionBinding;
 @class BGNScopedValueBinding;
 @class BGNDatatypeBinding;
+@class BGNTopExpression;
 @protocol BGNExpression;
 
 @protocol BGNTopLevelDeclaration
 
-- (void)caseExternalType:(BGNExternalTypeDeclaration*)typeDeclaration datatypeBinding:(BGNDatatypeBinding*)typeBinding funBinding:(BGNScopedFunctionBinding*)funBinding valBinding:(BGNScopedValueBinding*)valBinding exp:(id <BGNExpression>)exp;
+- (void)caseExternalType:(void(^)(BGNExternalTypeDeclaration*))typeDeclaration datatypeBinding:(void(^)(BGNDatatypeBinding*))typeBinding funBinding:(void(^)(BGNScopedFunctionBinding*))funBinding valBinding:(void(^)(BGNScopedValueBinding*))valBinding exp:(void(^)(BGNTopExpression*))exp;
 
 @end
 
@@ -43,18 +44,12 @@
 
 @end
 
+@protocol BGNTypeArgument;
 
 @interface BGNDatatypeBinding : NSObject <BGNTopLevelDeclaration>
 
 @property (retain, nonatomic) NSString* name;
-@property (copy, nonatomic) NSArray* arms; // BGNDatatypeArm
-
-@end
-
-@interface BGNDatatypeArm : NSObject
-
-@property (retain, nonatomic) NSString* name;
-@property (copy, nonatomic) NSArray* fields; // BGNRecordBindingField
+@property (copy, nonatomic) id <BGNTypeArgument> body;
 
 @end
 
@@ -72,21 +67,33 @@ typedef enum {
 
 @end
 
+
+@interface BGNScopedValueBinding : NSObject <BGNTopLevelDeclaration>
+
+@property (assign, nonatomic) BGNScope scope;
+@property (copy, nonatomic) NSString* name;
+@property (retain, nonatomic) id <BGNExpression> body;
+
+@end
+
+@interface BGNTopExpression : NSObject <BGNTopLevelDeclaration>
+
+@property (retain, nonatomic) id <BGNExpression> expression;
+
+@end
+
 @class BGNVarBinding;
 @class BGNRecordBinding;
 
 @protocol BGNBindingArgument <NSObject>
 
-- (void)caseVar:(BGNVarBinding*)varBinding record:(BGNRecordBinding*)recordBinding;
-
 @end
 
-@protocol BGNType;
 
 @interface BGNVarBinding : NSObject <BGNBindingArgument>
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNType> type;
+@property (retain, nonatomic) id <BGNTypeArgument> argumentType;
 
 @end
 
@@ -99,18 +106,11 @@ typedef enum {
 @interface BGNRecordBindingField : NSObject
 
 @property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNType> type;
+@property (retain, nonatomic) id <BGNTypeArgument> type;
 @property (retain, nonatomic) id <BGNExpression> defaultValue;
 
 @end
 
-@interface BGNScopedValueBinding : NSObject <BGNTopLevelDeclaration>
-
-@property (assign, nonatomic) BGNScope scope;
-@property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNExpression> body;
-
-@end
 
 @class BGNTypeVariable;
 @class BGNTypeArrow;
@@ -118,7 +118,7 @@ typedef enum {
 
 @protocol BGNType <NSObject>
 
-- (void)caseVar:(BGNTypeVariable*)typeVariable arrow:(BGNTypeArrow*)arrow recordType:(BGNTypeRecord*)record;
+- (void)caseVar:(void(^)(BGNTypeVariable*))typeVariable arrow:(void(^)(BGNTypeArrow*))arrow recordType:(void(^)(BGNTypeRecord*))record;
 
 @end
 
@@ -128,25 +128,39 @@ typedef enum {
 
 @end
 
+@interface BGNTypeRecord : NSObject <BGNType>
 
-@class BGNTypeRecordArgument;
-
-@protocol BGNTypeArgument <NSObject>
-
-- (void)caseRecord:(BGNTypeRecordArgument*)record type:(id <BGNType>)type;
+@property (copy, nonatomic) NSArray* fields; // BGNTypeRecordField
 
 @end
 
-@interface BGNTypeRecordArgument : NSObject <BGNTypeArgument>
+@class BGNTypeArgumentRecord;
+@class BGNTypeArgumentType;
 
-@property (copy, nonatomic) NSArray* fields; //BGNTypeRecordField
+@protocol BGNTypeArgument <NSObject>
+
+- (void)caseRecord:(void(^)(BGNTypeArgumentRecord*))record type:(void(^)(BGNTypeArgumentType*))type;
+
+@end
+
+
+
+@interface BGNTypeArgumentRecord : NSObject <BGNTypeArgument>
+
+@property (copy, nonatomic) BGNTypeRecord* record; //BGNTypeRecordField
+
+@end
+
+@interface BGNTypeArgumentType : NSObject <BGNTypeArgument>
+
+@property (retain, nonatomic) id <BGNType> type;
 
 @end
 
 @interface BGNTypeRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) BGNTypeRecordArgument* type;
+@property (retain, nonatomic) id <BGNTypeArgument> type;
 @property (assign, nonatomic) BOOL optional;
 
 @end
@@ -162,20 +176,24 @@ typedef enum {
 @class BGNExpPath;
 @class BGNExpApp;
 @class BGNExpStmts;
+@class BGNExpVariable;
 @class BGNExpIfThenElse;
 @class BGNExpRecord;
 @class BGNExpExternalMethod;
 
 @protocol BGNExpression <NSObject>
-
-- (void)caseNumber:(BGNExpNumber*)number path:(BGNExpPath*)path app:(BGNExpApp*)app group:(BGNExpStmts*)group ifThenElse:(BGNExpIfThenElse*)ifThenElse record:(BGNExpRecord*)record externalMethod:(BGNExpExternalMethod*)externalMethod;
-
 @end
 
-@interface BGNExpFloat : NSObject <BGNExpression>
+@interface BGNExpNumber : NSObject <BGNExpression>
 
 @property (retain, nonatomic) NSNumber* value;
 @property (assign, nonatomic) BOOL isFloat;
+
+@end
+
+@interface BGNExpVariable : NSObject <BGNExpression>
+
+@property (copy, nonatomic) NSString* name;
 
 @end
 
@@ -183,7 +201,7 @@ typedef enum {
 
 @property (retain, nonatomic) id <BGNExpression> base;
 
-@property (copy, nonatomic) NSArray* parts;
+@property (copy, nonatomic) NSArray* parts; //String
 
 @end
 
@@ -214,7 +232,7 @@ typedef enum {
 
 @end
 
-@interface BGNExpRecordField : NSObject <BGNExpression>
+@interface BGNExpRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
 @property (retain, nonatomic) id <BGNExpression> body;
@@ -224,9 +242,16 @@ typedef enum {
 
 @interface BGNExpExternalMethod : NSObject <BGNExpression>
 
-@property (retain, nonatomic) BGNExpPath* path;
-@property (retain, nonatomic) NSString* method;
+@property (retain, nonatomic) id <BGNExpression> base;
+@property (retain, nonatomic) id <BGNExpression> argument;
 @property (retain, nonatomic) id <BGNType> resultType;
+
+@end
+
+@interface BGNExpLambda : NSObject <BGNExpression>
+
+@property (retain, nonatomic) NSArray* arguments;
+@property (retain, nonatomic) id <BGNExpression> body;
 
 @end
 
@@ -235,13 +260,13 @@ typedef enum {
 
 @protocol BGNStatement <NSObject>
 
-- (void)caseLet:(BGNStmtLet*)let exp:(id <BGNExpression>)exp;
+- (void)caseLet:(void(^)(BGNStmtLet*))let exp:(void(^)(BGNStmtExp*))exp;
 
 @end
 
 @interface BGNStmtLet : NSObject <BGNStatement>
 
-@property (retain, nonatomic) id <BGNBindingArgument> binder;
+@property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) id <BGNExpression> body;
 
 @end

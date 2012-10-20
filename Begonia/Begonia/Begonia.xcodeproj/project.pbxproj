@@ -25,6 +25,10 @@
 		773EC3D6161BF53E00DF8624 /* BGNNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3D5161BF53E00DF8624 /* BGNNode.m */; };
 		773EC3D9161BF59C00DF8624 /* BGNParserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3D8161BF59C00DF8624 /* BGNParserResult.m */; };
 		773EC3E7161D516500DF8624 /* BGNEndOfLineTokenizerState.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */; };
+		773EC3ED1620B18700DF8624 /* begonia.grammar in Resources */ = {isa = PBXBuildFile; fileRef = 773EC3EC1620B18700DF8624 /* begonia.grammar */; };
+		77BF37801633263A006B5EF4 /* NSObject+BGNConstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */; };
+		77BF378416332796006B5EF4 /* NSMutableArray+BGNStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */; };
+		77D11F8F162E25F0008E2A6E /* BGNPrecedenceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D11F8E162E25F0008E2A6E /* BGNPrecedenceParser.m */; };
 		BDCAB08E5BF243A4B39342A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7F98A2839141F3A9137BE6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +67,13 @@
 		773EC3D8161BF59C00DF8624 /* BGNParserResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNParserResult.m; sourceTree = "<group>"; };
 		773EC3E5161D516500DF8624 /* BGNEndOfLineTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNEndOfLineTokenizerState.h; sourceTree = "<group>"; };
 		773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNEndOfLineTokenizerState.m; sourceTree = "<group>"; };
+		773EC3EC1620B18700DF8624 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = begonia.grammar; sourceTree = SOURCE_ROOT; };
+		77BF377E1633263A006B5EF4 /* NSObject+BGNConstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BGNConstruction.h"; sourceTree = "<group>"; };
+		77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BGNConstruction.m"; sourceTree = "<group>"; };
+		77BF378216332796006B5EF4 /* NSMutableArray+BGNStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+BGNStack.h"; sourceTree = "<group>"; };
+		77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+BGNStack.m"; sourceTree = "<group>"; };
+		77D11F8D162E25F0008E2A6E /* BGNPrecedenceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNPrecedenceParser.h; sourceTree = "<group>"; };
+		77D11F8E162E25F0008E2A6E /* BGNPrecedenceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNPrecedenceParser.m; sourceTree = "<group>"; };
 		7F7F98A2839141F3A9137BE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB1E54DE29BB4536B3849353 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9B61116D894D3887D364CF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -125,6 +136,10 @@
 		773EC349160EAE8D00DF8624 /* Begonia */ = {
 			isa = PBXGroup;
 			children = (
+				77BF377E1633263A006B5EF4 /* NSObject+BGNConstruction.h */,
+				77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */,
+				77BF378216332796006B5EF4 /* NSMutableArray+BGNStack.h */,
+				77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */,
 				773EC369160EBA6400DF8624 /* ADLViewerWindowController.h */,
 				773EC36A160EBA6400DF8624 /* ADLViewerWindowController.m */,
 				773EC392160F542000DF8624 /* Lang */,
@@ -159,12 +174,15 @@
 		773EC392160F542000DF8624 /* Lang */ = {
 			isa = PBXGroup;
 			children = (
+				77D11F8D162E25F0008E2A6E /* BGNPrecedenceParser.h */,
+				77D11F8E162E25F0008E2A6E /* BGNPrecedenceParser.m */,
+				773EC3EC1620B18700DF8624 /* begonia.grammar */,
 				773EC3E5161D516500DF8624 /* BGNEndOfLineTokenizerState.h */,
 				773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */,
 				773EC3D0161BECA500DF8624 /* BGNParser.h */,
+				773EC3D1161BECA500DF8624 /* BGNParser.m */,
 				773EC3D7161BF59C00DF8624 /* BGNParserResult.h */,
 				773EC3D8161BF59C00DF8624 /* BGNParserResult.m */,
-				773EC3D1161BECA500DF8624 /* BGNParser.m */,
 				773EC3D4161BF53E00DF8624 /* BGNNode.h */,
 				773EC3D5161BF53E00DF8624 /* BGNNode.m */,
 				773EC38F160F541C00DF8624 /* BGNInterpreter.h */,
@@ -231,6 +249,7 @@
 				773EC35A160EAE8D00DF8624 /* MainMenu.xib in Resources */,
 				773EC370160EBDF300DF8624 /* ADLViewerWindowController.xib in Resources */,
 				773EC389160EC1ED00DF8624 /* ADLFileAcceptorView.xib in Resources */,
+				773EC3ED1620B18700DF8624 /* begonia.grammar in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +288,9 @@
 				773EC3D6161BF53E00DF8624 /* BGNNode.m in Sources */,
 				773EC3D9161BF59C00DF8624 /* BGNParserResult.m in Sources */,
 				773EC3E7161D516500DF8624 /* BGNEndOfLineTokenizerState.m in Sources */,
+				77D11F8F162E25F0008E2A6E /* BGNPrecedenceParser.m in Sources */,
+				77BF37801633263A006B5EF4 /* NSObject+BGNConstruction.m in Sources */,
+				77BF378416332796006B5EF4 /* NSMutableArray+BGNStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD9B61116D894D3887D364CF /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
@@ -366,6 +389,7 @@
 				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -374,6 +398,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD9B61116D894D3887D364CF /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
@@ -381,6 +406,7 @@
 				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = "Begonia/Begonia-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

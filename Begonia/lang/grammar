@@ -1,5 +1,5 @@
 module ::=
-	imports
+	import*
 	top-decl*
 	EOF
 
@@ -17,7 +17,7 @@ question-option ::= QUESTION_MARK
 	| // nothing
 
 
-imports ::= imports import
+imports ::= import imports
 	| //nothing
 
 import ::= IMPORT IDENT
@@ -43,10 +43,10 @@ record-fields ::= record-fields IDENT EQUALS exp
 	|
 
 
-exp ::= exp atom
-	| exp
+exp ::= atom exp
+	| atom
 
-atom ::= NUM | PATH | OP | BANG LBRACKET stmts RBRACKET | IF eols exp eols THEN eols exp eols ELSE eols exp
+atom ::= NUM | PATH | OP | BANG LBRACKET stmts RBRACKET | IF exp THEN eols exp eols ELSE eols exp | POUND 
 
 stmts ::= stmts sequencer stmt
 stmt ::= LET pat EQUAL exp

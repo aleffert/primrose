@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ParseKit.h"
+
 @protocol BGNParserResult;
 
 @interface BGNParser : NSObject

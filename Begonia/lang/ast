@@ -1,0 +1,86 @@
+type Module = Module {
+	name : String
+	imports : [List]
+	decls : [TopLevelDeclaration]
+}
+
+type Import = Import {name : String}
+
+type TopLevelDeclaration = TopDeclExternalType ExternalTypeDeclaration
+| TopDeclDatatype DatatypeBinding
+| TopDeclFunctionBinding ScopedFunctionBinding
+| TopDeclValueBinding ScopedValueBinding
+| TopDeclExp Expression
+
+type ExternalTypeDecl = ExternalTypeDeclaration {name : String}
+
+type DatatypeBinding = DatatypeBinding {name : String, body : TypeArgument}
+
+type Scope = Local | Let
+
+type ScopedFunctionBinding = {
+	scope : Scope
+	name : String
+	arguments : [BindingArgument]
+	body : Expression
+}
+
+type BindingArgument = BindingArgumentVar VarBinding
+| BindingArgumentRecord RecordBinding
+
+type VarBinding = VarBinding {
+	name : String
+	argumentType : Type
+}
+
+type RecordBinding = RecordBinding [BGNRecordBindingField]
+
+type RecordBindingField = RecordBindingField {
+	name : String
+	fieldType : Type
+	defaultValue : ?Expression
+}
+
+type ScopedValueBinding = ScopedValueBinding {
+	scope : Scope
+	name : String
+	body : Expression
+}
+
+type Type = TTypeVar TypeVar
+| TArrow TypeArrow
+| TRecord TypeRecordArgument
+
+
+type TypeArrow = TypeArrow {domain : TypeArgument, codomain : Type}
+
+type TypeRecordArgument = TypeRecordArgument {fields : [TypeRecordField]}
+
+type typeRecordField = TypeRecordField : {
+	name : String
+	type : Type
+	optional : Bool
+}
+
+type Expression = ExpNumber {value : Number}
+| ExpPath {base : Expression, parts : [String]}
+| ExpApp {function : Expression, argument : Expression}
+| ExpStmts {statments : [Statement]}
+| ExpIfThenElse {
+	condition : Expression
+	thenCase : Expression
+	elseCase : Expression
+}
+| ExpRecordField {name : String, body : Expression}
+| ExpExternalMethod {
+	base : Expression
+	parts : [String]
+	method : String
+	resultType : Type
+}
+
+type Statement = StmtLet {
+	binder : BindingArgument,
+	body : Expression
+}
+| StmtExp {exp : Expression}
