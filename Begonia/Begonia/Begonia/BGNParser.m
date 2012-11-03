@@ -74,7 +74,7 @@
         [self push:[NSArray array]];
     }
     else {
-        [self pop];
+        [self popIf:^BOOL(id object) {return [object isKindOfClass:[NSNull class]];}];
         [self push:fields];
     }
     
@@ -223,12 +223,48 @@
 
 - (void)parser:(PKParser*)parser didMatchTopDeclValBinding:(PKAssembly*)a {
     id <BGNExpression> body = [a pop];
+    [a pop];
     NSString* name = [[a pop] stringValue];
     BGNScope scope = [[a pop] intValue];
     BGNScopedValueBinding* binding = [[BGNScopedValueBinding alloc] init];
     binding.scope = scope;
     binding.name = name;
     binding.body = body;
+    [a push:binding];
+}
+
+- (void)parser:(PKParser*)parser didMatchTopDeclFunBinding:(PKAssembly*)a {
+    id <BGNExpression> body = [a pop];
+    [a pop];
+    NSArray* bindingArguments = [a pop];
+    NSString* ident = [[a pop] stringValue];
+    BGNScope scope = [[a pop] intValue];
+    BGNScopedFunctionBinding* binding = [[BGNScopedFunctionBinding alloc] init];
+    binding.body = body;
+    binding.arguments = bindingArguments;
+    binding.name = ident;
+    binding.scope = scope;
+    [a push:binding];
+}
+
+- (void)parser:(PKParser*)parser didMatchDatatypeArm:(PKAssembly*)a {
+    BGNDatatypeArm* arm = [[BGNDatatypeArm alloc] init];
+    arm.type = [a pop];
+    arm.name = [a pop];
+    [a push:arm];
+}
+
+- (void)parser:(PKParser*)parser didMatchDatatypeArms:(PKAssembly *)a {
+    NSArray* items = [a popWhileMatching:^BOOL(id item) {
+        return [item isKindOfClass:[BGNDatatypeArm class]];
+    }];
+    [a push:items];
+}
+
+- (void)parser:(PKParser*)parser didMatchTopDeclTypeBinding:(PKAssembly*) a {
+    BGNDatatypeBinding* binding = [[BGNDatatypeBinding alloc] init];
+    binding.arms = [a pop];
+    binding.name = [a pop];
     [a push:binding];
 }
 
@@ -294,6 +330,13 @@
     [a push:result];
 }
 
+- (void)parser:(PKParser*)parser didMatchExpString:(PKAssembly*)a {
+    PKToken* string = [a pop];
+    BGNExpString* result = [[BGNExpString alloc] init];
+    result.value = string.quotedStringValue;
+    [a push:result];
+}
+
 - (void)parser:(PKParser*)parser didMatchExpVar:(PKAssembly*)a {
     PKToken* token = [a pop];
     BGNExpVariable* var = [[BGNExpVariable alloc] init];
@@ -303,7 +346,9 @@
 
 - (void)parser:(PKParser*)parser didMatchExternalMethod:(PKAssembly*)a {
     id <BGNType> type = [a pop];
+    [a pop];
     id <BGNExpression> argument = [a pop];
+    [a pop]; // <= token
     id <BGNExpression> exp = [a pop];
     BGNExpExternalMethod* call = [[BGNExpExternalMethod alloc] init];
     call.base = exp;
@@ -312,18 +357,6 @@
     [a push:call];
 }
 
-- (void)parser:(PKParser*)parser didMatchTopDeclFunBinding:(PKAssembly*)a {
-    id <BGNExpression> body = [a pop];
-    NSArray* bindingArguments = [a pop];
-    NSString* ident = [[a pop] stringValue];
-    BGNScope scope = [[a pop] intValue];
-    BGNScopedFunctionBinding* binding = [[BGNScopedFunctionBinding alloc] init];
-    binding.body = body;
-    binding.arguments = bindingArguments;
-    binding.name = ident;
-    binding.scope = scope;
-    [a push:binding];
-}
 
 - (void)parser:(PKParser*)parser didMatchExpLambda:(PKAssembly*)a {
     id <BGNExpression> body = [a pop];
@@ -334,7 +367,7 @@
     [a push:lam];
 }
 
-- (void)parser:(PKParser*)parser didMatchBindingArgument:(PKAssembly*)a {
+- (void)parser:(PKParser*)parser didMatchBindingArguments:(PKAssembly*)a {
     NSArray* arguments = [a popWhileMatching:^(id object) {
         return [object conformsToProtocol:@protocol(BGNBindingArgument)];
     }];
@@ -410,10 +443,10 @@
 
 - (void)parser:(PKParser*)parser didMatchExpRecordField:(PKAssembly*)a {
     id <BGNExpression> body = [a pop];
-    NSArray* arguments = [a popIf:^(id object) {
-        return [object isKindOfClass:[NSArray class]];
+    NSArray* arguments = [a popWhileMatching:^BOOL(id object) {
+        return [object conformsToProtocol:@protocol(BGNBindingArgument)];
     }];
-    if(arguments != nil) {
+    if(arguments.count > 0) {
         BGNExpLambda* lam = [[BGNExpLambda alloc] init];
         lam.body = body;
         lam.arguments = arguments;

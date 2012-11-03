@@ -46,11 +46,19 @@
 @end
 
 @protocol BGNTypeArgument;
+@class BGNRecordBinding;
 
 @interface BGNDatatypeBinding : NSObject <BGNTopLevelDeclaration>
 
 @property (retain, nonatomic) NSString* name;
-@property (copy, nonatomic) id <BGNTypeArgument> body;
+@property (copy, nonatomic) NSArray* arms;
+
+@end
+
+@interface BGNDatatypeArm : NSObject
+
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) BGNRecordBinding* type;
 
 @end
 
@@ -184,6 +192,12 @@ typedef enum {
 
 @property (retain, nonatomic) NSNumber* value;
 @property (assign, nonatomic) BOOL isFloat;
+
+@end
+
+@interface BGNExpString : NSObject <BGNExpression>
+
+@property (retain, nonatomic) NSString* value;
 
 @end
 

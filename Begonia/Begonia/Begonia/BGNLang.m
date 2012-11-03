@@ -41,6 +41,10 @@
 
 @end
 
+@implementation BGNDatatypeArm
+
+@end
+
 @implementation BGNScopedFunctionBinding
 
 @end
@@ -86,6 +90,9 @@
 
 @end
 
+@implementation BGNExpString
+
+@end
 
 @implementation BGNExpNumber
 

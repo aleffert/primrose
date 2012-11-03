@@ -13,18 +13,22 @@ module = imports topDecls;
 imports = import*;
 import = 'import'! ident eols;
 
-topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding)*;
+topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding | topDeclTypeBinding)*;
 
+topDeclTypeBinding = 'type'! ident '='! datatypeArms eols!;
 topDeclExternalType = 'external'! 'type'! ident eols!;
-topDeclValBinding = scope ident '='! exp eols!;
-topDeclFunBinding = scope ident bindingArguments '='! exp eols!;
+topDeclValBinding = scope ident '=' exp eols!;
+topDeclFunBinding = scope ident bindingArguments '=' exp eols!;
+
+datatypeArms = datatypeArm ('|'! datatypeArm)*;
+datatypeArm = ident recordBinding;
 
 bindingArguments = bindingArgument bindingArgument*;
 bindingArgument = varBinding | recordBinding;
 
 varBinding = '('! ident ':'! typeArgument ')'!;
 
-recordBinding = '{'! recordBindingFieldsOpt '}'!;
+recordBinding = '{'! eol* recordBindingFieldsOpt eol* '}'!;
 recordBindingFieldsOpt = nullOpt | recordBindingFields;
 recordBindingFields = recordBindingField (recordBreak! recordBindingField)*;
 recordBindingField = ident ':'! typeArgument defaultValueOpt;
@@ -44,18 +48,19 @@ projections = ('.'! pathItem)* ;
 
 path = atom projections;
 
-atom = expNum | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
+atom = expNum | expString | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
 expNum = Number;
+expString = QuotedString;
 expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
 expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
 
 expRecord = '{'! eol* expRecordFieldsOpt eol* '}'!;
-expRecordFieldsOpt = nullOpt | expRecordFields;
+expRecordFieldsOpt = expRecordFields | nullOpt;
 expRecordFields = expRecordField (recordBreak! expRecordField)*;
 expRecordField = ident (bindingArgument*) '='! exp;
 
-externalMethod = '#'! exp '<='! exp ':'! type;
+externalMethod = '#'! exp '<=' exp ':' type;
 
 stmt = stmtExp | stmtBind;
 stmtExp = exp;

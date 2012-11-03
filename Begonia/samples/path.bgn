@@ -5,7 +5,7 @@ external type Path
 local uiBezierPath = # Cocoa <= {class = UIBezierPath} : CocoaClass
 
 let make {} = {
-	path = # uiBezierPath <= bezierPath : Path
+	path = # uiBezierPath <= "bezierPath" : Path
 	addLine {to : Point} = # path <= {addLineToPoint = to} : Unit
 	move {to : Point} = # path <=  {moveToPoint = to} : Unit
 	close = # path <= close : Unit

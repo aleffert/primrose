@@ -1,5 +1,5 @@
 import Geometry
 
-type View {
+type View = View {
 	content : ViewContent
 }
