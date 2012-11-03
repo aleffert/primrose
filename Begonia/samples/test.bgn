@@ -1,7 +1,6 @@
 import Cocoa
 
 local fullCloudPath {} = {;
-	let margin = 10.0
-	let width = 1024.0
+	let width = 2 + 2
 ;}
 

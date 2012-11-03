@@ -19,7 +19,7 @@ typedef enum {
 
 @interface BGNPrecedenceTokenOp : NSObject <BGNPrecedenceToken>
 
-@property (copy, nonatomic) NSString* value;
+@property (retain, nonatomic) id value;
 @property (assign, nonatomic) BOOL isUnary;
 
 @end

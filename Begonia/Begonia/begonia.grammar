@@ -1,7 +1,8 @@
 @start = module;
 @symbols = '=' 'import' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' ;
 
-ident = /[A-Za-z][A-Za-z0-9_]*/;
+ident = /[A-Za-z][A-Za-z0-9_]*/ ;
+opSymbol = /[-+*$]/ ;
 
 scope = 'local' | 'let';
 
@@ -34,9 +35,11 @@ typeArgumentType = type;
 defaultValueOpt = nullOpt | '='! exp;
 nullOpt = Empty;
 
-exp = expNum | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
+exp = atom+;
+
+atom = expNum | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
 expNum = Number;
-expVar = ident;
+expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
 expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
 

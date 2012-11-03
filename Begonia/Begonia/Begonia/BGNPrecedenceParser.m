@@ -113,7 +113,7 @@
         }
     }
     
-    return accumulator;
+    return [accumulator objectAtIndex:0];
 }
 
 + (void)test {

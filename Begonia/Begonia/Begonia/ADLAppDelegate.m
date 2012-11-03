@@ -23,8 +23,6 @@
 {
     self.controller = [[ADLViewerWindowController alloc] initWithWindowNibName:@"ADLViewerWindowController"];
     [self.controller.window makeKeyAndOrderFront:nil];
-    
-    [BGNPrecedenceParser test];
 }
 
 @end

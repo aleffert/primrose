@@ -1,5 +1,5 @@
 //
-//  BGNNode.h
+//  BGNLang.h
 //  Begonia
 //
 //  Created by Akiva Leffert on 10/3/12.
@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class BGNNodeVisitor;
+@interface NSString (BGNLang)
+
+@property (readonly) BOOL isOperatorSymbol;
+
+@end
 
 
 @interface BGNModule : NSObject
@@ -33,9 +37,6 @@
 @protocol BGNExpression;
 
 @protocol BGNTopLevelDeclaration
-
-- (void)caseExternalType:(void(^)(BGNExternalTypeDeclaration*))typeDeclaration datatypeBinding:(void(^)(BGNDatatypeBinding*))typeBinding funBinding:(void(^)(BGNScopedFunctionBinding*))funBinding valBinding:(void(^)(BGNScopedValueBinding*))valBinding exp:(void(^)(BGNTopExpression*))exp;
-
 @end
 
 @interface BGNExternalTypeDeclaration : NSObject <BGNTopLevelDeclaration>
@@ -117,9 +118,6 @@ typedef enum {
 @class BGNTypeRecord;
 
 @protocol BGNType <NSObject>
-
-- (void)caseVar:(void(^)(BGNTypeVariable*))typeVariable arrow:(void(^)(BGNTypeArrow*))arrow recordType:(void(^)(BGNTypeRecord*))record;
-
 @end
 
 @interface BGNTypeVariable : NSObject <BGNType>
@@ -138,8 +136,6 @@ typedef enum {
 @class BGNTypeArgumentType;
 
 @protocol BGNTypeArgument <NSObject>
-
-- (void)caseRecord:(void(^)(BGNTypeArgumentRecord*))record type:(void(^)(BGNTypeArgumentType*))type;
 
 @end
 
@@ -259,8 +255,6 @@ typedef enum {
 @class BGNStmtExp;
 
 @protocol BGNStatement <NSObject>
-
-- (void)caseLet:(void(^)(BGNStmtLet*))let exp:(void(^)(BGNStmtExp*))exp;
 
 @end
 
