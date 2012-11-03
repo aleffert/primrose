@@ -1,6 +1,34 @@
 import Cocoa
 
 local fullCloudPath {} = {;
-	let width = 2 + 2
+	let margin = 10.0
+	let width = 1024.0
+	let minY = -margin
+	let maxY = 440.0
+	let minX = -margin
+	let maxX = width + margin
+	let bumpCount = 5
+	let bumpHeight = 30.0
+	let bumpWidth = (maxX - minX) / bumpCount
+	let path = Path.make{}
+	path.move{to = pt minX maxY}
+	path.addLine{to = pt minX minY}
+	path.addLine{to = pt minX minY}
+	path.addLine{to = pt maxX maxY}
+	for {from = 0, to = bumpCount} fun (i : Int) = {;
+		let farX = maxX - (ff i) * bumpWidth
+		let nearX = farX - bumpWidth
+		path.addCurve {
+			to = pt farX - bumpWidth / 2 $ maxY + bumpHeight
+			control1 = pt farX $ maxY + bumpHeight
+			control2 = pt farX $ maxY + bumpHeight
+		}
+		path.addLine {
+			to = pt nearX maxY
+			control1 = pt nearX + bumpWidth / 2 $ maxY + bumpHeight
+			control2 = pt nearX $ maxY + bumpHeight
+		}
+	;}
+	path.close {}
 ;}
 

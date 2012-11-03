@@ -1,14 +1,14 @@
 import Cocoa
 
 local fullCloudPath {} = {;
-	let margin = 10.
-	let width = 1024.
+	let margin = 10.0
+	let width = 1024.0
 	let minY = -margin
-	let maxY = 440.
+	let maxY = 440.0
 	let minX = -margin
 	let maxX = width + margin
 	let bumpCount = 5
-	let bumpHeight = 30.
+	let bumpHeight = 30.0
 	let bumpWidth = (maxX - minX) / bumpCount
 	let path = Path.make{}
 	path.move{to = pt minX maxY}

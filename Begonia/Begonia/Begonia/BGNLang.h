@@ -193,11 +193,11 @@ typedef enum {
 
 @end
 
-@interface BGNExpPath : NSObject <BGNExpression>
+@interface BGNExpProj : NSObject <BGNExpression>
 
 @property (retain, nonatomic) id <BGNExpression> base;
 
-@property (copy, nonatomic) NSArray* parts; //String
+@property (copy, nonatomic) NSString* proj;
 
 @end
 

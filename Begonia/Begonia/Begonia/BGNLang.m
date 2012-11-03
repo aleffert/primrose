@@ -91,7 +91,7 @@
 
 @end
 
-@implementation BGNExpPath
+@implementation BGNExpProj
 
 @end
 

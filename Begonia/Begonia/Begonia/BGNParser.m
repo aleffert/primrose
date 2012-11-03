@@ -18,6 +18,16 @@
 #import "NSArray+Functional.h"
 #import "NSObject+BGNConstruction.h"
 
+@interface BGNPathToken : NSObject
+
+@property (retain, nonatomic) NSString* name;
+
+@end
+
+@implementation BGNPathToken
+
+@end
+
 @implementation PKAssembly (BGNAdditions)
 
 - (void)pushEnumerator:(NSEnumerator*)enumerator {
@@ -94,10 +104,10 @@
     
     PKParser* moduleParser = [[PKParserFactory factory] parserFromGrammar:grammarString assembler:self];
     PKTokenizer* tokenizer = moduleParser.tokenizer;
+    tokenizer.numberState.allowsFloatingPoint = YES;
+    
     PKTokenizerState* eolState = [[BGNEndOfLineTokenizerState alloc] init];
-
     [tokenizer setTokenizerState:eolState from:'\n' to:'\n' + 1];
-
     
     BGNModule* module = [moduleParser parse:string];
     
@@ -224,6 +234,32 @@
 
 #pragma mark Exp
 
+- (void)parser:(PKParser*)parser didMatchPathItem:(PKAssembly*)a {
+    PKToken* readToken = [a pop];
+    [a push:[BGNPathToken makeThen:^(BGNPathToken* token) {
+        token.name = readToken.stringValue;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchProjections:(PKAssembly*)a {
+    NSArray* items = [a popWhileMatching:^BOOL(id t) {
+        return [t isKindOfClass:[BGNPathToken class]];
+    }];
+    [a push:items];
+}
+
+- (void)parser:(PKParser*)parser didMatchPath:(PKAssembly*)a {
+    NSArray* projections = [a pop];
+    id <BGNExpression> exp = [a pop];
+    id <BGNExpression> result = [projections foldLeft:^id(BGNPathToken* proj, NSUInteger index, id <BGNExpression> acc) {
+        return [BGNExpProj makeThen:^(BGNExpProj* output) {
+            output.base = acc;
+            output.proj = proj.name;
+        }];
+    } base:exp];
+    [a push:result];
+}
+
 - (void)parser:(PKParser*)parser didMatchExp:(PKAssembly*)a {
     NSArray* items = [a popWhileMatching:^BOOL(id t) {
         return [t conformsToProtocol:@protocol(BGNExpression)];
@@ -253,8 +289,8 @@
 - (void)parser:(PKParser*)parser didMatchExpNum:(PKAssembly*)a {
     PKToken* number = [a pop];
     BGNExpNumber* result = [[BGNExpNumber alloc] init];
-    result.value = [NSNumber numberWithFloat:number.floatValue];
     result.isFloat = YES;
+    result.value = [NSNumber numberWithFloat:number.floatValue];
     [a push:result];
 }
 

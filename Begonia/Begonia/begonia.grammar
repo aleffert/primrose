@@ -1,8 +1,10 @@
 @start = module;
 @symbols = '=' 'import' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' ;
+@allowsHexadecimalNotation = YES;
+@allowsFloatingPoint = YES;
 
 ident = /[A-Za-z][A-Za-z0-9_]*/ ;
-opSymbol = /[-+*$]/ ;
+opSymbol = (/[-+*$]/ | '/' )+;
 
 scope = 'local' | 'let';
 
@@ -35,7 +37,12 @@ typeArgumentType = type;
 defaultValueOpt = nullOpt | '='! exp;
 nullOpt = Empty;
 
-exp = atom+;
+exp = path+;
+
+pathItem = ident;
+projections = ('.'! pathItem)* ;
+
+path = atom projections;
 
 atom = expNum | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
 expNum = Number;
