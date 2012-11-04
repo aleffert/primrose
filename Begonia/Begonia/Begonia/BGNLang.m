@@ -11,7 +11,7 @@
 @implementation NSCharacterSet (BGNLang)
 
 + (NSCharacterSet*)operatorCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:@"+-*$/^%"];
+    return [NSCharacterSet characterSetWithCharactersInString:@"+-*$/^%<>=&"];
 }
 
 @end
@@ -68,15 +68,6 @@
 @implementation BGNRecordBindingField
 
 @end
-
-@implementation BGNTypeArgumentRecord
-
-@end
-
-@implementation BGNTypeArgumentType
-
-@end
-
 
 @implementation BGNTypeVariable
 

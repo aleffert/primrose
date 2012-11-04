@@ -45,15 +45,15 @@
 
 @end
 
-@protocol BGNTypeArgument;
-@class BGNRecordBinding;
-
 @interface BGNDatatypeBinding : NSObject <BGNTopLevelDeclaration>
 
 @property (retain, nonatomic) NSString* name;
 @property (copy, nonatomic) NSArray* arms;
 
 @end
+
+
+@class BGNRecordBinding;
 
 @interface BGNDatatypeArm : NSObject
 
@@ -92,17 +92,17 @@ typedef enum {
 @end
 
 @class BGNVarBinding;
-@class BGNRecordBinding;
 
 @protocol BGNBindingArgument <NSObject>
 
 @end
 
+@protocol BGNType;
 
 @interface BGNVarBinding : NSObject <BGNBindingArgument>
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNTypeArgument> argumentType;
+@property (retain, nonatomic) id <BGNType> type;
 
 @end
 
@@ -115,7 +115,7 @@ typedef enum {
 @interface BGNRecordBindingField : NSObject
 
 @property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNTypeArgument> type;
+@property (retain, nonatomic) id <BGNType> type;
 @property (retain, nonatomic) id <BGNExpression> defaultValue;
 
 @end
@@ -136,42 +136,13 @@ typedef enum {
 
 @interface BGNTypeRecord : NSObject <BGNType>
 
-@property (copy, nonatomic) NSArray* fields; // BGNTypeRecordField
-
-@end
-
-@class BGNTypeArgumentRecord;
-@class BGNTypeArgumentType;
-
-@protocol BGNTypeArgument <NSObject>
-
-@end
-
-
-
-@interface BGNTypeArgumentRecord : NSObject <BGNTypeArgument>
-
-@property (copy, nonatomic) BGNTypeRecord* record; //BGNTypeRecordField
-
-@end
-
-@interface BGNTypeArgumentType : NSObject <BGNTypeArgument>
-
-@property (retain, nonatomic) id <BGNType> type;
-
-@end
-
-@interface BGNTypeRecordField : NSObject
-
-@property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNTypeArgument> type;
-@property (assign, nonatomic) BOOL optional;
+@property (retain, nonatomic) BGNRecordBinding* fields;
 
 @end
 
 @interface BGNTypeArrow : NSObject <BGNType>
 
-@property (retain, nonatomic) id <BGNTypeArgument> domain;
+@property (retain, nonatomic) id <BGNType> domain;
 @property (retain, nonatomic) id <BGNType> codomain;
 
 @end

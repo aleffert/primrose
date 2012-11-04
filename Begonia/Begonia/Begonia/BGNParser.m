@@ -158,7 +158,7 @@
     }
 }
 
-- (BGNPrecedenceParser*)precedenceParser {
+- (BGNPrecedenceParser*)expPrecedenceParser {
     NSDictionary* unaryOperators = @{@"-" : @5};
     NSDictionary* binaryOperators = @{@"+" : @2, @"-" : @2, @"$" : @1, @"*" : @3, @"/" : @4};
     
@@ -301,7 +301,6 @@
         return [t conformsToProtocol:@protocol(BGNExpression)];
     }];
     NSArray* tokens = [items map:^(id <BGNExpression> exp) {
-        // TODO Check if expvar and is an operator
         if([exp isKindOfClass:[BGNExpVariable class]] && ((BGNExpVariable*)exp).name.isOperatorSymbol) {
             BGNExpVariable* var = (BGNExpVariable*)exp;
             return [BGNPrecedenceTokenOp makeThen:^(BGNPrecedenceTokenOp* op) {
@@ -315,7 +314,7 @@
         }
     }];
     
-    BGNPrecedenceParser* precedenceParser = [self precedenceParser];
+    BGNPrecedenceParser* precedenceParser = [self expPrecedenceParser];
     
     id <BGNExpression> result = [precedenceParser parseTokens:tokens];
     [a push:result];
@@ -375,11 +374,11 @@
 }
 
 - (void)parser:(PKParser*)parser didMatchVarBinding:(PKAssembly*)a {
-    id <BGNTypeArgument> type = [a pop];
+    id <BGNType> type = [a pop];
     NSString* name = [[a pop] stringValue];
     BGNVarBinding* binding = [[BGNVarBinding alloc] init];
     binding.name = name;
-    binding.argumentType = type;
+    binding.type = type;
     [a push: binding];
 }
 
@@ -414,7 +413,7 @@
     if([defaultValue isEqual:[NSNull null]]) {
         defaultValue = nil;
     }
-    id <BGNTypeArgument> type = [a pop];
+    id <BGNType> type = [a pop];
     NSString* name = [[a pop] stringValue];
     BGNRecordBindingField* field = [[BGNRecordBindingField alloc] init];
     field.name = name;
@@ -459,6 +458,17 @@
     [a push:field];
 }
 
+- (void)parser:(PKParser*)parser didMatchExpIf:(PKAssembly*)a {
+    BGNExpIfThenElse* cond = [[BGNExpIfThenElse alloc] init];
+    cond.elseCase = [a pop];
+    [a pop];
+    cond.thenCase = [a pop];
+    [a pop];
+    cond.condition = [a pop];
+    [a pop];
+    [a push:cond];
+}
+
 #pragma mark Statements
 
 - (void)parser:(PKParser*)parser didMatchExpStmt:(PKAssembly*)a {
@@ -497,6 +507,77 @@
 
 #pragma mark Types
 
+- (BGNPrecedenceParser*)typePrecedenceParser {
+    NSDictionary* unaryOperators = @{};
+    NSDictionary* binaryOperators = @{@"->" : @5};
+    
+    return [BGNPrecedenceParser makeThen:^(BGNPrecedenceParser* parser) {
+        parser.unOp = ^id <BGNType>(BGNPrecedenceTokenOp* token, id arg) {
+            // TODO support type application
+            NSAssert(NO, @"Unexpected unary operator in types", 0);
+            return nil;
+        };
+        parser.binOp = ^id <BGNType>(BGNPrecedenceTokenOp* token, id arg1, id arg2) {
+            if([token isKindOfClass:[BGNPrecedenceTokenJuxtapose class]]) {
+                NSAssert(NO, @"Unexpected type application in types", 0);
+                return nil;
+            }
+            else if ([token.value isKindOfClass:[BGNTypeVariable class]] && [[token.value name] isEqual:@"->"]) {
+                return [BGNTypeArrow makeThen:^(BGNTypeArrow* arrow) {
+                    arrow.domain = arg1;
+                    arrow.codomain = arg2;
+                }];
+            }
+            else {
+                NSAssert(NO, @"Unexpected type operator %@", token.value);
+                return nil;
+            }
+        };
+        parser.getAssoc = ^BGNAssociativity(BGNPrecedenceTokenOp* token) {
+            if([token isKindOfClass:[BGNPrecedenceTokenJuxtapose class]]) {
+                return BGNAssociativityLeft;
+            }
+            else {
+                BGNExpVariable* var = token.value;
+                return [var.name isEqualToString:@"-"] && token.isUnary ? BGNAssociativityRight : BGNAssociativityLeft;
+            }
+        };
+        parser.getPrecedence = ^NSUInteger(BGNPrecedenceTokenOp* token) {
+            if([token isKindOfClass:[BGNPrecedenceTokenJuxtapose class]]) {
+                return 1;
+            }
+            else {
+                BGNExpVariable* var = token.value;
+                return [token.isUnary ? unaryOperators[var.name] : binaryOperators[var.name] unsignedIntegerValue];
+            }
+        };
+    }];
+
+}
+
+- (void)parser:(PKParser*)parser didMatchType:(PKAssembly*)a {
+    NSArray* items = [a popWhileMatching:^BOOL(id t) {
+        return [t conformsToProtocol:@protocol(BGNType)];
+    }];
+    NSArray* tokens = [items map:^(id <BGNType> exp) {
+        if([exp isKindOfClass:[BGNTypeVariable class]] && ((BGNTypeVariable*)exp).name.isOperatorSymbol) {
+            BGNTypeVariable* var = (BGNTypeVariable*)exp;
+            return [BGNPrecedenceTokenOp makeThen:^(BGNPrecedenceTokenOp* op) {
+                op.value = var;
+            }];
+        }
+        else {
+            return [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* atom) {
+                atom.value = exp;
+            }];
+        }
+    }];
+    
+    BGNPrecedenceParser* precedenceParser = [self typePrecedenceParser];
+    
+    id <BGNExpression> result = [precedenceParser parseTokens:tokens];
+    [a push:result];
+}
 
 - (void)parser:(PKParser*)parser didMatchTypeVar:(PKAssembly*)a {
     PKToken* var = [a pop];
@@ -505,12 +586,10 @@
     [a push:tyVar];
 }
 
-- (void)parser:(PKParser*)parser didMatchTypeArgumentType:(PKAssembly*)a {
-    id <BGNType> type = [a pop];
-    BGNTypeArgumentType* arg = [[BGNTypeArgumentType alloc] init];
-    arg.type = type;
-    [a push:type];
+- (void)parser:(PKParser*)parser didMatchTypeRecord:(PKAssembly*)a {
+    BGNTypeRecord* record = [[BGNTypeRecord alloc] init];
+    record.fields = [a pop];
+    [a push:record];
 }
-
 
 @end

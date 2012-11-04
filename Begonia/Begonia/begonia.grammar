@@ -1,10 +1,10 @@
 @start = module;
-@symbols = '=' 'import' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' ;
+@symbols = '=' 'import' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' 'if' 'then' 'else' '->';
 @allowsHexadecimalNotation = YES;
 @allowsFloatingPoint = YES;
 
 ident = /[A-Za-z][A-Za-z0-9_]*/ ;
-opSymbol = (/[-+*$]/ | '/' )+;
+opSymbol = (/[-+*$<>^&%]/ | '/' | '<=' | '>=' )+;
 
 scope = 'local' | 'let';
 
@@ -20,23 +20,20 @@ topDeclExternalType = 'external'! 'type'! ident eols!;
 topDeclValBinding = scope ident '=' exp eols!;
 topDeclFunBinding = scope ident bindingArguments '=' exp eols!;
 
-datatypeArms = datatypeArm ('|'! datatypeArm)*;
+datatypeArms = datatypeArm (eol* '|'! eol* datatypeArm)*;
 datatypeArm = ident recordBinding;
 
 bindingArguments = bindingArgument bindingArgument*;
 bindingArgument = varBinding | recordBinding;
 
-varBinding = '('! ident ':'! typeArgument ')'!;
+varBinding = '('! ident ':'! type ')'!;
 
 recordBinding = '{'! eol* recordBindingFieldsOpt eol* '}'!;
 recordBindingFieldsOpt = nullOpt | recordBindingFields;
 recordBindingFields = recordBindingField (recordBreak! recordBindingField)*;
-recordBindingField = ident ':'! typeArgument defaultValueOpt;
+recordBindingField = ident ':'! type defaultValueOpt;
 
 recordBreak = (','! eol*) | eols;
-
-typeArgument = typeArgumentType;
-typeArgumentType = type;
 
 defaultValueOpt = nullOpt | '='! exp;
 nullOpt = Empty;
@@ -48,12 +45,13 @@ projections = ('.'! pathItem)* ;
 
 path = atom projections;
 
-atom = expNum | expString | externalMethod | expVar | expRecord | expLambda | expStmt | '('! exp ')'!;
+atom = expNum | expString | externalMethod | expVar | expRecord | expLambda | expStmt | expIf | '('! exp ')'!;
 expNum = Number;
 expString = QuotedString;
 expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
 expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
+expIf  = 'if' eol* exp eol* 'then' eol* exp eol* 'else' exp eol*;
 
 expRecord = '{'! eol* expRecordFieldsOpt eol* '}'!;
 expRecordFieldsOpt = expRecordFields | nullOpt;
@@ -67,8 +65,10 @@ stmtExp = exp;
 stmtBind = 'let'! ident bindingArgument* '='! exp;
 stmtBreak = (';'! eol*) | eols;
 
-type = typeVar;
-typeVar = ident;
+type = typeAtom+;
+typeAtom = typeVar | '('! type ')'! | typeRecord;
+typeRecord = recordBinding;
+typeVar = ident | '->';
 
 eols = eol+;
 eol = '
