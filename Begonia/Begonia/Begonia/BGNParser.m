@@ -297,6 +297,11 @@
 }
 
 - (void)parser:(PKParser*)parser didMatchExp:(PKAssembly*)a {
+    id <BGNType> checkAgainst = [a pop];
+    if(![checkAgainst isKindOfClass:[NSNull class]]) {
+        [a pop];
+    }
+    
     NSArray* items = [a popWhileMatching:^BOOL(id t) {
         return [t conformsToProtocol:@protocol(BGNExpression)];
     }];
@@ -317,6 +322,12 @@
     BGNPrecedenceParser* precedenceParser = [self expPrecedenceParser];
     
     id <BGNExpression> result = [precedenceParser parseTokens:tokens];
+    if(![checkAgainst isKindOfClass:[NSNull class]]) {
+        result = [BGNExpCheck makeThen:^(BGNExpCheck* check) {
+            check.body = result;
+            check.type = checkAgainst;
+        }];
+    }
     [a push:result];
 }
 

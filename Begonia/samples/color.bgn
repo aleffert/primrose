@@ -2,8 +2,8 @@ import Cocoa
 
 external type Color
 
-local nsColor = # Cocoa.class.NSColor : CocoaClass
+local NSColor = Cocoa.class.NSColor : CocoaClass
 
-let wa {white : Float, alpha : Float} =  # nsColor {colorWithWhite = white, alpha = _} : Color
-let rgba {red : Float, green : Float, blue : Float, alpha : Float} = # NSColor {colorWithRed = red, green = _, blue = _, alpha = _} : Color
+let wa {white : Float, alpha : Float} =  NSColor {colorWithCalibratedWhite = white, alpha = _} : Color
+let rgba {red : Float, green : Float, blue : Float, alpha : Float} =  NSColor {colorWithCalibratedRed = red, green = green, blue = blue, alpha = alpha} : Color
 

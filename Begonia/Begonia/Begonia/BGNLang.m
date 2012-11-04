@@ -122,6 +122,11 @@
 
 @end
 
+
+@implementation BGNExpCheck
+
+@end
+
 @implementation BGNExpLambda
 
 @end

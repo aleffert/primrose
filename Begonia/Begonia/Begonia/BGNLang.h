@@ -67,8 +67,12 @@ typedef enum {
     BGNScopeLet
 } BGNScope;
 
+
+@protocol BGNType;
+
 @interface BGNScopedFunctionBinding : NSObject <BGNTopLevelDeclaration>
 
+@property (retain, nonatomic) id <BGNType> resultType;
 @property (assign, nonatomic) BGNScope scope;
 @property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSArray* arguments; // id <BGNBindingArgument>
@@ -97,7 +101,6 @@ typedef enum {
 
 @end
 
-@protocol BGNType;
 
 @interface BGNVarBinding : NSObject <BGNBindingArgument>
 
@@ -233,6 +236,13 @@ typedef enum {
 
 @property (retain, nonatomic) NSArray* arguments;
 @property (retain, nonatomic) id <BGNExpression> body;
+
+@end
+
+@interface BGNExpCheck : NSObject <BGNExpression>
+
+@property (retain, nonatomic) id <BGNExpression> body;
+@property (retain, nonatomic) id <BGNType> type;
 
 @end
 

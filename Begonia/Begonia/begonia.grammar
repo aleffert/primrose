@@ -35,10 +35,11 @@ recordBindingField = ident ':'! type defaultValueOpt;
 
 recordBreak = (','! eol*) | eols;
 
-defaultValueOpt = nullOpt | '='! exp;
+defaultValueOpt = nullOpt | ('='! exp);
 nullOpt = Empty;
 
-exp = path+;
+exp = path+ checkOpt;
+checkOpt = nullOpt | (':'! type);
 
 pathItem = ident;
 projections = ('.'! pathItem)* ;
