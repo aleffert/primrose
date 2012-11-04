@@ -109,7 +109,10 @@
     PKTokenizerState* eolState = [[BGNEndOfLineTokenizerState alloc] init];
     [tokenizer setTokenizerState:eolState from:'\n' to:'\n' + 1];
     
-    BGNModule* module = [moduleParser parse:string];
+    // The grammar requires a new line after the last statement, so stick one in at the end
+    // So we don't require an extra line at the end of inputs
+    NSString* processedString = [string stringByAppendingString:@"\n"];
+    BGNModule* module = [moduleParser parse:processedString];
     
     NSLog(@"got a module: imports = %@, topDecls= %@", module.imports, module.declarations);
     
