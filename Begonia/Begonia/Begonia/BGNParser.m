@@ -113,6 +113,7 @@
     // So we don't require an extra line at the end of inputs
     NSString* processedString = [string stringByAppendingString:@"\n"];
     BGNModule* module = [moduleParser parse:processedString];
+    module.name = sourceName;
     
     NSLog(@"got a module: imports = %@, topDecls= %@", module.imports, module.declarations);
     
