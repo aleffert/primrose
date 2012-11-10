@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BGNModuleManager.h"
+
 typedef void (^StringBlock)(NSString* error);
 
-@interface BGNInterpreter : NSObject
+@interface BGNInterpreter : NSObject <BGNModuleManagerDelegate>
 
 @property (retain, nonatomic) CALayer* display;
 @property (copy, nonatomic) StringBlock errorHandler;

@@ -30,6 +30,7 @@
 		77BF378416332796006B5EF4 /* NSMutableArray+BGNStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */; };
 		77BF378716334A1B006B5EF4 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378616334A1B006B5EF4 /* NSArray+Functional.m */; };
 		77D11F8F162E25F0008E2A6E /* BGNPrecedenceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D11F8E162E25F0008E2A6E /* BGNPrecedenceParser.m */; };
+		77EE6A9A164738880088C1F5 /* BGNModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EE6A99164738880088C1F5 /* BGNModuleManager.m */; };
 		BDCAB08E5BF243A4B39342A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7F98A2839141F3A9137BE6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		77BF378616334A1B006B5EF4 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		77D11F8D162E25F0008E2A6E /* BGNPrecedenceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNPrecedenceParser.h; sourceTree = "<group>"; };
 		77D11F8E162E25F0008E2A6E /* BGNPrecedenceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNPrecedenceParser.m; sourceTree = "<group>"; };
+		77EE6A98164738880088C1F5 /* BGNModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNModuleManager.h; sourceTree = "<group>"; };
+		77EE6A99164738880088C1F5 /* BGNModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNModuleManager.m; sourceTree = "<group>"; };
 		7F7F98A2839141F3A9137BE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB1E54DE29BB4536B3849353 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9B61116D894D3887D364CF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -187,6 +190,8 @@
 				773EC3D5161BF53E00DF8624 /* BGNLang.m */,
 				773EC38F160F541C00DF8624 /* BGNInterpreter.h */,
 				773EC390160F541C00DF8624 /* BGNInterpreter.m */,
+				77EE6A98164738880088C1F5 /* BGNModuleManager.h */,
+				77EE6A99164738880088C1F5 /* BGNModuleManager.m */,
 			);
 			name = Lang;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 				77BF37801633263A006B5EF4 /* NSObject+BGNConstruction.m in Sources */,
 				77BF378416332796006B5EF4 /* NSMutableArray+BGNStack.m in Sources */,
 				77BF378716334A1B006B5EF4 /* NSArray+Functional.m in Sources */,
+				77EE6A9A164738880088C1F5 /* BGNModuleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

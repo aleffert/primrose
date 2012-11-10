@@ -11,16 +11,29 @@
 #import "BGNParser.h"
 #import "BGNParserResult.h"
 
+@interface BGNInterpreter ()
+
+@property (retain, nonatomic) BGNModuleManager* moduleManager;
+
+@end
+
 @implementation BGNInterpreter
 
+- (id)init {
+    if((self = [super init])) {
+        self.moduleManager = [[BGNModuleManager alloc] init];
+        self.moduleManager.delegate = self;
+    }
+    return self;
+}
+
 - (void)interpretFile:(NSString*)path {
-    BGNParser* parser = [[BGNParser alloc] init];
-    id <BGNParserResult> result = [parser parseFile:path];
-    [result caseModule:^(BGNModule* module) {
-        NSLog(@"parsed: %@", module);
-    } error:^(NSError* error) {
-        NSLog(@"parse error %@", error);
-    }];
+    NSString* name = path.lastPathComponent.stringByDeletingPathExtension.capitalizedString;
+    [self.moduleManager loadModuleNamed:name atPath:path];
+}
+
+- (void)moduleManager:(BGNModuleManager *)manager loadedModule:(BGNModule *)module named:(NSString *)name {
+    // TODO: Interpret a friggin module
 }
 
 @end

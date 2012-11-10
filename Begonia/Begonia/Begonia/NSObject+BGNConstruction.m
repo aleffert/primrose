@@ -10,7 +10,7 @@
 
 @implementation NSObject (BGNConstruction)
 + (id)makeThen:(void (^)(id o))f {
-    id result = [self new];
+    id result = [[self alloc] init];
     f(result);
     return result;
 }

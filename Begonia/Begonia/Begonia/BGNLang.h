@@ -17,7 +17,6 @@
 
 @interface BGNModule : NSObject
 
-@property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSArray* imports; // BGNImport
 @property (copy, nonatomic) NSArray* declarations; //BGNTopLevelDeclaration
 
