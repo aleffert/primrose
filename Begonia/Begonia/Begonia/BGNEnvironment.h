@@ -20,6 +20,6 @@
 - (BGNEnvironment*)scopeModuleNamed:(NSString*)name inBody:(BGNEnvironment* (^)(BGNEnvironment* env))body;
 
 - (BGNEnvironment*)importModuleNamed:(NSString*)moduleName;
-- (BGNEnvironment*)openModule:(NSString*)moduleName;
+- (BGNEnvironment*)openModuleNamed:(NSString*)moduleName;
 
 @end

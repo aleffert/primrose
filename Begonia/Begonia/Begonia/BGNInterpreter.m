@@ -9,6 +9,7 @@
 #import "BGNInterpreter.h"
 
 #import "BGNEnvironment.h"
+#import "BGNLang.h"
 #import "BGNParser.h"
 #import "BGNParserResult.h"
 
@@ -35,9 +36,18 @@
     [self.moduleManager loadModuleNamed:name atPath:path];
 }
 
+- (BGNEnvironment*)processDeclaration:(id <BGNTopLevelDeclaration>)decl inEnvironment:(BGNEnvironment*)env {
+    return env;
+}
+
 - (void)moduleManager:(BGNModuleManager *)manager loadedModule:(BGNModule *)module named:(NSString *)name {
     self.environment = [self.environment scopeModuleNamed:name inBody:^BGNEnvironment *(BGNEnvironment *env) {
-        // TODO evaluate
+        for(BGNImport* import in module.imports) {
+            env = import.open ? [env openModuleNamed:import.name] : [env importModuleNamed:import.name];
+        }
+        for(id <BGNTopLevelDeclaration> decl in module.declarations) {
+            env = [self processDeclaration:decl inEnvironment:env];
+        }
         return env;
     }];
 }

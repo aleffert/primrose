@@ -8,6 +8,8 @@
 
 #import "BGNLang.h"
 
+#import "BGNTopDeclVisitor.h"
+
 @implementation NSCharacterSet (BGNLang)
 
 + (NSCharacterSet*)operatorCharacterSet {
@@ -35,25 +37,46 @@
 
 @implementation BGNExternalTypeDeclaration
 
+- (void)acceptVisitor:(id <BGNTopDeclVisitor>)visitor {
+    [visitor visitExternalTypeDecl:self];
+}
+
 @end
 
 @implementation BGNDatatypeBinding
 
-@end
-
-@implementation BGNDatatypeArm
+- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    [visitor visitDatatypeBinding:self];
+}
 
 @end
 
 @implementation BGNScopedFunctionBinding
 
+- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    [visitor visitFunctionBinding:self];
+}
+
 @end
 
-@implementation BGNScopedValueBinding
+@implementation BGNScopedExpBinding
+
+- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    [visitor visitExpBinding:self];
+}
 
 @end
 
 @implementation BGNTopExpression
+
+- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    [visitor visitTopExp:self];
+}
+
+@end
+
+
+@implementation BGNDatatypeArm
 
 @end
 

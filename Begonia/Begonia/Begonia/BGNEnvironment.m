@@ -132,7 +132,7 @@
     return env;
 }
 
-- (BGNEnvironment*)openModule:(NSString*)moduleName {
+- (BGNEnvironment*)openModuleNamed:(NSString*)moduleName {
     BGNModuleEnvironment* module = self.loadedModules[moduleName];
     NSAssert(module != nil, @"Couldn't find module named %@", moduleName);
     

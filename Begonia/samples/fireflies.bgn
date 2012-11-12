@@ -1,6 +1,5 @@
 import Cocoa
-open Layer
-open Path
+import Layer
 
 local fullCloudPath {} = {;
 	let margin = 10.0

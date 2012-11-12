@@ -24,18 +24,26 @@
 
 @interface BGNImport : NSObject
 
+@property (assign, nonatomic) BOOL open;
+
 @property (retain, nonatomic) NSString* name;
 
 @end
 
+@protocol BGNTopDeclVisitor;
+
 @class BGNExternalTypeDeclaration;
 @class BGNScopedFunctionBinding;
-@class BGNScopedValueBinding;
+@class BGNScopedExpBinding;
 @class BGNDatatypeBinding;
 @class BGNTopExpression;
 @protocol BGNExpression;
 
+
 @protocol BGNTopLevelDeclaration
+
+- (void)acceptVisitor:(id <BGNTopDeclVisitor>)visitor;
+
 @end
 
 @interface BGNExternalTypeDeclaration : NSObject <BGNTopLevelDeclaration>
@@ -80,7 +88,7 @@ typedef enum {
 @end
 
 
-@interface BGNScopedValueBinding : NSObject <BGNTopLevelDeclaration>
+@interface BGNScopedExpBinding : NSObject <BGNTopLevelDeclaration>
 
 @property (assign, nonatomic) BGNScope scope;
 @property (copy, nonatomic) NSString* name;

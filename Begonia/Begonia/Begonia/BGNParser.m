@@ -138,8 +138,10 @@
 
 - (void)parser:(PKParser*)parser didMatchImport:(PKAssembly*)a {
     PKToken* name = [a pop];
+    PKToken* kind = [a pop];
     BGNImport* import = [[BGNImport alloc] init];
     import.name = [name stringValue];
+    import.open = [kind.stringValue isEqualToString:@"open"];
     [a push:import];
 }
 
@@ -227,7 +229,7 @@
     [a pop];
     NSString* name = [[a pop] stringValue];
     BGNScope scope = [[a pop] intValue];
-    BGNScopedValueBinding* binding = [[BGNScopedValueBinding alloc] init];
+    BGNScopedExpBinding* binding = [[BGNScopedExpBinding alloc] init];
     binding.scope = scope;
     binding.name = name;
     binding.body = body;
