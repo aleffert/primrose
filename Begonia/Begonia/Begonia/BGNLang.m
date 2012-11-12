@@ -127,6 +127,10 @@
 
 @end
 
+@implementation BGNExpModuleProj
+
+@end
+
 @implementation BGNExpLambda
 
 @end

@@ -288,6 +288,19 @@
 - (void)parser:(PKParser*)parser didMatchPath:(PKAssembly*)a {
     NSArray* projections = [a pop];
     id <BGNExpression> exp = [a pop];
+    if([exp isKindOfClass:[BGNExpVariable class]] && projections.count > 0) {
+        // Check for a module access
+        BGNExpVariable* var = exp;
+        if([var.name rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]].location == 0) {
+            BGNPathToken* accessedField = [projections objectAtIndex:0];
+            projections = [projections subarrayWithRange:NSMakeRange(1, projections.count - 1)];
+            exp = [BGNExpModuleProj makeThen:^(BGNExpModuleProj* proj) {
+                proj.moduleName = var.name;
+                proj.proj = accessedField.name;
+            }];
+        }
+    }
+    
     id <BGNExpression> result = [projections foldLeft:^id(BGNPathToken* proj, NSUInteger index, id <BGNExpression> acc) {
         return [BGNExpProj makeThen:^(BGNExpProj* output) {
             output.base = acc;

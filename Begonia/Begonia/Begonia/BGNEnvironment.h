@@ -10,10 +10,16 @@
 
 @protocol BGNValue;
 
-@interface BGNEnvironment : NSObject
+@interface BGNEnvironment : NSObject <NSCopying>
 
 + (BGNEnvironment*)empty;
 
-- (BGNEnvironment*)pushName:(NSString*)name withValue:(id <BGNValue>)value;
+- (BGNEnvironment*)bindExpVar:(NSString*)name withValue:(id <BGNValue>)value;
+- (id <BGNValue>)valueNamed:(NSString*)name inModule:(NSString*)moduleName;
+
+- (BGNEnvironment*)scopeModuleNamed:(NSString*)name inBody:(BGNEnvironment* (^)(BGNEnvironment* env))body;
+
+- (BGNEnvironment*)importModuleNamed:(NSString*)moduleName;
+- (BGNEnvironment*)openModule:(NSString*)moduleName;
 
 @end

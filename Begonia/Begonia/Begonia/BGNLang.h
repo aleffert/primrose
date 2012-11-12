@@ -245,6 +245,13 @@ typedef enum {
 
 @end
 
+@interface BGNExpModuleProj : NSObject <BGNExpression>
+
+@property (retain, nonatomic) NSString* moduleName;
+@property (retain, nonatomic) NSString* proj;
+
+@end
+
 @class BGNStmtLet;
 @class BGNStmtExp;
 
