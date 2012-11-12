@@ -47,6 +47,13 @@
 
 @end
 
+@interface BGNValueConstructor : NSObject <BGNValue>
+
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) id <BGNValue> value;
+
+@end
+
 @interface BGNValueRecord : NSObject <BGNValue>
 
 @property (copy, nonatomic) NSDictionary* fields; // string -> value
