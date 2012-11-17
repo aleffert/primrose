@@ -42,7 +42,7 @@
 
 @protocol BGNTopLevelDeclaration
 
-- (void)acceptVisitor:(id <BGNTopDeclVisitor>)visitor;
+- (id)acceptVisitor:(id <BGNTopDeclVisitor>)visitor;
 
 @end
 
@@ -166,7 +166,12 @@ typedef enum {
 @class BGNExpRecord;
 @class BGNExpExternalMethod;
 
+@protocol BGNExpVisitor;
+
 @protocol BGNExpression <NSObject>
+
+- (id)acceptVisitor:(id <BGNExpVisitor>)visitor;
+
 @end
 
 @interface BGNExpNumber : NSObject <BGNExpression>
@@ -223,19 +228,17 @@ typedef enum {
 
 @end
 
+@interface BGNExpConstructor : NSObject <BGNExpression>
+
+@property (copy, nonatomic) NSString* name;
+@property (copy, nonatomic) id <BGNExpression> body;
+
+@end
+
 @interface BGNExpRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
 @property (retain, nonatomic) id <BGNExpression> body;
-
-@end
-
-
-@interface BGNExpExternalMethod : NSObject <BGNExpression>
-
-@property (retain, nonatomic) id <BGNExpression> base;
-@property (retain, nonatomic) id <BGNExpression> argument;
-@property (retain, nonatomic) id <BGNType> resultType;
 
 @end
 

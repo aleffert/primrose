@@ -370,20 +370,6 @@
     [a push:var];
 }
 
-- (void)parser:(PKParser*)parser didMatchExternalMethod:(PKAssembly*)a {
-    id <BGNType> type = [a pop];
-    [a pop];
-    id <BGNExpression> argument = [a pop];
-    [a pop]; // <= token
-    id <BGNExpression> exp = [a pop];
-    BGNExpExternalMethod* call = [[BGNExpExternalMethod alloc] init];
-    call.base = exp;
-    call.argument = argument;
-    call.resultType = type;
-    [a push:call];
-}
-
-
 - (void)parser:(PKParser*)parser didMatchExpLambda:(PKAssembly*)a {
     id <BGNExpression> body = [a pop];
     NSArray* bindingArguments = [a pop];

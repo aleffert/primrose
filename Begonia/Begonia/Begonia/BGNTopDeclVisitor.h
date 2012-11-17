@@ -16,21 +16,21 @@
 
 @protocol BGNTopDeclVisitor <NSObject>
 
-- (void)visitExternalTypeDecl:(BGNExternalTypeDeclaration*)decl;
-- (void)visitFunctionBinding:(BGNScopedFunctionBinding*)decl;
-- (void)visitExpBinding:(BGNScopedExpBinding*)decl;
-- (void)visitDatatypeBinding:(BGNDatatypeBinding*)decl;
-- (void)visitTopExp:(BGNTopExpression*)decl;
+- (id)visitExternalTypeDecl:(BGNExternalTypeDeclaration*)decl;
+- (id)visitFunctionBinding:(BGNScopedFunctionBinding*)decl;
+- (id)visitExpBinding:(BGNScopedExpBinding*)decl;
+- (id)visitDatatypeBinding:(BGNDatatypeBinding*)decl;
+- (id)visitTopExp:(BGNTopExpression*)decl;
 
 @end
 
 
 @interface BGNTopDeclBlockVisitor : NSObject <BGNTopDeclVisitor>
 
-@property (copy, nonatomic) void (^externalTypeDecl)(BGNExternalTypeDeclaration*);
-@property (copy, nonatomic) void (^functionBinding)(BGNScopedFunctionBinding*);
-@property (copy, nonatomic) void (^expBinding)(BGNScopedExpBinding*);
-@property (copy, nonatomic) void (^datatypeDecl)(BGNDatatypeBinding*);
-@property (copy, nonatomic) void (^exp)(BGNTopExpression*);
+@property (copy, nonatomic) id (^externalTypeDecl)(BGNExternalTypeDeclaration*);
+@property (copy, nonatomic) id (^functionBinding)(BGNScopedFunctionBinding*);
+@property (copy, nonatomic) id (^expBinding)(BGNScopedExpBinding*);
+@property (copy, nonatomic) id (^datatypeDecl)(BGNDatatypeBinding*);
+@property (copy, nonatomic) id (^exp)(BGNTopExpression*);
 
 @end

@@ -41,7 +41,7 @@
 
 @interface BGNValueFunction : NSObject <BGNValue>
 
-@property (retain, nonatomic) NSString* var;
+@property (retain, nonatomic) NSArray* vars; // BGNBindingArgument
 @property (retain, nonatomic) id <BGNExpression> body;
 @property (retain, nonatomic) BGNEnvironment* env;
 

@@ -10,24 +10,24 @@
 
 @implementation BGNTopDeclBlockVisitor
 
-- (void)visitExpBinding:(BGNScopedExpBinding *)decl {
-    self.expBinding(decl);
+- (id)visitExpBinding:(BGNScopedExpBinding *)decl {
+    return self.expBinding(decl);
 }
 
-- (void)visitFunctionBinding:(BGNScopedFunctionBinding *)decl {
-    self.functionBinding(decl);
+- (id)visitFunctionBinding:(BGNScopedFunctionBinding *)decl {
+    return self.functionBinding(decl);
 }
 
-- (void)visitDatatypeBinding:(BGNDatatypeBinding *)decl {
-    self.datatypeDecl(decl);
+- (id)visitDatatypeBinding:(BGNDatatypeBinding *)decl {
+    return self.datatypeDecl(decl);
 }
 
-- (void)visitExternalTypeDecl:(BGNExternalTypeDeclaration *)decl {
-    self.externalTypeDecl(decl);
+- (id)visitExternalTypeDecl:(BGNExternalTypeDeclaration *)decl {
+    return self.externalTypeDecl(decl);
 }
 
-- (void)visitTopExp:(BGNTopExpression *)decl {
-    self.exp(decl);
+- (id)visitTopExp:(BGNTopExpression *)decl {
+    return self.exp(decl);
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "BGNLang.h"
 
+#import "BGNExpVisitor.h"
 #import "BGNTopDeclVisitor.h"
 
 @implementation NSCharacterSet (BGNLang)
@@ -37,40 +38,40 @@
 
 @implementation BGNExternalTypeDeclaration
 
-- (void)acceptVisitor:(id <BGNTopDeclVisitor>)visitor {
-    [visitor visitExternalTypeDecl:self];
+- (id)acceptVisitor:(id <BGNTopDeclVisitor>)visitor {
+    return [visitor visitExternalTypeDecl:self];
 }
 
 @end
 
 @implementation BGNDatatypeBinding
 
-- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
-    [visitor visitDatatypeBinding:self];
+- (id)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    return [visitor visitDatatypeBinding:self];
 }
 
 @end
 
 @implementation BGNScopedFunctionBinding
 
-- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
-    [visitor visitFunctionBinding:self];
+- (id)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    return [visitor visitFunctionBinding:self];
 }
 
 @end
 
 @implementation BGNScopedExpBinding
 
-- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
-    [visitor visitExpBinding:self];
+- (id)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    return [visitor visitExpBinding:self];
 }
 
 @end
 
 @implementation BGNTopExpression
 
-- (void)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
-    [visitor visitTopExp:self];
+- (id)acceptVisitor:(id<BGNTopDeclVisitor>)visitor {
+    return [visitor visitTopExp:self];
 }
 
 @end
@@ -106,33 +107,65 @@
 
 @implementation BGNExpString
 
+- (id)acceptVisitor:(id <BGNExpVisitor>)visitor {
+    return [visitor visitString:self];
+}
+
 @end
 
 @implementation BGNExpNumber
+
+- (id)acceptVisitor:(id <BGNExpVisitor>)visitor {
+    return [visitor visitNumber:self];
+}
 
 @end
 
 @implementation BGNExpProj
 
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitProjection:self];
+}
+
 @end
 
 @implementation BGNExpApp
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitApplication:self];
+}
 
 @end
 
 @implementation BGNExpStmts
 
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitStatements:self];
+}
+
 @end
 
 @implementation BGNExpIfThenElse
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitIfThenElse:self];
+}
 
 @end
 
 @implementation BGNExpVariable
 
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitVar:self];
+}
+
 @end
 
 @implementation BGNExpRecord
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitRecord:self];
+}
 
 @end
 
@@ -141,20 +174,35 @@
 
 @end
 
-@implementation BGNExpExternalMethod
-
-@end
-
-
 @implementation BGNExpCheck
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitCheck:self];
+}
 
 @end
 
 @implementation BGNExpModuleProj
 
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitModuleProj:self];
+}
+
 @end
 
 @implementation BGNExpLambda
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitLambda:self];
+}
+
+@end
+
+@implementation BGNExpConstructor
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitConstructor:self];
+}
 
 @end
 

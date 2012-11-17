@@ -47,7 +47,7 @@ projections = ('.'! pathItem)* ;
 
 path = atom projections;
 
-atom = expNum | expString | externalMethod | expVar | expRecord | expLambda | expStmt | expIf | '('! exp ')'!;
+atom = expNum | expString | expVar | expRecord | expLambda | expStmt | expIf | '('! exp ')'!;
 expNum = Number;
 expString = QuotedString;
 expVar = ident | opSymbol;
@@ -59,8 +59,6 @@ expRecord = '{'! eol* expRecordFieldsOpt eol* '}'!;
 expRecordFieldsOpt = expRecordFields | nullOpt;
 expRecordFields = expRecordField (recordBreak! expRecordField)*;
 expRecordField = ident (bindingArgument*) '='! exp;
-
-externalMethod = '#'! exp '<=' exp ':' type;
 
 stmt = stmtExp | stmtBind;
 stmtExp = exp;
