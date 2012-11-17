@@ -20,6 +20,10 @@
 
 @end
 
+@implementation BGNValueBool
+
+@end
+
 @implementation BGNValueExternalObject
 
 @end
@@ -28,4 +32,12 @@
 @end
 
 @implementation BGNValueRecord
+@end
+
+@implementation BGNValueConstructor
+
+@end
+
+@implementation BGNValueRecordField
+
 @end

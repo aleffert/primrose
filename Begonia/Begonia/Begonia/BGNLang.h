@@ -244,7 +244,7 @@ typedef enum {
 
 @interface BGNExpLambda : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSArray* arguments;
+@property (retain, nonatomic) NSArray* arguments; // BGNBindingArgument
 @property (retain, nonatomic) id <BGNExpression> body;
 
 @end

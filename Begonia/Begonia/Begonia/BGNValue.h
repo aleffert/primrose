@@ -35,7 +35,7 @@
 
 @interface BGNValueExternalObject : NSObject <BGNValue>
 
-@property (retain, nonatomic) id value;
+@property (strong, nonatomic) id object;
 
 @end
 
@@ -54,8 +54,22 @@
 
 @end
 
+@interface BGNValueRecordField : NSObject
+
+@property (copy, nonatomic) NSString* name;
+@property (retain, nonatomic) id <BGNValue> value;
+
+@end
+
 @interface BGNValueRecord : NSObject <BGNValue>
 
-@property (copy, nonatomic) NSDictionary* fields; // string -> value
+@property (copy, nonatomic) NSArray* fields; // BGNValueRecordField
+
+@end
+
+// This should probably be a datatype, but this is simpler for now.
+@interface BGNValueBool : NSObject <BGNValue>
+
+@property (assign, nonatomic) BOOL value;
 
 @end

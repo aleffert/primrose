@@ -15,7 +15,7 @@
 - (id)visitNumber:(BGNExpNumber*)number;
 - (id)visitString:(BGNExpString*)string;
 - (id)visitProjection:(BGNExpProj*)proj;
-- (id)visitApplication:(BGNExpApp*)proj;
+- (id)visitApplication:(BGNExpApp*)app;
 - (id)visitStatements:(BGNExpStmts*)statements;
 - (id)visitIfThenElse:(BGNExpIfThenElse*)conditional;
 - (id)visitVar:(BGNExpVariable*)var;
