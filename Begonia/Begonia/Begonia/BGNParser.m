@@ -167,6 +167,12 @@
     
     return [BGNPrecedenceParser makeThen:^(BGNPrecedenceParser* parser) {
         parser.unOp = ^(BGNPrecedenceTokenOp* token, id arg) {
+            if([arg isKindOfClass:[BGNExpVariable class]]) {
+                BGNExpVariable* argExp = (BGNExpVariable*)arg;
+                if([argExp.name isEqualToString:@"-"]) {
+                    argExp.name = @"$UMINUS";
+                }
+            }
             return [BGNExpApp makeThen:^(BGNExpApp* app) {
                 app.function = token.value;
                 app.argument = arg;

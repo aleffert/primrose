@@ -174,6 +174,14 @@
 
 @end
 
+@implementation BGNExpPrimOp
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitPrimop:self];
+}
+
+@end
+
 @implementation BGNExpCheck
 
 - (id)acceptVisitor:(id<BGNExpVisitor>)visitor {

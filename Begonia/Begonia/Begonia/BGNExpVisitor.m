@@ -58,4 +58,8 @@
     return self.constructorBlock(construction);
 }
 
+- (id)visitPrimop:(BGNExpPrimOp *)primOp {
+    return self.primopBlock(primOp);
+}
+
 @end

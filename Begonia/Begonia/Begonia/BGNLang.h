@@ -208,6 +208,13 @@ typedef enum {
 
 @end
 
+@interface BGNExpPrimOp : NSObject <BGNExpression>
+
+@property (retain, nonatomic) NSArray* args;
+@property (copy, nonatomic) NSString* name;
+
+@end
+
 @interface BGNExpStmts : NSObject <BGNExpression>
 
 @property (copy, nonatomic) NSArray* statements; //BGNStatements

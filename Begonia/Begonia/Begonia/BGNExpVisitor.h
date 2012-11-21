@@ -24,6 +24,7 @@
 - (id)visitModuleProj:(BGNExpModuleProj*)moduleProj;
 - (id)visitLambda:(BGNExpLambda*)lambda;
 - (id)visitConstructor:(BGNExpConstructor*)construction;
+- (id)visitPrimop:(BGNExpPrimOp*)primOp;
 
 @end
 
@@ -42,5 +43,6 @@
 @property (copy, nonatomic) id (^moduleProjBlock)(BGNExpModuleProj*);
 @property (copy, nonatomic) id (^lambdaBlock)(BGNExpLambda*);
 @property (copy, nonatomic) id (^constructorBlock)(BGNExpConstructor*);
+@property (copy, nonatomic) id (^primopBlock)(BGNExpPrimOp*);
 
 @end
