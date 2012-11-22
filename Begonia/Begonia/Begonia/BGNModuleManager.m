@@ -129,8 +129,8 @@
         NSString* nextCandidate = nil;
         for(NSString* currentName in updatedModuleNames) {
             BGNLoadedModule* loadInfo = self.modules[currentName];
-            NSArray* activeDependencies = [loadInfo.content.imports filter:^BOOL(NSString* import) {
-                return [updatedModuleNames containsObject:loadInfo];
+            NSArray* activeDependencies = [loadInfo.content.imports filter:^BOOL(BGNImport* import) {
+                return [updatedModuleNames containsObject:import.name];
             }];
             if(activeDependencies.count == 0) {
                 nextCandidate = currentName;

@@ -1,1 +1,5 @@
-let x = 3 + 3
+open Iteration
+
+let z = 3
+let y = 2
+let x = y / z
