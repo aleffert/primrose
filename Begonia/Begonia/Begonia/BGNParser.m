@@ -277,6 +277,13 @@
     [a push:binding];
 }
 
+- (void)parser:(PKParser*)parser didMatchTopDeclExp:(PKAssembly*)a {
+    id <BGNExpression> exp = [a pop];
+    [a push:[BGNTopExpression makeThen:^(BGNTopExpression* e) {
+        e.expression = exp;
+    }]];
+}
+
 #pragma mark Exp
 
 - (void)parser:(PKParser*)parser didMatchPathItem:(PKAssembly*)a {

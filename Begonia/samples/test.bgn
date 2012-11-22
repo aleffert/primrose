@@ -1,5 +1,9 @@
 open Iteration
 
+for {from = 0, to = 10} fun (i : Int) = {;
+	3
+;}
+
 let z = 3
 let y = 2
 let x = y / z

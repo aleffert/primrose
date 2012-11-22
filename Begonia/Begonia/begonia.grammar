@@ -1,9 +1,9 @@
 @start = module;
-@symbols = '=' 'import' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' 'if' 'then' 'else' '->';
+@symbols = '=' 'import' 'open' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' 'if' 'then' 'else' '->';
 @allowsHexadecimalNotation = YES;
 @allowsFloatingPoint = YES;
 
-ident = /[A-Za-z][A-Za-z0-9_]*/ ;
+ident = /[A-Za-z][A-Za-z0-9_]*/ - ('import' | 'open' | 'type' | 'external' | 'local' | 'let' | 'fun' | 'if' | 'then' | 'else') ;
 opSymbol = (/[-+*$<>^&%]/ | '/' | '<=' | '>=' )+;
 
 scope = 'local' | 'let';
@@ -14,12 +14,13 @@ imports = import*;
 import = 'import' ident eols;
 import = 'open' ident eols;
 
-topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding | topDeclTypeBinding)*;
+topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding | topDeclTypeBinding | topDeclExp)*;
 
 topDeclTypeBinding = 'type'! ident '='! datatypeArms eols!;
 topDeclExternalType = 'external'! 'type'! ident eols!;
 topDeclValBinding = scope ident '=' exp eols!;
 topDeclFunBinding = scope ident bindingArguments '=' exp eols!;
+topDeclExp = exp eols!;
 
 datatypeArms = datatypeArm (eol* '|'! eol* datatypeArm)*;
 datatypeArm = ident recordBinding;

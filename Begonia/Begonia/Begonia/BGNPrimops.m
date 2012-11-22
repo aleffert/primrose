@@ -48,6 +48,18 @@
         @"/" : ^(NSArray* args, BGNInterpreter* interpreter) {
             return [self evaluateDiv:args];
         },
+        @"<" : ^(NSArray* args, BGNInterpreter* interpreter) {
+            return [self evaluateLt:args];
+        },
+        @">" : ^(NSArray* args, BGNInterpreter* interpreter) {
+            return [self evaluateGt:args];
+        },
+        @"<=" : ^(NSArray* args, BGNInterpreter* interpreter) {
+            return [self evaluateLte:args];
+        },
+        @">=" : ^(NSArray* args, BGNInterpreter* interpreter) {
+            return [self evaluateGte:args];
+        },
         @"$UMINUS" : ^(NSArray* args, BGNInterpreter* interpreter) {
             return [self evaluateUnaryMinus:args];
         },
@@ -75,6 +87,49 @@
             f.value = ints(((BGNValueInt*)left).value, ((BGNValueInt*)right).value);
         }];
     }
+}
+
+- (id <BGNValue>)binaryComparisonOpWithArgs:(NSArray*)args asFloats:(BOOL(^)(CGFloat, CGFloat))floats ints:(BOOL(^)(NSInteger, NSInteger))ints {
+    NSAssert(args.count == 2, @"StaticError: Expecting two args to arithmetic operation, found %@", args);
+    id <BGNValue> left = args[0];
+    id <BGNValue> right = args[1];
+    if([left isKindOfClass:[BGNValueFloat class]]) {
+        NSAssert([right isKindOfClass:[BGNValueFloat class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
+        return [BGNValueBool makeThen:^(BGNValueBool* f) {
+            f.value = floats(((BGNValueFloat*)left).value, ((BGNValueFloat*)right).value);
+        }];
+    }
+    else {
+        NSAssert([right isKindOfClass:[BGNValueFloat class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
+        return [BGNValueBool makeThen:^(BGNValueBool* f) {
+            f.value = ints(((BGNValueInt*)left).value, ((BGNValueInt*)right).value);
+        }];
+    }
+}
+
+- (id <BGNValue>)evaluateLt:(NSArray*)args {
+    return [self binaryComparisonOpWithArgs:args
+                                   asFloats:^BOOL(CGFloat l, CGFloat r) {return l < r;}
+                                       ints:^BOOL(NSInteger l, NSInteger r) {return l < r;}];
+}
+
+- (id <BGNValue>)evaluateGt:(NSArray*)args {
+    return [self binaryComparisonOpWithArgs:args
+                                   asFloats:^BOOL(CGFloat l, CGFloat r) {return l > r;}
+                                       ints:^BOOL(NSInteger l, NSInteger r) {return l > r;}];
+}
+
+- (id <BGNValue>)evaluateLte:(NSArray*)args {
+    return [self binaryComparisonOpWithArgs:args
+                                   asFloats:^BOOL(CGFloat l, CGFloat r) {return l >= r;}
+                                       ints:^BOOL(NSInteger l, NSInteger r) {return l >= r;}];
+}
+
+
+- (id <BGNValue>)evaluateGte:(NSArray*)args {
+    return [self binaryComparisonOpWithArgs:args
+                                   asFloats:^BOOL(CGFloat l, CGFloat r) {return l <= r;}
+                                       ints:^BOOL(NSInteger l, NSInteger r) {return l <= r;}];
 }
 
 - (id <BGNValue>)evaluateAdd:(NSArray*)args {
