@@ -13,6 +13,7 @@
 #import "BGNLang.h"
 #import "BGNParser.h"
 #import "BGNParserResult.h"
+#import "BGNPrelude.h"
 #import "BGNPrimops.h"
 #import "BGNTopDeclVisitor.h"
 #import "BGNValue.h"
@@ -34,7 +35,7 @@
     if((self = [super init])) {
         self.moduleManager = [[BGNModuleManager alloc] init];
         self.moduleManager.delegate = self;
-        self.environment = [BGNEnvironment empty];
+        self.environment = [BGNPrelude loadIntoEnvironment:[BGNEnvironment empty]];
     }
     return self;
 }

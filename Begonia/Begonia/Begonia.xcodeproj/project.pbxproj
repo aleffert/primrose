@@ -35,6 +35,7 @@
 		77D4E9CD16508E4700CA3C65 /* BGNTopDeclVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D4E9CC16508E4700CA3C65 /* BGNTopDeclVisitor.m */; };
 		77D4E9FB1658118600CA3C65 /* BGNExpVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D4E9FA1658118500CA3C65 /* BGNExpVisitor.m */; };
 		77D4E9FE16598E4A00CA3C65 /* BGNPrimops.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D4E9FD16598E4A00CA3C65 /* BGNPrimops.m */; };
+		77D4EA01165DCE6800CA3C65 /* BGNPrelude.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D4EA00165DCE6800CA3C65 /* BGNPrelude.m */; };
 		77EE6A9A164738880088C1F5 /* BGNModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EE6A99164738880088C1F5 /* BGNModuleManager.m */; };
 		BDCAB08E5BF243A4B39342A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7F98A2839141F3A9137BE6 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,8 @@
 		77D4E9FA1658118500CA3C65 /* BGNExpVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNExpVisitor.m; sourceTree = "<group>"; };
 		77D4E9FC16598E4900CA3C65 /* BGNPrimops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNPrimops.h; sourceTree = "<group>"; };
 		77D4E9FD16598E4A00CA3C65 /* BGNPrimops.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNPrimops.m; sourceTree = "<group>"; };
+		77D4E9FF165DCE6700CA3C65 /* BGNPrelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNPrelude.h; sourceTree = "<group>"; };
+		77D4EA00165DCE6800CA3C65 /* BGNPrelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNPrelude.m; sourceTree = "<group>"; };
 		77EE6A98164738880088C1F5 /* BGNModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNModuleManager.h; sourceTree = "<group>"; };
 		77EE6A99164738880088C1F5 /* BGNModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNModuleManager.m; sourceTree = "<group>"; };
 		7F7F98A2839141F3A9137BE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +195,8 @@
 		773EC392160F542000DF8624 /* Lang */ = {
 			isa = PBXGroup;
 			children = (
+				77D4E9FF165DCE6700CA3C65 /* BGNPrelude.h */,
+				77D4EA00165DCE6800CA3C65 /* BGNPrelude.m */,
 				77D4E9FC16598E4900CA3C65 /* BGNPrimops.h */,
 				77D4E9FD16598E4A00CA3C65 /* BGNPrimops.m */,
 				77D4E9F91658118500CA3C65 /* BGNExpVisitor.h */,
@@ -341,6 +346,7 @@
 				77D4E9CD16508E4700CA3C65 /* BGNTopDeclVisitor.m in Sources */,
 				77D4E9FB1658118600CA3C65 /* BGNExpVisitor.m in Sources */,
 				77D4E9FE16598E4A00CA3C65 /* BGNPrimops.m in Sources */,
+				77D4EA01165DCE6800CA3C65 /* BGNPrelude.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

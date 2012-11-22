@@ -8,6 +8,7 @@
 
 #import "BGNEnvironment.h"
 #import "NSObject+BGNConstruction.h"
+#import "BGNPrelude.h"
 
 @interface BGNModuleEnvironment : NSObject <NSCopying>
 
@@ -113,6 +114,9 @@
 - (BGNEnvironment*)scopeModuleNamed:(NSString*)name inBody:(BGNEnvironment* (^)(BGNEnvironment* env))body {
     BGNModuleEnvironment* me = [BGNModuleEnvironment makeThen:^(BGNModuleEnvironment* me) {
         me.name = name;
+        if(![name isEqualToString:BGNPreludeModuleName]) {
+            [self openModuleNamed:BGNPreludeModuleName];
+        }
     }];
     
     BGNEnvironment* env = self.copy;
