@@ -67,12 +67,13 @@
     BGNEnvironment* result = [[BGNEnvironment allocWithZone:zone] init];
     result.moduleStack = self.moduleStack;
     result.currentModule = self.currentModule.copy;
+    result.loadedModules = self.loadedModules.copy;
     return result;
 }
 
 - (BGNEnvironment*)bindExpVar:(NSString*)name withValue:(id <BGNValue>)value {
     BGNModuleEnvironment* me = self.currentModule.copy;
-    NSMutableDictionary* updatedMap = me.mutableCopy;
+    NSMutableDictionary* updatedMap = me.expMap.mutableCopy;
     [updatedMap setObject:value forKey:name];
     me.expMap = updatedMap;
     
@@ -114,14 +115,23 @@
 - (BGNEnvironment*)scopeModuleNamed:(NSString*)name inBody:(BGNEnvironment* (^)(BGNEnvironment* env))body {
     BGNModuleEnvironment* me = [BGNModuleEnvironment makeThen:^(BGNModuleEnvironment* me) {
         me.name = name;
-        if(![name isEqualToString:BGNPreludeModuleName]) {
-            [self openModuleNamed:BGNPreludeModuleName];
-        }
     }];
     
     BGNEnvironment* env = self.copy;
     env.moduleStack = [self.moduleStack arrayByAddingObject:me];
-    return body(env);
+    env.currentModule = me;
+    
+    if(![name isEqualToString:BGNPreludeModuleName]) {
+        env = [env openModuleNamed:BGNPreludeModuleName];
+    }
+    
+    BGNEnvironment* result = body(env).copy;
+    NSMutableDictionary* loadedModules = result.loadedModules.mutableCopy;
+    loadedModules[name] = env.currentModule;
+    result.loadedModules = loadedModules;
+    result.currentModule = self.moduleStack.count == 0 ? nil : self.moduleStack[self.moduleStack.count - 1];
+    
+    return result;
 }
 
 - (BGNEnvironment*)importModuleNamed:(NSString*)moduleName {
