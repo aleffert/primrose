@@ -37,22 +37,22 @@
     if((self = [super init])) {
         self.opTable = @{
         @"+" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateAdd:args];
+            return [self evaluateAdd:args];
         },
         @"-" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateSub:args];
+            return [self evaluateSub:args];
         },
         @"*" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateMul:args];
+            return [self evaluateMul:args];
         },
         @"/" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateDiv:args];
+            return [self evaluateDiv:args];
         },
         @"$UMINUS" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateUnaryMinus:args];
+            return [self evaluateUnaryMinus:args];
         },
         @"$intToFloat" : ^(NSArray* args, BGNInterpreter* interpreter) {
-            [self evaluateIntToFloat:args];
+            return [self evaluateIntToFloat:args];
         }
         };
     }
@@ -125,8 +125,8 @@
 }
 
 - (id <BGNValue>)evaluatePrimop:(NSString*)name args:(NSArray*)args inInterpreter:(BGNInterpreter*)interpreter {
-    id <BGNValue> (^op)(NSArray*) = self.opTable[name];
-    return op(args);
+    id <BGNValue> (^op)(NSArray*, BGNInterpreter*) = self.opTable[name];
+    return op(args, interpreter);
 }
 
 @end

@@ -51,7 +51,7 @@
 @implementation BGNValueFunction
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"fun %@ = %@", self.vars, self.value];
+    return [NSString stringWithFormat:@"fun %@ = %@", self.vars, self.body];
 }
 
 @end

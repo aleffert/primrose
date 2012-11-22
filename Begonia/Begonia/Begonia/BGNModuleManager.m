@@ -144,6 +144,7 @@
         else {
             BGNLoadedModule* info = self.modules[nextCandidate];
             [self.delegate moduleManager:self loadedModule:info.content named:info.description.name];
+            [updatedModuleNames removeObject:info.description.name];
         }
     }
     

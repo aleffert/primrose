@@ -31,6 +31,7 @@ NSString* BGNPreludeModuleName = @"$prelude";
         lambda.vars = [args map:^(NSString* name) {
             return [BGNVarBinding makeThen:^(BGNVarBinding* b) {b.name = name;}];
         }];
+        lambda.env = [BGNEnvironment empty];
     }];
 }
 

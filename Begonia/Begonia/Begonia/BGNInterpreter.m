@@ -43,6 +43,7 @@
 - (void)interpretFile:(NSString*)path {
     NSString* name = path.lastPathComponent.stringByDeletingPathExtension.capitalizedString;
     [self.moduleManager loadModuleNamed:name atPath:path];
+    NSLog(@"the value of x is %@", [self.environment valueNamed:@"x" inModule:@"Test"]);
 }
 
 - (id <BGNValue>)unitValue {
@@ -258,7 +259,7 @@
     BGNExpBlockVisitor* visitor = [[BGNExpBlockVisitor alloc] init];
     visitor.numberBlock = ^(BGNExpNumber* number) {
         if(number.isFloat) {
-            return [BGNValueFloat makeThen:^(BGNValueInt* val) {
+            return [BGNValueFloat makeThen:^(BGNValueFloat* val) {
                 val.value = [number.value floatValue];
             }];
         }
@@ -370,7 +371,7 @@
             BGNValueFunction* f = (BGNValueFunction*)function;
             NSAssert(f.vars.count > 0, @"function with no arguments getting applied", app);
             id <BGNBindingArgument> binder = f.vars[0];
-            BGNEnvironment* e = [self bindArgument:binder toValue:arg inEnvironment:env];
+            BGNEnvironment* e = [self bindArgument:binder toValue:arg inEnvironment:f.env];
             if(f.vars.count == 1) {
                 return [self evaluateExp:f.body inEnvironment:e];
             }

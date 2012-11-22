@@ -102,7 +102,7 @@
         }
     }
     else {
-        NSAssert([self.currentModule.openModules containsObject:moduleName], @"No module named, %@", moduleName);
+        NSAssert([self.currentModule.openModules containsObject:moduleName] || self.currentModule == nil, @"No module named, %@", moduleName);
         BGNModuleEnvironment* me = self.loadedModules[moduleName];
         NSAssert(me != nil, @"Couldn't lookup module named %@", moduleName);
         
@@ -127,9 +127,10 @@
     
     BGNEnvironment* result = body(env).copy;
     NSMutableDictionary* loadedModules = result.loadedModules.mutableCopy;
-    loadedModules[name] = env.currentModule;
+    loadedModules[name] = result.currentModule;
     result.loadedModules = loadedModules;
-    result.currentModule = self.moduleStack.count == 0 ? nil : self.moduleStack[self.moduleStack.count - 1];
+    result.currentModule = result.moduleStack.count == 1 ? nil : self.moduleStack[result.moduleStack.count - 2];
+    result.moduleStack = [result.moduleStack subarrayWithRange:NSMakeRange(0, result.moduleStack.count - 1)];
     
     return result;
 }
