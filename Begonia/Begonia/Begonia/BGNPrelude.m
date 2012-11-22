@@ -47,6 +47,23 @@ NSString* BGNPreludeModuleName = @"$prelude";
     return [self primopFunctionNamed:@"$UMINUS" args:@[@"x"]];
 }
 
++ (id <BGNValue>)appFunction {
+    return [BGNValueFunction makeThen:^(BGNValueFunction* lambda) {
+        lambda.body = [BGNExpApp makeThen:^(BGNExpApp* app) {
+            app.function = [BGNExpVariable makeThen:^(BGNExpVariable* o) {
+                o.name = @"x";
+            }];
+            app.argument = [BGNExpVariable makeThen:^(BGNExpVariable* o) {
+                o.name = @"y";
+            }];
+        }];
+        lambda.vars = [@[@"x", @"y"] map:^(NSString* name) {
+            return [BGNVarBinding makeThen:^(BGNVarBinding* b) {b.name = name;}];
+        }];
+        lambda.env = [BGNEnvironment empty];
+    }];
+}
+
 + (BGNEnvironment*)loadIntoEnvironment:(BGNEnvironment*)env {
     return [env scopeModuleNamed:BGNPreludeModuleName inBody:^BGNEnvironment *(BGNEnvironment *env) {
         env = [env bindExpVar:@"+" withValue:[self arithmeticOpNamed:@"+"]];
@@ -59,6 +76,7 @@ NSString* BGNPreludeModuleName = @"$prelude";
         env = [env bindExpVar:@">=" withValue:[self arithmeticOpNamed:@">="]];
         env = [env bindExpVar:@"ff" withValue:[self ffFunction]];
         env = [env bindExpVar:@"$UMINUS" withValue:[self negateFunction]];
+        env = [env bindExpVar:@"$" withValue:[self appFunction]];
         return env;
     }];
 }
