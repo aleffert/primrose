@@ -48,13 +48,26 @@ projections = ('.'! pathItem)* ;
 
 path = atom projections;
 
-atom = expNum | expString | expVar | expRecord | expLambda | expStmt | expIf | '('! exp ')'!;
+atom = expNum | expString | expVar | expRecord | expLambda | expStmt | expIf | expCase | '('! exp ')'!;
 expNum = Number;
 expString = QuotedString;
 expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
 expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
 expIf  = 'if' eol* exp eol* 'then' eol* exp eol* 'else' exp eol*;
+expCase = 'case' exp caseClause+ 'end';
+caseClause = '|' pattern '=>' exp;
+
+pattern = patInt | patBool | patVar | patString | patDatatype | patRecord | '(' pattern ')';
+patInt = Number;
+patBool = 'True' | 'False';
+patVar = ident;
+patString = QuotedString;
+patDatatype = ident pat;
+patRecord = '{'! eol* patRecordFieldsOpt eol* '}'!;
+patRecordFieldsOpt = patRecordFields | nullOpt;
+patRecordFields = patRecordField (recordBreak! patRecordField*);
+patRecordField = ident '='! pattern;
 
 expRecord = '{'! eol* expRecordFieldsOpt eol* '}'!;
 expRecordFieldsOpt = expRecordFields | nullOpt;

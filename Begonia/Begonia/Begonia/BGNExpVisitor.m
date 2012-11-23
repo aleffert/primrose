@@ -42,6 +42,10 @@
     return self.recordBlock(record);
 }
 
+- (id)visitCase:(BGNExpCase *)matcher {
+    return self.caseBlock(matcher);
+}
+
 - (id)visitCheck:(BGNExpCheck*)typeCheck {
     return self.checkBlock(typeCheck);
 }

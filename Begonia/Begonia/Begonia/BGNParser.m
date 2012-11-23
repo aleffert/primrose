@@ -455,6 +455,30 @@
     [a push:record];
 }
 
+- (void)parser:(PKParser*)parser didMatchExpCase:(PKAssembly*)a {
+    [a pop];
+    NSArray* branches = [a popWhileMatching:^BOOL(id object) {
+        return [object isKindOfClass:[BGNCaseArm class]];
+    }];
+    id <BGNExpression> test = [a pop];
+    [a pop];
+    [a push: [BGNExpCase makeThen:^(BGNExpCase* o) {
+        o.branches = branches;
+        o.test = test;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchCaseClause:(PKAssembly*)a {
+    id <BGNExpression> body = [a pop];
+    [a pop];
+    id <BGNPattern> pattern = [a pop];
+    [a pop];
+    [a push: [BGNCaseArm makeThen:^(BGNCaseArm* arm) {
+        arm.body = body;
+        arm.pattern = pattern;
+    }]];
+}
+
 - (void)parser:(PKParser*)parser didMatchExpRecordFieldsOpt:(PKAssembly *)a {
     [a updateFrontForNullOrList];
 }
@@ -616,6 +640,74 @@
     BGNTypeRecord* record = [[BGNTypeRecord alloc] init];
     record.fields = [a pop];
     [a push:record];
+}
+
+#pragma mark Patterns
+
+- (void)parser:(PKParser*)parser didMatchPatVar:(PKAssembly*)a {
+    PKToken* var = [a pop];
+    [a push:[BGNPatternVar makeThen:^(BGNPatternVar* o) {
+        o.name = var.stringValue;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatInt:(PKAssembly*)a {
+    PKToken* var = [a pop];
+    // TODO: properly deal with ints
+    [a push:[BGNPatternInt makeThen:^(BGNPatternInt* o){
+        o.value = (NSInteger)[var floatValue];
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatBool:(PKAssembly*)a {
+    PKToken* var = [a pop];
+    [a push:[BGNPatternBool makeThen:^(BGNPatternBool* o) {
+        o.value = [var.stringValue isEqualToString:@"True"];
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatString:(PKAssembly*)a {
+    PKToken* var = [a pop];
+    [a push:[BGNPatternString makeThen:^(BGNPatternString* o){
+        o.value = var.quotedStringValue;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatDatatype:(PKAssembly*)a {
+    id <BGNPattern> body = [a pop];
+    PKToken* name = [a pop];
+    
+    [a push:[BGNPatternConstructor makeThen:^(BGNPatternConstructor* o){
+        o.body = body;
+        o.constructor = name.stringValue;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatRecord:(PKAssembly*)a {
+    NSArray* fields = [a pop];
+    [a push:[BGNPatternRecord makeThen:^(BGNPatternRecord* record) {
+        record.fields = fields;
+    }]];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatRecordFieldsOpt:(PKAssembly *)a {
+    [a updateFrontForNullOrList];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatRecordFields:(PKAssembly *)a {
+    NSArray* items = [a popWhileMatching:^(id object) {
+        return [object isKindOfClass:[BGNPatternRecordField class]];
+    }];
+    [a push:items];
+}
+
+- (void)parser:(PKParser*)parser didMatchPatRecordField:(PKAssembly*)a {
+    id <BGNPattern> pat = [a pop];
+    NSString* name = [a pop];
+    [a push: [BGNPatternRecordField makeThen:^(BGNPatternRecordField* field) {
+        field.name = name;
+        field.body = pat;
+    }]];
 }
 
 @end

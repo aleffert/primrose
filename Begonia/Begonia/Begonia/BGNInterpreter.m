@@ -11,6 +11,7 @@
 #import "BGNExpVisitor.h"
 #import "BGNEnvironment.h"
 #import "BGNLang.h"
+#import "BGNPatternVisitor.h"
 #import "BGNParser.h"
 #import "BGNParserResult.h"
 #import "BGNPrelude.h"
@@ -56,6 +57,97 @@
     return [BGNPrimops evaluatePrimop:name args:args inInterpreter:self];
 }
 
+- (BGNEnvironment*)matchPattern:(id <BGNPattern>)pattern againstValue:(id <BGNValue>)value inEnvironment:(BGNEnvironment*)env {
+    BGNPatternBlockVisitor* visitor = [[BGNPatternBlockVisitor alloc] init];
+    visitor.varBlock = ^(BGNPatternVar* var) {
+        return [env bindExpVar:var.name withValue:value];
+    };
+    visitor.intBlock = ^BGNEnvironment*(BGNPatternInt* pat) {
+        if([value isKindOfClass:[BGNValueInt class]]) {
+            BGNValueInt* i = (BGNValueInt*)value;
+            if(i.value == pat.value) {
+                return env;
+            }
+            else {
+                return nil;
+            }
+        }
+        else {
+            return nil;
+        }
+    };
+    
+    visitor.stringBlock = ^BGNEnvironment*(BGNPatternString* pat) {
+        if([value isKindOfClass:[BGNValueString class]]) {
+            BGNValueString* s = (BGNValueString*)value;
+            if([s.value isEqualToString:pat.value]) {
+                return env;
+            }
+            else {
+                return nil;
+            }
+        }
+        else {
+            return nil;
+        }
+    };
+    
+    visitor.boolBlock = ^BGNEnvironment*(BGNPatternBool* pat) {
+        if([value isKindOfClass:[BGNValueBool class]]) {
+            BGNValueBool* b = (BGNValueBool*)value;
+            if(b.value == pat.value) {
+                return env;
+            }
+            else {
+                return nil;
+            }
+        }
+        else {
+            return nil;
+        }
+    };
+    
+    visitor.constructorBlock = ^BGNEnvironment*(BGNPatternConstructor* pat) {
+        if([value isKindOfClass:[BGNValueConstructor class]]) {
+            BGNValueConstructor* c = (BGNValueConstructor*)value;
+            if([c.name isEqualToString:pat.constructor]) {
+                return [self matchPattern:pat.body againstValue:c.value inEnvironment:env];
+            }
+            else {
+                return nil;
+            }
+        }
+        else {
+            return nil;
+        }
+    };
+    
+    visitor.recordBlock = ^BGNEnvironment*(BGNPatternRecord* pat) {
+        if([value isKindOfClass:[BGNValueRecord class]]) {
+            BGNValueRecord* record = (BGNValueRecord*)value;
+            BGNEnvironment* result = env;
+            for(BGNPatternRecordField* field in pat.fields) {
+                id <BGNValue> value = [self fieldNamed:field.name inRecord:record];
+                if(value == nil) {
+                    return nil;
+                }
+                else {
+                    result = [self matchPattern:field.body againstValue:value inEnvironment:result];
+                    if(result == nil) {
+                        return nil;
+                    }
+                }
+            }
+            return result;
+        }
+        else {
+            return nil;
+        }
+    };
+    
+    return [pattern acceptVisitor:visitor];
+}
+
 - (id <BGNValue>)callExternalMethodNamed:(NSString*)name onObject:(id)object args:(NSArray*)arguments {
     SEL selector = NSSelectorFromString(name);
     NSMethodSignature* signature = [self methodSignatureForSelector:selector];
@@ -92,6 +184,8 @@
             BGNValueRecord* body = (BGNValueRecord*)data.value;
             id <BGNValue> xField = [self fieldNamed:@"x" inRecord:body];
             id <BGNValue> yField = [self fieldNamed:@"y" inRecord:body];
+            NSAssert(xField != nil, @"FFIError: Unable to find field x in %@", body);
+            NSAssert(yField != nil, @"FFIError: Unable to find field y in %@", body);
             NSAssert([xField isKindOfClass:[BGNValueFloat class]], @"FFIError: Expecting float arguments to method %@ expecting CGPoint", name);
             CGFloat x = ((BGNValueFloat*)xField).value;
             CGFloat y = ((BGNValueFloat*)yField).value;
@@ -107,6 +201,10 @@
             id <BGNValue> yField = [self fieldNamed:@"y" inRecord:body];
             id <BGNValue> widthField = [self fieldNamed:@"width" inRecord:body];
             id <BGNValue> heightField = [self fieldNamed:@"height" inRecord:body];
+            NSAssert(xField != nil, @"FFIError: Unable to find field x in %@", body);
+            NSAssert(yField != nil, @"FFIError: Unable to find field y in %@", body);
+            NSAssert(widthField != nil, @"FFIError: Unable to find field width in %@", body);
+            NSAssert(heightField != nil, @"FFIError: Unable to find field height in %@", body);
             NSAssert([xField isKindOfClass:[BGNValueFloat class]], @"FFIError: Expecting float arguments to method %@ expecting CGRect", name);
             CGFloat x = ((BGNValueFloat*)xField).value;
             CGFloat y = ((BGNValueFloat*)yField).value;
@@ -219,9 +317,13 @@
     NSUInteger index = [record.fields indexOfObjectPassingTest:^BOOL(BGNValueRecordField* field, NSUInteger idx, BOOL *stop) {
         return [field.name isEqualToString:name];
     }];
-    NSAssert(index != NSNotFound, @"StaticError: Unable to find field %@ in %@", name, record);
-    BGNValueRecordField* field = record.fields[index];
-    return field.value;
+    if(index == NSNotFound) {
+        return nil;
+    }
+    else {
+        BGNValueRecordField* field = record.fields[index];
+        return field.value;
+    }
 }
 
 - (BGNEnvironment*)bindArgument:(id <BGNBindingArgument>)bind toValue:(id <BGNValue>)arg inEnvironment:(BGNEnvironment*)env {
@@ -344,13 +446,18 @@
         // 1. record
         if([body isKindOfClass:[BGNValueRecord class]]) {
             BGNValueRecord* record = (BGNValueRecord*)body;
-            return [self fieldNamed:proj.proj inRecord:record];
+            id <BGNValue> value = [self fieldNamed:proj.proj inRecord:record];
+            NSAssert(value != nil, @"StaticError: Unable to find field %@ in %@", proj.proj, record);
+            return value;
         }
         // 2. through a constructor
         else if([body isKindOfClass:[BGNValueConstructor class]]) {
             BGNValueConstructor* inj = (BGNValueConstructor*)body;
             NSAssert([inj.value isKindOfClass:[BGNValueRecord class]], @"StaticError: Projecting %@ from datatype without record body: %@", proj.proj, inj);
-            return [self fieldNamed:proj.proj inRecord:(BGNValueRecord*)inj.value];
+            id <BGNValue> value = [self fieldNamed:proj.proj inRecord:(BGNValueRecord*)inj.value];
+            
+            NSAssert(value != nil, @"StaticError: Unable to find field %@ in %@", proj.proj, (BGNValueRecord*)inj.value);
+            return value;
         }
         // 3. external object
         else if([body isKindOfClass:[BGNValueExternalObject class]]) {
@@ -408,6 +515,17 @@
             return [self evaluateExp:e inEnvironment:env];
         }];
         return [self evaluatePrimop:primOp.name args:args];
+    };
+    visitor.caseBlock = ^id <BGNValue>(BGNExpCase* matcher) {
+        id <BGNValue> testValue = [self evaluateExp:matcher.test inEnvironment:env];
+        for(BGNCaseArm* arm in matcher.branches) {
+            BGNEnvironment* e = [self matchPattern:arm.pattern againstValue:testValue inEnvironment:env];
+            if(e != nil) {
+                return [self evaluateExp:arm.body inEnvironment:e];
+            }
+        }
+        NSAssert(NO, @"StaticError: Unable to match %@ against patterns %@", testValue, matcher.branches);
+        return nil;
     };
     
     return [exp acceptVisitor:visitor];

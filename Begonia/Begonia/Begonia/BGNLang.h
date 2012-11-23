@@ -242,6 +242,22 @@ typedef enum {
 
 @end
 
+@protocol BGNPattern;
+
+@interface BGNCaseArm : NSObject
+
+@property (retain, nonatomic) id <BGNPattern> pattern;
+@property (retain, nonatomic) id <BGNExpression> body;
+
+@end
+
+@interface BGNExpCase : NSObject <BGNExpression>
+
+@property (retain, nonatomic) id <BGNExpression> test;
+@property (retain, nonatomic) NSArray* branches;
+
+@end
+
 @interface BGNExpRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
@@ -287,5 +303,57 @@ typedef enum {
 @interface BGNStmtExp : NSObject <BGNStatement>
 
 @property (retain, nonatomic) id <BGNExpression> exp;
+
+@end
+
+@protocol BGNPatternVisitor;
+
+@protocol BGNPattern <NSObject>
+
+- (id)acceptVisitor:(id <BGNPatternVisitor>)visitor;
+
+@end
+
+@interface BGNPatternInt : NSObject <BGNPattern>
+
+@property (assign, nonatomic) NSInteger value;
+
+@end
+
+@interface BGNPatternBool : NSObject <BGNPattern>
+
+@property (assign, nonatomic) BOOL value;
+
+@end
+
+@interface BGNPatternString : NSObject <BGNPattern>
+
+@property (assign, nonatomic) NSString* value;
+
+@end
+
+@interface BGNPatternVar : NSObject <BGNPattern>
+
+@property (assign, nonatomic) NSString* name;
+
+@end
+
+@interface BGNPatternRecordField : NSObject
+
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) id <BGNPattern> body;
+
+@end
+
+@interface BGNPatternRecord : NSObject <BGNPattern>
+
+@property (copy, nonatomic) NSArray* fields; // BGNPatternRecordField
+
+@end
+
+@interface BGNPatternConstructor : NSObject <BGNPattern>
+
+@property (retain, nonatomic) NSString* constructor;
+@property (retain, nonatomic) id <BGNPattern> body;
 
 @end

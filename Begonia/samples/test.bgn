@@ -3,3 +3,8 @@ open Geometry
 
 let z = {foo = {baz = 10}, bar = 2}
 let x = Point {x = z, y = 100}
+
+case x
+	| Foo =>
+	| Bar =>
+end

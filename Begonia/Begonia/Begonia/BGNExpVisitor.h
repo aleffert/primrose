@@ -20,6 +20,7 @@
 - (id)visitIfThenElse:(BGNExpIfThenElse*)conditional;
 - (id)visitVar:(BGNExpVariable*)var;
 - (id)visitRecord:(BGNExpRecord*)record;
+- (id)visitCase:(BGNExpCase*)matcher;
 - (id)visitCheck:(BGNExpCheck*)typeCheck;
 - (id)visitModuleProj:(BGNExpModuleProj*)moduleProj;
 - (id)visitLambda:(BGNExpLambda*)lambda;
@@ -39,6 +40,7 @@
 @property (copy, nonatomic) id (^conditionalBlock)(BGNExpIfThenElse*);
 @property (copy, nonatomic) id (^varBlock)(BGNExpVariable*);
 @property (copy, nonatomic) id (^recordBlock)(BGNExpRecord*);
+@property (copy, nonatomic) id (^caseBlock)(BGNExpCase*);
 @property (copy, nonatomic) id (^checkBlock)(BGNExpCheck*);
 @property (copy, nonatomic) id (^moduleProjBlock)(BGNExpModuleProj*);
 @property (copy, nonatomic) id (^lambdaBlock)(BGNExpLambda*);

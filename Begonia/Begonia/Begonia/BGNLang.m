@@ -9,6 +9,7 @@
 #import "BGNLang.h"
 
 #import "BGNExpVisitor.h"
+#import "BGNPatternVisitor.h"
 #import "BGNTopDeclVisitor.h"
 
 @implementation NSCharacterSet (BGNLang)
@@ -137,6 +138,18 @@
 
 @end
 
+@implementation BGNCaseArm : NSObject
+
+@end
+
+@implementation BGNExpCase
+
+- (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
+    return [visitor visitCase:self];
+}
+
+@end
+
 @implementation BGNExpStmts
 
 - (id)acceptVisitor:(id<BGNExpVisitor>)visitor {
@@ -223,4 +236,53 @@
 @end
 
 
+@implementation BGNPatternInt
 
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitInt:self];
+}
+
+@end
+
+@implementation BGNPatternBool
+
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitBool:self];
+}
+
+@end
+
+@implementation BGNPatternString
+
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitString:self];
+}
+
+@end
+
+@implementation BGNPatternVar
+
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitVar:self];
+}
+
+@end
+
+@implementation BGNPatternRecordField
+@end
+
+@implementation BGNPatternRecord
+
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitRecord:self];
+}
+
+@end
+
+@implementation BGNPatternConstructor
+
+- (id)acceptVisitor:(id<BGNPatternVisitor>)visitor {
+    return [visitor visitConstructor:self];
+}
+
+@end
