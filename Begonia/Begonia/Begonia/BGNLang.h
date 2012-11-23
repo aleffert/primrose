@@ -238,7 +238,7 @@ typedef enum {
 @interface BGNExpConstructor : NSObject <BGNExpression>
 
 @property (copy, nonatomic) NSString* name;
-@property (copy, nonatomic) id <BGNExpression> body;
+@property (retain, nonatomic) id <BGNExpression> body;
 
 @end
 

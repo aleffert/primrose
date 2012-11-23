@@ -259,7 +259,7 @@
 - (void)parser:(PKParser*)parser didMatchDatatypeArm:(PKAssembly*)a {
     BGNDatatypeArm* arm = [[BGNDatatypeArm alloc] init];
     arm.type = [a pop];
-    arm.name = [a pop];
+    arm.name = [[a pop] stringValue];
     [a push:arm];
 }
 

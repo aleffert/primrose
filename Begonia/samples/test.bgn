@@ -1,4 +1,5 @@
 open Iteration
+open Geometry
 
 let z = {foo = {baz = 10}, bar = 2}
-let x = z.foo
+let x = Point {x = z, y = 100}

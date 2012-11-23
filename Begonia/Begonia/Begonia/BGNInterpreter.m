@@ -436,8 +436,17 @@
         return result;
     };
     visitor.datatypeDecl = ^(BGNDatatypeBinding* data) {
-        // TODO. Make functions for datatype arms
-        return env;
+        return [data.arms foldLeft:^BGNEnvironment*(BGNDatatypeArm* arm, NSUInteger index, BGNEnvironment* e) {
+            BGNValueFunction* constructor = [BGNValueFunction makeThen:^(BGNValueFunction* f){
+                f.vars = @[[BGNVarBinding makeThen:^(BGNVarBinding* v) {v.name = @"x";}]];
+                f.body = [BGNExpConstructor makeThen:^(BGNExpConstructor* c) {
+                    c.name = arm.name;
+                    c.body = [BGNExpVariable makeThen:^(BGNExpVariable* v) {v.name = @"x";}];
+                }];
+                f.env = [BGNEnvironment empty];
+            }];
+            return [env bindExpVar:arm.name withValue:constructor];
+        } base:env];
     };
     visitor.exp = ^(BGNTopExpression* exp) {
         [self evaluateExp:exp.expression inEnvironment:env];
