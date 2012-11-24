@@ -127,7 +127,6 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 
 - (void)parser:(PKParser*)parser didMatchIdent:(PKAssembly*)a {
     PKToken* token = [a pop];
-    NSLog(@"got token %@", token);
     [a push:token];
 }
 
