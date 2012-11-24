@@ -100,7 +100,7 @@
         }];
     }
     else {
-        NSAssert([right isKindOfClass:[BGNValueFloat class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
+        NSAssert([right isKindOfClass:[BGNValueInt class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
         return [BGNValueBool makeThen:^(BGNValueBool* f) {
             f.value = ints(((BGNValueInt*)left).value, ((BGNValueInt*)right).value);
         }];

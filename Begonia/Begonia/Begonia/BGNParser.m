@@ -18,6 +18,8 @@
 #import "NSArray+Functional.h"
 #import "NSObject+BGNConstruction.h"
 
+static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
+
 @interface BGNPathToken : NSObject
 
 @property (retain, nonatomic) NSString* name;
@@ -114,7 +116,19 @@
     NSString* processedString = [string stringByAppendingString:@"\n"];
     BGNModule* module = [moduleParser parse:processedString];
     
-    return [BGNParserResult resultWithModule:module];
+    if(module == nil) {
+        return [BGNParserResult resultWithError:[NSError errorWithDomain:BGNParserErrorDomain code:-1 userInfo:@{@"Error" : @"Couldn't complete parse"} ]];
+    }
+    else {
+        return [BGNParserResult resultWithModule:module];
+    }
+    
+}
+
+- (void)parser:(PKParser*)parser didMatchIdent:(PKAssembly*)a {
+    PKToken* token = [a pop];
+    NSLog(@"got token %@", token);
+    [a push:token];
 }
 
 #pragma mark Module
@@ -363,10 +377,18 @@
 
 - (void)parser:(PKParser*)parser didMatchExpNum:(PKAssembly*)a {
     PKToken* number = [a pop];
-    BGNExpNumber* result = [[BGNExpNumber alloc] init];
-    result.isFloat = YES;
-    result.value = [NSNumber numberWithFloat:number.floatValue];
-    [a push:result];
+    if([number.stringValue rangeOfString:@"."].location == NSNotFound) {
+        BGNExpNumber* result = [[BGNExpNumber alloc] init];
+        result.isFloat = NO;
+        result.value = [NSNumber numberWithFloat:number.stringValue.integerValue];
+        [a push:result];
+    }
+    else {
+        BGNExpNumber* result = [[BGNExpNumber alloc] init];
+        result.isFloat = YES;
+        result.value = [NSNumber numberWithFloat:number.floatValue];
+        [a push:result];
+    }
 }
 
 - (void)parser:(PKParser*)parser didMatchExpString:(PKAssembly*)a {

@@ -1,10 +1,7 @@
-open Iteration
-open Geometry
+let y = 2 < 3
 
-let z = {foo = {baz = 10}, bar = 2}
-let x = Point {x = z, y = 100}
-
-case x
-	| Foo =>
-	| Bar =>
-end
+let x =
+	case y
+	| True => 2
+	| False => 3
+	end

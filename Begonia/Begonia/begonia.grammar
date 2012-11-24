@@ -1,9 +1,9 @@
 @start = module;
-@symbols = '=' 'import' 'open' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' 'if' 'then' 'else' '->';
+@symbols = '=' 'import' 'open' 'type' 'external' 'local' 'let' '#' ':' '(' ')' '<=' '{' '}' ',' 'fun' ',' 'if' 'then' 'else' '->' 'case' 'end' '=>';
 @allowsHexadecimalNotation = YES;
 @allowsFloatingPoint = YES;
 
-ident = /[A-Za-z][A-Za-z0-9_]*/ - ('import' | 'open' | 'type' | 'external' | 'local' | 'let' | 'fun' | 'if' | 'then' | 'else') ;
+ident = /[A-Za-z][A-Za-z0-9_]*/ - ('import' | 'open' | 'type' | 'external' | 'local' | 'let' | 'fun' | 'if' | 'then' | 'else' | 'case' | 'end') ;
 opSymbol = (/[-+*$<>^&%]/ | '/' | '<=' | '>=' )+;
 
 scope = 'local' | 'let';
@@ -16,10 +16,10 @@ import = 'open' ident eols;
 
 topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding | topDeclTypeBinding | topDeclExp)*;
 
-topDeclTypeBinding = 'type'! ident '='! datatypeArms eols!;
-topDeclExternalType = 'external'! 'type'! ident eols!;
-topDeclValBinding = scope ident '=' exp eols!;
-topDeclFunBinding = scope ident bindingArguments '=' exp eols!;
+topDeclTypeBinding = 'type'! ident '='! eol* datatypeArms eols;
+topDeclExternalType = 'external'! 'type'! ident eols;
+topDeclValBinding = scope ident '=' eol* exp eols;
+topDeclFunBinding = scope ident bindingArguments '=' eol* exp eols;
 topDeclExp = exp eols!;
 
 datatypeArms = datatypeArm (eol* '|'! eol* datatypeArm)*;
@@ -55,15 +55,15 @@ expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
 expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
 expIf  = 'if' eol* exp eol* 'then' eol* exp eol* 'else' exp eol*;
-expCase = 'case' exp caseClause+ 'end';
-caseClause = '|' pattern '=>' exp;
+expCase = 'case' exp eol* caseClause+ 'end';
+caseClause = '|' pattern '=>' exp eol*;
 
 pattern = patInt | patBool | patVar | patString | patDatatype | patRecord | '(' pattern ')';
 patInt = Number;
 patBool = 'True' | 'False';
 patVar = ident;
 patString = QuotedString;
-patDatatype = ident pat;
+patDatatype = ident pattern;
 patRecord = '{'! eol* patRecordFieldsOpt eol* '}'!;
 patRecordFieldsOpt = patRecordFields | nullOpt;
 patRecordFields = patRecordField (recordBreak! patRecordField*);
