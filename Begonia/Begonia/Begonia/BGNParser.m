@@ -724,7 +724,7 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 
 - (void)parser:(PKParser*)parser didMatchPatRecordField:(PKAssembly*)a {
     id <BGNPattern> pat = [a pop];
-    NSString* name = [a pop];
+    NSString* name = [[a pop] stringValue];
     [a push: [BGNPatternRecordField makeThen:^(BGNPatternRecordField* field) {
         field.name = name;
         field.body = pat;

@@ -1,7 +1,8 @@
-let y = 2 < 3
+open Geometry
+
+let y = Point {x = 2, y = 4}
 
 let x =
 	case y
-	| True => 2
-	| False => 3
+	| Point {x = x, y = y} => x + y
 	end
