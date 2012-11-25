@@ -42,6 +42,12 @@
 
 @implementation BGNValueExternalObject
 
++ (BGNValueExternalObject*)externWithObject:(id)object {
+    BGNValueExternalObject* result = [[BGNValueExternalObject alloc] init];
+    result.object = object;
+    return result;
+}
+
 - (NSString*)description {
     return [self.object description];
 }

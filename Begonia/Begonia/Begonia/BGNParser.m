@@ -117,7 +117,7 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
     BGNModule* module = [moduleParser parse:processedString];
     
     if(module == nil) {
-        return [BGNParserResult resultWithError:[NSError errorWithDomain:BGNParserErrorDomain code:-1 userInfo:@{@"Error" : @"Couldn't complete parse"} ]];
+        return [BGNParserResult resultWithError:[NSError errorWithDomain:BGNParserErrorDomain code:-1 userInfo:@{@"Error" : @"Couldn't complete parse", @"Name" : sourceName} ]];
     }
     else {
         return [BGNParserResult resultWithModule:module];

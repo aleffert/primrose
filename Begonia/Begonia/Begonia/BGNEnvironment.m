@@ -41,6 +41,12 @@
     return me;
 }
 
+- (BOOL)hasImportNamed:(NSString*)name {
+    return [self.importedModules indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [[obj name] isEqualToString:name];
+    }] != NSNotFound;
+}
+
 @end
 
 @interface BGNEnvironment ()
@@ -102,7 +108,7 @@
         }
     }
     else {
-        NSAssert([self.currentModule.openModules containsObject:moduleName] || self.currentModule == nil, @"No module named, %@", moduleName);
+        NSAssert([self.currentModule hasImportNamed:moduleName] || self.currentModule == nil, @"No module named, %@", moduleName);
         BGNModuleEnvironment* me = self.loadedModules[moduleName];
         NSAssert(me != nil, @"Couldn't lookup module named %@", moduleName);
         

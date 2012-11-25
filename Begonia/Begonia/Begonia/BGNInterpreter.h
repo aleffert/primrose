@@ -18,5 +18,6 @@ typedef void (^StringBlock)(NSString* error);
 @property (copy, nonatomic) StringBlock errorHandler;
 
 - (void)interpretFile:(NSString*)path;
+- (id)objectNamed:(NSString*)name;
 
 @end

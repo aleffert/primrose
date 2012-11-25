@@ -1,8 +1,3 @@
-open Geometry
+import Path
 
-let y = Point {x = 2, y = 4}
-
-let x =
-	case y
-	| Point {x = x, y = y} => x + y
-	end
+let x = Path.make {}

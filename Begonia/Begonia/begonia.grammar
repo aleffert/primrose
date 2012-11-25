@@ -11,8 +11,7 @@ scope = 'local' | 'let';
 module = imports topDecls;
 
 imports = import*;
-import = 'import' ident eols;
-import = 'open' ident eols;
+import = ('import' | 'open') ident eols;
 
 topDecls = (topDeclExternalType | topDeclValBinding | topDeclFunBinding | topDeclTypeBinding | topDeclExp)*;
 

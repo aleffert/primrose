@@ -8,6 +8,7 @@
 
 #import "BGNInterpreter.h"
 
+#import "BGNCocoaRouter.h"
 #import "BGNExpVisitor.h"
 #import "BGNEnvironment.h"
 #import "BGNLang.h"
@@ -44,7 +45,15 @@
 - (void)interpretFile:(NSString*)path {
     NSString* name = path.lastPathComponent.stringByDeletingPathExtension.capitalizedString;
     [self.moduleManager loadModuleNamed:name atPath:path];
-    NSLog(@"the value of x is %@", [self.environment valueNamed:@"x" inModule:@"Test"]);
+//    NSLog(@"the value of x is %@", [self.environment valueNamed:@"x" inModule:@"Test"]);
+}
+
+- (id)objectNamed:(NSString*)name {
+    id <BGNValue> value = [self.environment valueNamed:@"x" inModule:@"Test"];
+    if([value isKindOfClass:[BGNValueExternalObject class]]) {
+        return ((BGNValueExternalObject*)value).object;
+    }
+    return nil;
 }
 
 - (id <BGNValue>)unitValue {
@@ -150,7 +159,7 @@
 
 - (id <BGNValue>)callExternalMethodNamed:(NSString*)name onObject:(id)object args:(NSArray*)arguments {
     SEL selector = NSSelectorFromString(name);
-    NSMethodSignature* signature = [self methodSignatureForSelector:selector];
+    NSMethodSignature* signature = [object methodSignatureForSelector:selector];
     NSAssert(signature != nil, @"DynamicError: Couldn't find selector %@ on %@", name, object);
     NSAssert(signature.numberOfArguments == arguments.count + 2, @"FFIError: Selector %@ argumentCount didn't match arguments %@", name, arguments);
     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
@@ -230,10 +239,10 @@
     }
     [invocation invoke];
     const char* returnType = signature.methodReturnType;
-    if(strcmp(returnType, @encode(void))) {
+    if(!strcmp(returnType, @encode(void))) {
         return [self unitValue];
     }
-    else if(strcmp(returnType, @encode(id))) {
+    else if(!strcmp(returnType, @encode(id)) || !strcmp(returnType, @encode(Class))) {
         id result = nil;
         [invocation getReturnValue:&result];
         if([result isKindOfClass:[NSString class]]) {
@@ -242,26 +251,24 @@
             }];
         }
         else {
-            return [BGNValueExternalObject makeThen:^(BGNValueExternalObject* o) {
-                o.value = result;
-            }];
+            return [BGNValueExternalObject externWithObject:result];
         }
     }
-    else if(strcmp(returnType, @encode(CGFloat))) {
+    else if(!strcmp(returnType, @encode(CGFloat))) {
         CGFloat v = 0;
         [invocation getReturnValue:&v];
         return [BGNValueFloat makeThen:^(BGNValueFloat* f){
             f.value = v;
         }];
     }
-    else if(strcmp(returnType, @encode(NSInteger)) || strcmp(returnType, @encode(NSUInteger))) {
+    else if(!strcmp(returnType, @encode(NSInteger)) || !strcmp(returnType, @encode(NSUInteger))) {
         NSUInteger r = 0;
         [invocation getReturnValue:&r];
         return [BGNValueFloat makeThen:^(BGNValueInt* i){
             i.value = r;
         }];
     }
-    else if(strcmp(returnType, @encode(CGPoint))) {
+    else if(!strcmp(returnType, @encode(CGPoint))) {
         CGPoint result = CGPointZero;
         [invocation getReturnValue:&result];
         return [BGNValueRecord makeThen:^(BGNValueRecord* r){
@@ -279,7 +286,7 @@
             ];
         }];
     }
-    else if(strcmp(returnType, @encode(CGRect))) {
+    else if(!strcmp(returnType, @encode(CGRect))) {
         CGRect result = CGRectZero;
         [invocation getReturnValue:&result];
         return [BGNValueRecord makeThen:^(BGNValueRecord* r){
@@ -426,10 +433,12 @@
     };
     visitor.recordBlock = ^(BGNExpRecord* record) {
         return [BGNValueRecord makeThen:^(BGNValueRecord* r){
+            __block BGNEnvironment* e = env;
             r.fields = [record.fields map:^(BGNExpRecordField* field) {
                 return [BGNValueRecordField makeThen:^(BGNValueRecordField* resultField) {
                     resultField.name = field.name;
-                    resultField.value = [self evaluateExp:field.body inEnvironment:env];
+                    resultField.value = [self evaluateExp:field.body inEnvironment:e];
+                    e = [e bindExpVar:resultField.name withValue:resultField.value];
                 }];
             }];
         }];
@@ -462,7 +471,7 @@
         // 3. external object
         else if([body isKindOfClass:[BGNValueExternalObject class]]) {
             BGNValueExternalObject* object = (BGNValueExternalObject*)body;
-            return [self callExternalMethodNamed:proj.proj onObject:object args:@[]];
+            return [self callExternalMethodNamed:proj.proj onObject:object.object args:@[]];
         }
         else {
             NSAssert(NO, @"StaticError: Projection '%@' from unexpected value type %@", proj.proj, body);
@@ -582,6 +591,11 @@
         for(id <BGNTopLevelDeclaration> decl in module.declarations) {
             env = [self evaluateDeclaration:decl inEnvironment:env];
         }
+        
+        if([name isEqualToString:@"Cocoa"]) {
+            env = [env bindExpVar:@"classNamed" withValue:[BGNValueExternalObject externWithObject:[[BGNCocoaRouter router] classNamed]]];
+        }
+        
         return env;
     }];
 }

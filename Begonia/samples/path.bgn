@@ -2,13 +2,13 @@ import Cocoa
 
 external type Path
 
-local NSBezierPath = Cocoa.class.NSBezierPath : CocoaClass
+local nsBezierPath = Cocoa.classNamed.NSBezierPath : CocoaClass
 
 let make {} = {
-	path = NSBezierPath.bezierPath : Path
+	path = nsBezierPath.bezierPath : Path
 	addLine {to : Point} = path {addLineToPoint = to} : {}
 	move {to : Point} = path {moveToPoint = to} : {}
-	close = path.close : {}
+	close {} = path.closePath : {}
 }
 
-
+let x = make {}

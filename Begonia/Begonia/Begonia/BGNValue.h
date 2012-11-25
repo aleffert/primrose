@@ -36,6 +36,7 @@
 @interface BGNValueExternalObject : NSObject <BGNValue>
 
 @property (strong, nonatomic) id object;
++ (BGNValueExternalObject*)externWithObject:(id)object;
 
 @end
 
