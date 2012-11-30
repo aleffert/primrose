@@ -1,6 +1,6 @@
-import Color
-import Path
-import Font
+open Color
+open Path
+open Font
 
 type Layer = ShapeLayer {
 	stroke : Color
@@ -10,4 +10,6 @@ type Layer = ShapeLayer {
 }
 | TextLayer {
 	font : Font
+	text : String
+	textColor : Color
 }

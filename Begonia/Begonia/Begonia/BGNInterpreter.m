@@ -48,6 +48,16 @@
 //    NSLog(@"the value of x is %@", [self.environment valueNamed:@"x" inModule:@"Test"]);
 }
 
+- (void)exportModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings {
+    self.environment = [self.environment scopeModuleNamed:name inBody:^BGNEnvironment *(BGNEnvironment *env) {
+        __block BGNEnvironment* result = env;
+        [bindings enumerateKeysAndObjectsUsingBlock:^(NSString* key, id obj, BOOL *stop) {
+            result = [env bindExpVar:key withValue:[self valueForCocoaObject:obj]];
+        }];
+        return result;
+    }];
+}
+
 - (id)objectNamed:(NSString*)name {
     id <BGNValue> value = [self.environment valueNamed:@"x" inModule:@"Test"];
     if([value isKindOfClass:[BGNValueExternalObject class]]) {
@@ -157,6 +167,18 @@
     return [pattern acceptVisitor:visitor];
 }
 
+- (id <BGNValue>)valueForCocoaObject:(id)object {
+    
+    if([object isKindOfClass:[NSString class]]) {
+        return [BGNValueString makeThen:^(BGNValueString* s) {
+            s.value = object;
+        }];
+    }
+    else {
+        return [BGNValueExternalObject externWithObject:object];
+    }
+}
+
 - (id <BGNValue>)callExternalMethodNamed:(NSString*)name onObject:(id)object args:(NSArray*)arguments {
     SEL selector = NSSelectorFromString(name);
     NSMethodSignature* signature = [object methodSignatureForSelector:selector];
@@ -245,14 +267,7 @@
     else if(!strcmp(returnType, @encode(id)) || !strcmp(returnType, @encode(Class))) {
         id result = nil;
         [invocation getReturnValue:&result];
-        if([result isKindOfClass:[NSString class]]) {
-            return [BGNValueString makeThen:^(BGNValueString* s) {
-                s.value = result;
-            }];
-        }
-        else {
-            return [BGNValueExternalObject externWithObject:result];
-        }
+        return [self valueForCocoaObject:result];
     }
     else if(!strcmp(returnType, @encode(CGFloat))) {
         CGFloat v = 0;
