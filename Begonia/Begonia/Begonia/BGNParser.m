@@ -543,11 +543,14 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 #pragma mark Statements
 
 - (void)parser:(PKParser*)parser didMatchExpStmt:(PKAssembly*)a {
+    id <BGNExpression> lastExp = [a pop];
     NSArray* stmts = [a popWhileMatching:^(id object) {
         return [object conformsToProtocol:@protocol(BGNStatement)];
     }];
     BGNExpStmts* exp = [[BGNExpStmts alloc] init];
-    exp.statements = stmts;
+    exp.statements = [stmts arrayByAddingObject:[BGNStmtExp makeThen:^(BGNStmtExp* o) {
+        o.exp = lastExp;
+    }]];
     [a push:exp];
 }
 

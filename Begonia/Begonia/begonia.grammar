@@ -39,20 +39,21 @@ recordBreak = (','! eol*) | eols;
 defaultValueOpt = nullOpt | ('='! exp);
 nullOpt = Empty;
 
-exp = path+ checkOpt;
+exp = path* fullExp checkOpt;
 checkOpt = nullOpt | (':'! type);
+fullExp = expLambda | expIf | path;
 
 pathItem = ident;
 projections = ('.'! pathItem)* ;
 
 path = atom projections;
 
-atom = expNum | expString | expVar | expRecord | expLambda | expStmt | expIf | expCase | '('! exp ')'!;
+atom = expNum | expString | expVar | expRecord | expStmt | expCase;
 expNum = Number;
 expString = QuotedString;
 expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
-expStmt = '{'! ';'! eol* (stmt stmtBreak!)* eol* ';'! '}'! ;
+expStmt = '('! eol* (stmt stmtBreak!)* exp eol* ')'! ;
 expIf  = 'if' eol* exp eol* 'then' eol* exp eol* 'else' exp eol*;
 expCase = 'case' exp eol* caseClause+ 'end';
 caseClause = '|' pattern '=>' exp eol*;
