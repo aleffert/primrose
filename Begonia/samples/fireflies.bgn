@@ -2,7 +2,7 @@ import Cocoa
 import Path
 import Layer
 
-let fullCloudPath = {;
+let fullCloudPath = (
 	let margin = 10.0
 	let width = 1024.0
 	let minY = -margin
@@ -17,7 +17,7 @@ let fullCloudPath = {;
 	path.addLine{to = pt minX minY}
 	path.addLine{to = pt minX minY}
 	path.addLine{to = pt maxX maxY}
-	for {from = 0, to = bumpCount} fun (i : Int) = {;
+	for {from = 0, to = bumpCount} fun (i : Int) = (
 		let farX = maxX - (ff i) * bumpWidth
 		let nearX = farX - bumpWidth
 		path.addCurve {
@@ -30,9 +30,9 @@ let fullCloudPath = {;
 			control1 = pt nearX + bumpWidth / 2 $ maxY + bumpHeight
 			control2 = pt nearX $ maxY + bumpHeight
 		}
-	;}
+	)
 	path.close {}
-;}
+)
 
 local clouds {} = ShapeLayer {
 	stroke = Color.wa {white = .1, alpha = .1}
@@ -44,7 +44,7 @@ local clouds {} = ShapeLayer {
 local rainText {} = TextLayer {
 	font = Font.default {size = 40}
 	string = "It was a rainy day."
-	foregroundColor = Color.white
+	textColor = Color.white
 }
 
 let setup {} = {;

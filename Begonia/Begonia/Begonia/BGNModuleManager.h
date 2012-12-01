@@ -11,9 +11,17 @@
 @protocol BGNModuleManagerDelegate;
 @class BGNModule;
 
-@interface BGNModuleManager : NSObject
+@protocol BGNModuleLoader
 
+@property (copy, nonatomic) NSArray* searchPaths;
 - (void)loadModuleNamed:(NSString*)name atPath:(NSString*)path;
+- (void)loadModuleNamed:(NSString*)module;
+- (void)setContent:(NSString*)text ofModuleNamed:(NSString*)module;
+
+@end
+
+@interface BGNModuleManager : NSObject <BGNModuleLoader>
+
 
 @property (weak, nonatomic) id <BGNModuleManagerDelegate> delegate;
 

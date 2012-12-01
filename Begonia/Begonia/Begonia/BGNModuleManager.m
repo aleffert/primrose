@@ -42,10 +42,13 @@
 @interface BGNModuleManager ()
 
 @property (retain, nonatomic) NSMutableDictionary* modules; // NSString -> BGNLoadedModule
+@property (retain, nonatomic) NSMutableDictionary* contentOverrides; // NSString -> NSString
 
 @end
 
 @implementation BGNModuleManager
+
+@synthesize searchPaths = _searchPaths;
 
 - (id)init {
     if((self = [super init])) {
@@ -56,13 +59,47 @@
 }
 
 - (NSDate*)modificationDateForPath:(NSString*)path {
-    NSDictionary* attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
-    NSDate* modificationDate = attributes[NSFileModificationDate];
-    return modificationDate;
+    if(path == nil) {
+        // TODO restore the saved modification date here
+        return [NSDate distantPast];
+    }
+    else {
+        NSDictionary* attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+        NSDate* modificationDate = attributes[NSFileModificationDate];
+        return modificationDate;
+    }
 }
 
 - (NSString*)pathForModuleNamed:(NSString*)name basedAt:(NSString*)base {
-    return [NSString stringWithFormat:@"%@/%@.bgn", base, name.lowercaseString];
+    
+    if(base != nil) {
+        NSString* path = [NSString stringWithFormat:@"%@/%@.bgn", base, name.lowercaseString];
+        if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            return path;
+        }
+    }
+    
+    for(NSString* searchBase in self.searchPaths) {
+        NSString* path = [NSString stringWithFormat:@"%@/%@.bgn", searchBase, name.lowercaseString];
+        if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            return path;
+        }
+    }
+    return nil;
+}
+
+- (NSString*)contentOfModuleNamed:(NSString*)moduleName atPath:(NSString*)path {
+    NSString* override = self.contentOverrides[moduleName];
+    if(override != nil) {
+        return override;
+    }
+    else {
+        NSError* error = nil;
+        NSString* result = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        
+        NSAssert(NO, @"Couldn't find content of module %@ at %@: %@", moduleName, path, error);
+        return result;
+    }
 }
 
 // Also parses and caches these modules
@@ -84,7 +121,8 @@
         }
         
         BGNParser* parser = [[BGNParser alloc] init];
-        id <BGNParserResult> result = [parser parseFile:description.path];
+        NSString* content = [self contentOfModuleNamed:description.name atPath:description.path];
+        id <BGNParserResult> result = [parser parseString:content sourceName:description.name];
         [result caseModule:^(BGNModule* module) {
             [self.modules setObject:[BGNLoadedModule makeThen:^(BGNLoadedModule* md) {
                 md.description = description;
@@ -120,6 +158,10 @@
 
 }
 
+- (void)loadModuleNamed:(NSString *)module {
+    [self loadModuleNamed:module atPath:nil];
+}
+
 - (void)loadModuleNamed:(NSString*)name atPath:(NSString*)path {
     NSArray* updatedModules = [self recursiveDependenciesOfModuleNamed:name atPath:path];
     NSMutableArray* updatedModuleNames = [updatedModules map:^(BGNModuleDescription* md) {
@@ -150,6 +192,11 @@
     
     NSLog(@"loaded %@", self.modules.allKeys);
 
+}
+
+- (void)setContent:(NSString *)text ofModuleNamed:(NSString *)module {
+    // TODO save current date as the modification date
+    self.contentOverrides[module] = text;
 }
 
 @end

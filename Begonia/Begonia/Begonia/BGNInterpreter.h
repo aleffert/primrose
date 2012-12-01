@@ -16,8 +16,9 @@ typedef void (^StringBlock)(NSString* error);
 
 @property (retain, nonatomic) CALayer* display;
 @property (copy, nonatomic) StringBlock errorHandler;
+@property (readonly, nonatomic) id <BGNModuleLoader> moduleLoader;
 
-- (void)exportModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings;
+- (void)importModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings;
 - (void)interpretFile:(NSString*)path;
 - (id)objectNamed:(NSString*)name;
 

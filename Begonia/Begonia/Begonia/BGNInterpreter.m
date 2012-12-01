@@ -42,13 +42,17 @@
     return self;
 }
 
+- (id <BGNModuleLoader>)moduleLoader {
+    return self.moduleManager;
+}
+
 - (void)interpretFile:(NSString*)path {
     NSString* name = path.lastPathComponent.stringByDeletingPathExtension.capitalizedString;
     [self.moduleManager loadModuleNamed:name atPath:path];
 //    NSLog(@"the value of x is %@", [self.environment valueNamed:@"x" inModule:@"Test"]);
 }
 
-- (void)exportModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings {
+- (void)importModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings {
     self.environment = [self.environment scopeModuleNamed:name inBody:^BGNEnvironment *(BGNEnvironment *env) {
         __block BGNEnvironment* result = env;
         [bindings enumerateKeysAndObjectsUsingBlock:^(NSString* key, id obj, BOOL *stop) {
