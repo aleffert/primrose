@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7705AAF21669BB1400ACF87A /* BGNServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705AAF11669BB1400ACF87A /* BGNServer.m */; };
 		773EC344160EAE8D00DF8624 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EC343160EAE8D00DF8624 /* Cocoa.framework */; };
 		773EC34E160EAE8D00DF8624 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EC34C160EAE8D00DF8624 /* InfoPlist.strings */; };
 		773EC350160EAE8D00DF8624 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EC34F160EAE8D00DF8624 /* main.m */; };
@@ -43,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7705AAF01669BB1400ACF87A /* BGNServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNServer.h; sourceTree = "<group>"; };
+		7705AAF11669BB1400ACF87A /* BGNServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNServer.m; sourceTree = "<group>"; };
 		773EC33F160EAE8D00DF8624 /* Begonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Begonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		773EC343160EAE8D00DF8624 /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		773EC346160EAE8D00DF8624 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7705AAF41669BB1800ACF87A /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				7705AAF01669BB1400ACF87A /* BGNServer.h */,
+				7705AAF11669BB1400ACF87A /* BGNServer.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
 		773EC334160EAE8D00DF8624 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +181,7 @@
 				77BF378816334A20006B5EF4 /* Foundation Additions */,
 				773EC369160EBA6400DF8624 /* ADLViewerWindowController.h */,
 				773EC36A160EBA6400DF8624 /* ADLViewerWindowController.m */,
+				7705AAF41669BB1800ACF87A /* Server */,
 				773EC392160F542000DF8624 /* Lang */,
 				773EC355160EAE8D00DF8624 /* ADLAppDelegate.h */,
 				773EC356160EAE8D00DF8624 /* ADLAppDelegate.m */,
@@ -359,6 +372,7 @@
 				77D4EA01165DCE6800CA3C65 /* BGNPrelude.m in Sources */,
 				77CA9783166006C5007B7F62 /* BGNPatternVisitor.m in Sources */,
 				77CA978E1662BFB3007B7F62 /* BGNCocoaRouter.m in Sources */,
+				7705AAF21669BB1400ACF87A /* BGNServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
