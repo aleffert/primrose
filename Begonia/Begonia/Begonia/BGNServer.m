@@ -9,6 +9,7 @@
 #import "BGNServer.h"
 
 #import "BGNInterpreter.h"
+#import "HTTPServer.h"
 
 @interface BGNServer ()
 
@@ -26,6 +27,7 @@
 }
 
 - (void)startServerAtPoint:(NSUInteger)port {
+    HTTPS
 }
 
 - (void)stopServer {
