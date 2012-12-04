@@ -270,8 +270,9 @@
         return [self unitValue];
     }
     else if(!strcmp(returnType, @encode(id)) || !strcmp(returnType, @encode(Class))) {
-        id result = nil;
+        __unsafe_unretained id result = nil;
         [invocation getReturnValue:&result];
+        
         return [self valueForCocoaObject:result];
     }
     else if(!strcmp(returnType, @encode(CGFloat))) {

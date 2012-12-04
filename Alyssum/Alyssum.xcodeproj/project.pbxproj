@@ -13,6 +13,7 @@
 		77858629166DA5F2008BE2C1 /* libBegonia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77858622166D982D008BE2C1 /* libBegonia.a */; };
 		77AFB786166DAA56001C4EE5 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFB785166DAA56001C4EE5 /* libicucore.dylib */; };
 		77AFB788166DACF1001C4EE5 /* begonia.grammar in Resources */ = {isa = PBXBuildFile; fileRef = 77AFB787166DACF1001C4EE5 /* begonia.grammar */; };
+		77AFB78B166DC9E7001C4EE5 /* ADLDebugPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AFB78A166DC9E7001C4EE5 /* ADLDebugPath.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		77D4F78C15FD834D00A58CA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D4F78B15FD834D00A58CA7 /* UIKit.framework */; };
 		77D4F78E15FD834D00A58CA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D4F78D15FD834D00A58CA7 /* Foundation.framework */; };
 		77D4F79015FD834D00A58CA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D4F78F15FD834D00A58CA7 /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		77858627166DA5C6008BE2C1 /* Script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Script; path = Alyssum/Script; sourceTree = "<group>"; };
 		77AFB785166DAA56001C4EE5 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		77AFB787166DACF1001C4EE5 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = begonia.grammar; path = ../../Begonia/Begonia/begonia.grammar; sourceTree = "<group>"; };
+		77AFB789166DC9E7001C4EE5 /* ADLDebugPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLDebugPath.h; sourceTree = "<group>"; };
+		77AFB78A166DC9E7001C4EE5 /* ADLDebugPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLDebugPath.m; sourceTree = "<group>"; };
 		77D4F78715FD834D00A58CA7 /* Alyssum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alyssum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77D4F78B15FD834D00A58CA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77D4F78D15FD834D00A58CA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 			children = (
 				77D4F79C15FD834D00A58CA7 /* ADLAppDelegate.h */,
 				77D4F79D15FD834D00A58CA7 /* ADLAppDelegate.m */,
+				77AFB789166DC9E7001C4EE5 /* ADLDebugPath.h */,
+				77AFB78A166DC9E7001C4EE5 /* ADLDebugPath.m */,
 				77D4F79F15FD834D00A58CA7 /* Alyssum.xcdatamodeld */,
 				77AFB787166DACF1001C4EE5 /* begonia.grammar */,
 				77D4F79415FD834D00A58CA7 /* Supporting Files */,
@@ -249,6 +254,7 @@
 				77D4F79E15FD834D00A58CA7 /* ADLAppDelegate.m in Sources */,
 				77D4F7A115FD834D00A58CA7 /* Alyssum.xcdatamodeld in Sources */,
 				77D4F7AA15FD860300A58CA7 /* ADLFireflyViewController.m in Sources */,
+				77AFB78B166DC9E7001C4EE5 /* ADLDebugPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
