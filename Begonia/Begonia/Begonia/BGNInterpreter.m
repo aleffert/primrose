@@ -254,7 +254,7 @@
                 [invocation setArgument:&string atIndex:i];
             }
             else if([value isKindOfClass:[BGNValueExternalObject class]]) {
-                id object = ((BGNValueExternalObject*)value).value;
+                id object = ((BGNValueExternalObject*)value).object;
                 [invocation setArgument:&object atIndex:i];
             }
             else {

@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 Akiva Leffert. All rights reserved.
 //
 
-#import "ParseKit.h"
+
+#import <ParseKit/ParseKit.h>
 
 @interface BGNEndOfLineTokenizerState : PKTokenizerState
 

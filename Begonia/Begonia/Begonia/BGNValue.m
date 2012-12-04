@@ -11,7 +11,7 @@
 @implementation BGNValueInt
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"%ld", self.value];
+    return [NSString stringWithFormat:@"%ld", (long)self.value];
 }
 
 @end

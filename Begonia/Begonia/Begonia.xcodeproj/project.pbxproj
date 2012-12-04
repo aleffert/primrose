@@ -71,6 +71,122 @@
 		773EC3EC1620B18700DF8624 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = begonia.grammar; sourceTree = SOURCE_ROOT; };
 		77AF959B166C5B70002CDE61 /* libBegonia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBegonia.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AF959C166C5B70002CDE61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		77AF99BE166D94C5002CDE61 /* NSArray+ParseKitAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NSArray+ParseKitAdditions.h"; sourceTree = "<group>"; };
+		77AF99BF166D94C5002CDE61 /* NSArray+ParseKitAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NSArray+ParseKitAdditions.m"; sourceTree = "<group>"; };
+		77AF99C0166D94C5002CDE61 /* NSString+ParseKitAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NSString+ParseKitAdditions.h"; sourceTree = "<group>"; };
+		77AF99C1166D94C5002CDE61 /* NSString+ParseKitAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NSString+ParseKitAdditions.m"; sourceTree = "<group>"; };
+		77AF99C2166D94C5002CDE61 /* PKAlternation.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKAlternation.m; sourceTree = "<group>"; };
+		77AF99C3166D94C5002CDE61 /* PKAny.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKAny.m; sourceTree = "<group>"; };
+		77AF99C4166D94C5002CDE61 /* PKAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKAssembly.m; sourceTree = "<group>"; };
+		77AF99C5166D94C5002CDE61 /* PKCaseInsensitiveLiteral.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKCaseInsensitiveLiteral.m; sourceTree = "<group>"; };
+		77AF99C6166D94C5002CDE61 /* PKChar.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKChar.m; sourceTree = "<group>"; };
+		77AF99C7166D94C5002CDE61 /* PKCharacterAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKCharacterAssembly.m; sourceTree = "<group>"; };
+		77AF99C8166D94C5002CDE61 /* PKCollectionParser.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKCollectionParser.m; sourceTree = "<group>"; };
+		77AF99C9166D94C5002CDE61 /* PKComment.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKComment.m; sourceTree = "<group>"; };
+		77AF99CA166D94C5002CDE61 /* PKCommentState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKCommentState.m; sourceTree = "<group>"; };
+		77AF99CB166D94C5002CDE61 /* PKDelimitedString.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKDelimitedString.m; sourceTree = "<group>"; };
+		77AF99CC166D94C5002CDE61 /* PKDelimitState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKDelimitState.m; sourceTree = "<group>"; };
+		77AF99CD166D94C5002CDE61 /* PKDifference.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKDifference.m; sourceTree = "<group>"; };
+		77AF99CE166D94C5002CDE61 /* PKDigit.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKDigit.m; sourceTree = "<group>"; };
+		77AF99CF166D94C5002CDE61 /* PKEmailState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKEmailState.m; sourceTree = "<group>"; };
+		77AF99D0166D94C5002CDE61 /* PKEmpty.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKEmpty.m; sourceTree = "<group>"; };
+		77AF99D1166D94C5002CDE61 /* PKGrammarParser.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKGrammarParser.h; sourceTree = "<group>"; };
+		77AF99D2166D94C5002CDE61 /* PKGrammarParser.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKGrammarParser.m; sourceTree = "<group>"; };
+		77AF99D3166D94C5002CDE61 /* PKHashtagState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKHashtagState.m; sourceTree = "<group>"; };
+		77AF99D4166D94C5002CDE61 /* PKIntersection.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKIntersection.m; sourceTree = "<group>"; };
+		77AF99D5166D94C5002CDE61 /* PKLetter.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKLetter.m; sourceTree = "<group>"; };
+		77AF99D6166D94C5002CDE61 /* PKLiteral.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKLiteral.m; sourceTree = "<group>"; };
+		77AF99D7166D94C5002CDE61 /* PKLowercaseWord.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKLowercaseWord.m; sourceTree = "<group>"; };
+		77AF99D8166D94C5002CDE61 /* PKMultiLineCommentState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKMultiLineCommentState.m; sourceTree = "<group>"; };
+		77AF99D9166D94C5002CDE61 /* PKNegation.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKNegation.m; sourceTree = "<group>"; };
+		77AF99DA166D94C5002CDE61 /* PKNumber.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKNumber.m; sourceTree = "<group>"; };
+		77AF99DB166D94C5002CDE61 /* PKNumberState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKNumberState.m; sourceTree = "<group>"; };
+		77AF99DC166D94C5002CDE61 /* PKParser.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKParser.m; sourceTree = "<group>"; };
+		77AF99DD166D94C5002CDE61 /* PKParserFactory.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKParserFactory.m; sourceTree = "<group>"; };
+		77AF99DE166D94C5002CDE61 /* PKPattern.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKPattern.m; sourceTree = "<group>"; };
+		77AF99DF166D94C5002CDE61 /* PKQuotedString.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKQuotedString.m; sourceTree = "<group>"; };
+		77AF99E0166D94C5002CDE61 /* PKQuoteState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKQuoteState.m; sourceTree = "<group>"; };
+		77AF99E1166D94C5002CDE61 /* PKReader.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKReader.m; sourceTree = "<group>"; };
+		77AF99E2166D94C5002CDE61 /* PKRepetition.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKRepetition.m; sourceTree = "<group>"; };
+		77AF99E3166D94C5002CDE61 /* PKSequence.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSequence.m; sourceTree = "<group>"; };
+		77AF99E4166D94C5002CDE61 /* PKSingleLineCommentState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSingleLineCommentState.m; sourceTree = "<group>"; };
+		77AF99E5166D94C5002CDE61 /* PKSpecificChar.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSpecificChar.m; sourceTree = "<group>"; };
+		77AF99E6166D94C5002CDE61 /* PKSymbol.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSymbol.m; sourceTree = "<group>"; };
+		77AF99E7166D94C5002CDE61 /* PKSymbolNode.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSymbolNode.m; sourceTree = "<group>"; };
+		77AF99E8166D94C5002CDE61 /* PKSymbolRootNode.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSymbolRootNode.m; sourceTree = "<group>"; };
+		77AF99E9166D94C5002CDE61 /* PKSymbolState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKSymbolState.m; sourceTree = "<group>"; };
+		77AF99EA166D94C5002CDE61 /* PKTerminal.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTerminal.m; sourceTree = "<group>"; };
+		77AF99EB166D94C5002CDE61 /* PKToken.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKToken.m; sourceTree = "<group>"; };
+		77AF99EC166D94C5002CDE61 /* PKTokenArraySource.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTokenArraySource.m; sourceTree = "<group>"; };
+		77AF99ED166D94C5002CDE61 /* PKTokenAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTokenAssembly.m; sourceTree = "<group>"; };
+		77AF99EE166D94C5002CDE61 /* PKTokenizer.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTokenizer.m; sourceTree = "<group>"; };
+		77AF99EF166D94C5002CDE61 /* PKTokenizerState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTokenizerState.m; sourceTree = "<group>"; };
+		77AF99F0166D94C5002CDE61 /* PKTrack.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTrack.m; sourceTree = "<group>"; };
+		77AF99F1166D94C5002CDE61 /* PKTrackException.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTrackException.m; sourceTree = "<group>"; };
+		77AF99F2166D94C5002CDE61 /* PKTwitterState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKTwitterState.m; sourceTree = "<group>"; };
+		77AF99F3166D94C5002CDE61 /* PKUppercaseWord.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKUppercaseWord.m; sourceTree = "<group>"; };
+		77AF99F4166D94C5002CDE61 /* PKURLState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKURLState.m; sourceTree = "<group>"; };
+		77AF99F5166D94C5002CDE61 /* PKWhitespace.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKWhitespace.m; sourceTree = "<group>"; };
+		77AF99F6166D94C5002CDE61 /* PKWhitespaceState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKWhitespaceState.m; sourceTree = "<group>"; };
+		77AF99F7166D94C5002CDE61 /* PKWord.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKWord.m; sourceTree = "<group>"; };
+		77AF99F8166D94C5002CDE61 /* PKWordState.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = PKWordState.m; sourceTree = "<group>"; };
+		77AF99F9166D94C5002CDE61 /* RegexKitLite.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegexKitLite.h; sourceTree = "<group>"; };
+		77AF99FA166D94C5002CDE61 /* RegexKitLite.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegexKitLite.m; sourceTree = "<group>"; };
+		77AF99FE166D956A002CDE61 /* ParseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseKit.h; sourceTree = "<group>"; };
+		77AF99FF166D956A002CDE61 /* PKAlternation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAlternation.h; sourceTree = "<group>"; };
+		77AF9A00166D956A002CDE61 /* PKAny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAny.h; sourceTree = "<group>"; };
+		77AF9A01166D956A002CDE61 /* PKAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAssembly.h; sourceTree = "<group>"; };
+		77AF9A02166D956A002CDE61 /* PKCaseInsensitiveLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCaseInsensitiveLiteral.h; sourceTree = "<group>"; };
+		77AF9A03166D956A002CDE61 /* PKChar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKChar.h; sourceTree = "<group>"; };
+		77AF9A04166D956A002CDE61 /* PKCharacterAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCharacterAssembly.h; sourceTree = "<group>"; };
+		77AF9A05166D956A002CDE61 /* PKCollectionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCollectionParser.h; sourceTree = "<group>"; };
+		77AF9A06166D956A002CDE61 /* PKComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKComment.h; sourceTree = "<group>"; };
+		77AF9A07166D956A002CDE61 /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCommentState.h; sourceTree = "<group>"; };
+		77AF9A08166D956A002CDE61 /* PKDelimitedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKDelimitedString.h; sourceTree = "<group>"; };
+		77AF9A09166D956A002CDE61 /* PKDelimitState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKDelimitState.h; sourceTree = "<group>"; };
+		77AF9A0A166D956A002CDE61 /* PKDifference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKDifference.h; sourceTree = "<group>"; };
+		77AF9A0B166D956A002CDE61 /* PKDigit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKDigit.h; sourceTree = "<group>"; };
+		77AF9A0C166D956A002CDE61 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKEmailState.h; sourceTree = "<group>"; };
+		77AF9A0D166D956A002CDE61 /* PKEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKEmpty.h; sourceTree = "<group>"; };
+		77AF9A0E166D956A002CDE61 /* PKHashtagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHashtagState.h; sourceTree = "<group>"; };
+		77AF9A0F166D956A002CDE61 /* PKIntersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKIntersection.h; sourceTree = "<group>"; };
+		77AF9A10166D956A002CDE61 /* PKLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLetter.h; sourceTree = "<group>"; };
+		77AF9A11166D956A002CDE61 /* PKLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLiteral.h; sourceTree = "<group>"; };
+		77AF9A12166D956A002CDE61 /* PKLowercaseWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLowercaseWord.h; sourceTree = "<group>"; };
+		77AF9A13166D956A002CDE61 /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKMultiLineCommentState.h; sourceTree = "<group>"; };
+		77AF9A14166D956A002CDE61 /* PKNegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKNegation.h; sourceTree = "<group>"; };
+		77AF9A15166D956A002CDE61 /* PKNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKNumber.h; sourceTree = "<group>"; };
+		77AF9A16166D956A002CDE61 /* PKNumberState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKNumberState.h; sourceTree = "<group>"; };
+		77AF9A17166D956A002CDE61 /* PKParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKParser.h; sourceTree = "<group>"; };
+		77AF9A18166D956A002CDE61 /* PKParserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKParserFactory.h; sourceTree = "<group>"; };
+		77AF9A19166D956A002CDE61 /* PKPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKPattern.h; sourceTree = "<group>"; };
+		77AF9A1A166D956A002CDE61 /* PKQuotedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKQuotedString.h; sourceTree = "<group>"; };
+		77AF9A1B166D956A002CDE61 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKQuoteState.h; sourceTree = "<group>"; };
+		77AF9A1C166D956A002CDE61 /* PKReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKReader.h; sourceTree = "<group>"; };
+		77AF9A1D166D956A002CDE61 /* PKRepetition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRepetition.h; sourceTree = "<group>"; };
+		77AF9A1E166D956A002CDE61 /* PKSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSequence.h; sourceTree = "<group>"; };
+		77AF9A1F166D956A002CDE61 /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSingleLineCommentState.h; sourceTree = "<group>"; };
+		77AF9A20166D956A002CDE61 /* PKSpecificChar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSpecificChar.h; sourceTree = "<group>"; };
+		77AF9A21166D956A002CDE61 /* PKSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSymbol.h; sourceTree = "<group>"; };
+		77AF9A22166D956A002CDE61 /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSymbolNode.h; sourceTree = "<group>"; };
+		77AF9A23166D956A002CDE61 /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSymbolRootNode.h; sourceTree = "<group>"; };
+		77AF9A24166D956A002CDE61 /* PKSymbolState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSymbolState.h; sourceTree = "<group>"; };
+		77AF9A25166D956A002CDE61 /* PKTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTerminal.h; sourceTree = "<group>"; };
+		77AF9A26166D956A002CDE61 /* PKToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKToken.h; sourceTree = "<group>"; };
+		77AF9A27166D956A002CDE61 /* PKTokenArraySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTokenArraySource.h; sourceTree = "<group>"; };
+		77AF9A28166D956A002CDE61 /* PKTokenAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTokenAssembly.h; sourceTree = "<group>"; };
+		77AF9A29166D956A002CDE61 /* PKTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTokenizer.h; sourceTree = "<group>"; };
+		77AF9A2A166D956A002CDE61 /* PKTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTokenizerState.h; sourceTree = "<group>"; };
+		77AF9A2B166D956A002CDE61 /* PKTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTrack.h; sourceTree = "<group>"; };
+		77AF9A2C166D956A002CDE61 /* PKTrackException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTrackException.h; sourceTree = "<group>"; };
+		77AF9A2D166D956A002CDE61 /* PKTwitterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTwitterState.h; sourceTree = "<group>"; };
+		77AF9A2E166D956A002CDE61 /* PKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTypes.h; sourceTree = "<group>"; };
+		77AF9A2F166D956A002CDE61 /* PKUppercaseWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKUppercaseWord.h; sourceTree = "<group>"; };
+		77AF9A30166D956A002CDE61 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKURLState.h; sourceTree = "<group>"; };
+		77AF9A31166D956A002CDE61 /* PKWhitespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWhitespace.h; sourceTree = "<group>"; };
+		77AF9A32166D956A002CDE61 /* PKWhitespaceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWhitespaceState.h; sourceTree = "<group>"; };
+		77AF9A33166D956A002CDE61 /* PKWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWord.h; sourceTree = "<group>"; };
+		77AF9A34166D956A002CDE61 /* PKWordState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWordState.h; sourceTree = "<group>"; };
 		77BF377E1633263A006B5EF4 /* NSObject+BGNConstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BGNConstruction.h"; sourceTree = "<group>"; };
 		77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BGNConstruction.m"; sourceTree = "<group>"; };
 		77BF378216332796006B5EF4 /* NSMutableArray+BGNStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+BGNStack.h"; sourceTree = "<group>"; };
@@ -125,6 +241,7 @@
 		773EC334160EAE8D00DF8624 = {
 			isa = PBXGroup;
 			children = (
+				77AF99FB166D94C5002CDE61 /* ParseKit */,
 				773EC349160EAE8D00DF8624 /* Begonia */,
 				773EC342160EAE8D00DF8624 /* Frameworks */,
 				773EC340160EAE8D00DF8624 /* Products */,
@@ -232,6 +349,147 @@
 			name = Lang;
 			sourceTree = "<group>";
 		};
+		77AF99FB166D94C5002CDE61 /* ParseKit */ = {
+			isa = PBXGroup;
+			children = (
+				77AF99FC166D956A002CDE61 /* include */,
+				77AF99BE166D94C5002CDE61 /* NSArray+ParseKitAdditions.h */,
+				77AF99BF166D94C5002CDE61 /* NSArray+ParseKitAdditions.m */,
+				77AF99C0166D94C5002CDE61 /* NSString+ParseKitAdditions.h */,
+				77AF99C1166D94C5002CDE61 /* NSString+ParseKitAdditions.m */,
+				77AF99C2166D94C5002CDE61 /* PKAlternation.m */,
+				77AF99C3166D94C5002CDE61 /* PKAny.m */,
+				77AF99C4166D94C5002CDE61 /* PKAssembly.m */,
+				77AF99C5166D94C5002CDE61 /* PKCaseInsensitiveLiteral.m */,
+				77AF99C6166D94C5002CDE61 /* PKChar.m */,
+				77AF99C7166D94C5002CDE61 /* PKCharacterAssembly.m */,
+				77AF99C8166D94C5002CDE61 /* PKCollectionParser.m */,
+				77AF99C9166D94C5002CDE61 /* PKComment.m */,
+				77AF99CA166D94C5002CDE61 /* PKCommentState.m */,
+				77AF99CB166D94C5002CDE61 /* PKDelimitedString.m */,
+				77AF99CC166D94C5002CDE61 /* PKDelimitState.m */,
+				77AF99CD166D94C5002CDE61 /* PKDifference.m */,
+				77AF99CE166D94C5002CDE61 /* PKDigit.m */,
+				77AF99CF166D94C5002CDE61 /* PKEmailState.m */,
+				77AF99D0166D94C5002CDE61 /* PKEmpty.m */,
+				77AF99D1166D94C5002CDE61 /* PKGrammarParser.h */,
+				77AF99D2166D94C5002CDE61 /* PKGrammarParser.m */,
+				77AF99D3166D94C5002CDE61 /* PKHashtagState.m */,
+				77AF99D4166D94C5002CDE61 /* PKIntersection.m */,
+				77AF99D5166D94C5002CDE61 /* PKLetter.m */,
+				77AF99D6166D94C5002CDE61 /* PKLiteral.m */,
+				77AF99D7166D94C5002CDE61 /* PKLowercaseWord.m */,
+				77AF99D8166D94C5002CDE61 /* PKMultiLineCommentState.m */,
+				77AF99D9166D94C5002CDE61 /* PKNegation.m */,
+				77AF99DA166D94C5002CDE61 /* PKNumber.m */,
+				77AF99DB166D94C5002CDE61 /* PKNumberState.m */,
+				77AF99DC166D94C5002CDE61 /* PKParser.m */,
+				77AF99DD166D94C5002CDE61 /* PKParserFactory.m */,
+				77AF99DE166D94C5002CDE61 /* PKPattern.m */,
+				77AF99DF166D94C5002CDE61 /* PKQuotedString.m */,
+				77AF99E0166D94C5002CDE61 /* PKQuoteState.m */,
+				77AF99E1166D94C5002CDE61 /* PKReader.m */,
+				77AF99E2166D94C5002CDE61 /* PKRepetition.m */,
+				77AF99E3166D94C5002CDE61 /* PKSequence.m */,
+				77AF99E4166D94C5002CDE61 /* PKSingleLineCommentState.m */,
+				77AF99E5166D94C5002CDE61 /* PKSpecificChar.m */,
+				77AF99E6166D94C5002CDE61 /* PKSymbol.m */,
+				77AF99E7166D94C5002CDE61 /* PKSymbolNode.m */,
+				77AF99E8166D94C5002CDE61 /* PKSymbolRootNode.m */,
+				77AF99E9166D94C5002CDE61 /* PKSymbolState.m */,
+				77AF99EA166D94C5002CDE61 /* PKTerminal.m */,
+				77AF99EB166D94C5002CDE61 /* PKToken.m */,
+				77AF99EC166D94C5002CDE61 /* PKTokenArraySource.m */,
+				77AF99ED166D94C5002CDE61 /* PKTokenAssembly.m */,
+				77AF99EE166D94C5002CDE61 /* PKTokenizer.m */,
+				77AF99EF166D94C5002CDE61 /* PKTokenizerState.m */,
+				77AF99F0166D94C5002CDE61 /* PKTrack.m */,
+				77AF99F1166D94C5002CDE61 /* PKTrackException.m */,
+				77AF99F2166D94C5002CDE61 /* PKTwitterState.m */,
+				77AF99F3166D94C5002CDE61 /* PKUppercaseWord.m */,
+				77AF99F4166D94C5002CDE61 /* PKURLState.m */,
+				77AF99F5166D94C5002CDE61 /* PKWhitespace.m */,
+				77AF99F6166D94C5002CDE61 /* PKWhitespaceState.m */,
+				77AF99F7166D94C5002CDE61 /* PKWord.m */,
+				77AF99F8166D94C5002CDE61 /* PKWordState.m */,
+				77AF99F9166D94C5002CDE61 /* RegexKitLite.h */,
+				77AF99FA166D94C5002CDE61 /* RegexKitLite.m */,
+			);
+			name = ParseKit;
+			path = Begonia/../Vendor/ParseKit/src;
+			sourceTree = "<group>";
+		};
+		77AF99FC166D956A002CDE61 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				77AF99FD166D956A002CDE61 /* ParseKit */,
+			);
+			name = include;
+			path = ../include;
+			sourceTree = "<group>";
+		};
+		77AF99FD166D956A002CDE61 /* ParseKit */ = {
+			isa = PBXGroup;
+			children = (
+				77AF99FE166D956A002CDE61 /* ParseKit.h */,
+				77AF99FF166D956A002CDE61 /* PKAlternation.h */,
+				77AF9A00166D956A002CDE61 /* PKAny.h */,
+				77AF9A01166D956A002CDE61 /* PKAssembly.h */,
+				77AF9A02166D956A002CDE61 /* PKCaseInsensitiveLiteral.h */,
+				77AF9A03166D956A002CDE61 /* PKChar.h */,
+				77AF9A04166D956A002CDE61 /* PKCharacterAssembly.h */,
+				77AF9A05166D956A002CDE61 /* PKCollectionParser.h */,
+				77AF9A06166D956A002CDE61 /* PKComment.h */,
+				77AF9A07166D956A002CDE61 /* PKCommentState.h */,
+				77AF9A08166D956A002CDE61 /* PKDelimitedString.h */,
+				77AF9A09166D956A002CDE61 /* PKDelimitState.h */,
+				77AF9A0A166D956A002CDE61 /* PKDifference.h */,
+				77AF9A0B166D956A002CDE61 /* PKDigit.h */,
+				77AF9A0C166D956A002CDE61 /* PKEmailState.h */,
+				77AF9A0D166D956A002CDE61 /* PKEmpty.h */,
+				77AF9A0E166D956A002CDE61 /* PKHashtagState.h */,
+				77AF9A0F166D956A002CDE61 /* PKIntersection.h */,
+				77AF9A10166D956A002CDE61 /* PKLetter.h */,
+				77AF9A11166D956A002CDE61 /* PKLiteral.h */,
+				77AF9A12166D956A002CDE61 /* PKLowercaseWord.h */,
+				77AF9A13166D956A002CDE61 /* PKMultiLineCommentState.h */,
+				77AF9A14166D956A002CDE61 /* PKNegation.h */,
+				77AF9A15166D956A002CDE61 /* PKNumber.h */,
+				77AF9A16166D956A002CDE61 /* PKNumberState.h */,
+				77AF9A17166D956A002CDE61 /* PKParser.h */,
+				77AF9A18166D956A002CDE61 /* PKParserFactory.h */,
+				77AF9A19166D956A002CDE61 /* PKPattern.h */,
+				77AF9A1A166D956A002CDE61 /* PKQuotedString.h */,
+				77AF9A1B166D956A002CDE61 /* PKQuoteState.h */,
+				77AF9A1C166D956A002CDE61 /* PKReader.h */,
+				77AF9A1D166D956A002CDE61 /* PKRepetition.h */,
+				77AF9A1E166D956A002CDE61 /* PKSequence.h */,
+				77AF9A1F166D956A002CDE61 /* PKSingleLineCommentState.h */,
+				77AF9A20166D956A002CDE61 /* PKSpecificChar.h */,
+				77AF9A21166D956A002CDE61 /* PKSymbol.h */,
+				77AF9A22166D956A002CDE61 /* PKSymbolNode.h */,
+				77AF9A23166D956A002CDE61 /* PKSymbolRootNode.h */,
+				77AF9A24166D956A002CDE61 /* PKSymbolState.h */,
+				77AF9A25166D956A002CDE61 /* PKTerminal.h */,
+				77AF9A26166D956A002CDE61 /* PKToken.h */,
+				77AF9A27166D956A002CDE61 /* PKTokenArraySource.h */,
+				77AF9A28166D956A002CDE61 /* PKTokenAssembly.h */,
+				77AF9A29166D956A002CDE61 /* PKTokenizer.h */,
+				77AF9A2A166D956A002CDE61 /* PKTokenizerState.h */,
+				77AF9A2B166D956A002CDE61 /* PKTrack.h */,
+				77AF9A2C166D956A002CDE61 /* PKTrackException.h */,
+				77AF9A2D166D956A002CDE61 /* PKTwitterState.h */,
+				77AF9A2E166D956A002CDE61 /* PKTypes.h */,
+				77AF9A2F166D956A002CDE61 /* PKUppercaseWord.h */,
+				77AF9A30166D956A002CDE61 /* PKURLState.h */,
+				77AF9A31166D956A002CDE61 /* PKWhitespace.h */,
+				77AF9A32166D956A002CDE61 /* PKWhitespaceState.h */,
+				77AF9A33166D956A002CDE61 /* PKWord.h */,
+				77AF9A34166D956A002CDE61 /* PKWordState.h */,
+			);
+			path = ParseKit;
+			sourceTree = "<group>";
+		};
 		77BF378816334A20006B5EF4 /* Foundation Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +539,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = 773EC334160EAE8D00DF8624;
 			productRefGroup = 773EC340160EAE8D00DF8624 /* Products */;
@@ -385,8 +644,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Begonia.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor/ParseKit/frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/include/";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -399,8 +663,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Begonia.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor/ParseKit/frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Begonia/Begonia-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/include/";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,6 +698,7 @@
 				77AF95A7166C5B70002CDE61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

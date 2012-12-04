@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 Akiva Leffert. All rights reserved.
 //
 
-#import "ParseKit.h"
 
 #import "BGNParser.h"
+
+#import <ParseKit/ParseKit.h>
+#import <ParseKit/PKParserFactory.h>
 
 #import "BGNEndOfLineTokenizerState.h"
 #import "BGNLang.h"
@@ -104,7 +106,10 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 - (id <BGNParserResult>)parseString:(NSString *)string sourceName:(NSString *)sourceName {
     NSString* grammarString = [NSString stringWithContentsOfFile:self.grammarPath encoding:NSUTF8StringEncoding error:nil];
     
-    PKParser* moduleParser = [[PKParserFactory factory] parserFromGrammar:grammarString assembler:self];
+    NSError* error = nil;
+    PKParser* moduleParser = [[PKParserFactory factory] parserFromGrammar:grammarString assembler:self error:&error];
+    NSAssert(error == nil, @"Error reading grammar %@", error);
+    
     PKTokenizer* tokenizer = moduleParser.tokenizer;
     tokenizer.numberState.allowsFloatingPoint = YES;
     
@@ -114,10 +119,11 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
     // The grammar requires a new line after the last statement, so stick one in at the end
     // So we don't require an extra line at the end of inputs
     NSString* processedString = [string stringByAppendingString:@"\n"];
-    BGNModule* module = [moduleParser parse:processedString];
+
+    BGNModule* module = [moduleParser parse:processedString error:&error];
     
-    if(module == nil) {
-        return [BGNParserResult resultWithError:[NSError errorWithDomain:BGNParserErrorDomain code:-1 userInfo:@{@"Error" : @"Couldn't complete parse", @"Name" : sourceName} ]];
+    if(module == nil || error != nil) {
+        return [BGNParserResult resultWithError:error];
     }
     else {
         return [BGNParserResult resultWithModule:module];
