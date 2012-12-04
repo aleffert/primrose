@@ -18,8 +18,8 @@
 
 @interface BGNModuleDescription : NSObject
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) NSString* path;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* path;
 
 @end
 
@@ -29,9 +29,9 @@
 
 @interface BGNLoadedModule : NSObject
 
-@property (retain, nonatomic) BGNModuleDescription* description;
-@property (retain, nonatomic) NSDate* modificationDate;
-@property (retain, nonatomic) BGNModule* content;
+@property (strong, nonatomic) BGNModuleDescription* description;
+@property (strong, nonatomic) NSDate* modificationDate;
+@property (strong, nonatomic) BGNModule* content;
 
 @end
 
@@ -41,8 +41,8 @@
 
 @interface BGNModuleManager ()
 
-@property (retain, nonatomic) NSMutableDictionary* modules; // NSString -> BGNLoadedModule
-@property (retain, nonatomic) NSMutableDictionary* contentOverrides; // NSString -> NSString
+@property (strong, nonatomic) NSMutableDictionary* modules; // NSString -> BGNLoadedModule
+@property (strong, nonatomic) NSMutableDictionary* contentOverrides; // NSString -> NSString
 
 @end
 
@@ -97,7 +97,7 @@
         NSError* error = nil;
         NSString* result = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
         
-        NSAssert(NO, @"Couldn't find content of module %@ at %@: %@", moduleName, path, error);
+        NSAssert(result != nil, @"Couldn't find content of module %@ at %@: %@", moduleName, path, error);
         return result;
     }
 }

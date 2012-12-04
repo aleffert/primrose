@@ -26,7 +26,7 @@
 
 @property (assign, nonatomic) BOOL open;
 
-@property (retain, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* name;
 
 @end
 
@@ -54,7 +54,7 @@
 
 @interface BGNDatatypeBinding : NSObject <BGNTopLevelDeclaration>
 
-@property (retain, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* name;
 @property (copy, nonatomic) NSArray* arms;
 
 @end
@@ -64,8 +64,8 @@
 
 @interface BGNDatatypeArm : NSObject
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) BGNRecordBinding* type;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) BGNRecordBinding* type;
 
 @end
 
@@ -79,11 +79,11 @@ typedef enum {
 
 @interface BGNScopedFunctionBinding : NSObject <BGNTopLevelDeclaration>
 
-@property (retain, nonatomic) id <BGNType> resultType;
+@property (strong, nonatomic) id <BGNType> resultType;
 @property (assign, nonatomic) BGNScope scope;
 @property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSArray* arguments; // id <BGNBindingArgument>
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
@@ -92,13 +92,13 @@ typedef enum {
 
 @property (assign, nonatomic) BGNScope scope;
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
 @interface BGNTopExpression : NSObject <BGNTopLevelDeclaration>
 
-@property (retain, nonatomic) id <BGNExpression> expression;
+@property (strong, nonatomic) id <BGNExpression> expression;
 
 @end
 
@@ -112,7 +112,7 @@ typedef enum {
 @interface BGNVarBinding : NSObject <BGNBindingArgument>
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNType> type;
+@property (strong, nonatomic) id <BGNType> type;
 
 @end
 
@@ -124,9 +124,9 @@ typedef enum {
 
 @interface BGNRecordBindingField : NSObject
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNType> type;
-@property (retain, nonatomic) id <BGNExpression> defaultValue;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) id <BGNType> type;
+@property (strong, nonatomic) id <BGNExpression> defaultValue;
 
 @end
 
@@ -146,14 +146,14 @@ typedef enum {
 
 @interface BGNTypeRecord : NSObject <BGNType>
 
-@property (retain, nonatomic) BGNRecordBinding* fields;
+@property (strong, nonatomic) BGNRecordBinding* fields;
 
 @end
 
 @interface BGNTypeArrow : NSObject <BGNType>
 
-@property (retain, nonatomic) id <BGNType> domain;
-@property (retain, nonatomic) id <BGNType> codomain;
+@property (strong, nonatomic) id <BGNType> domain;
+@property (strong, nonatomic) id <BGNType> codomain;
 
 @end
 
@@ -176,14 +176,14 @@ typedef enum {
 
 @interface BGNExpNumber : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSNumber* value;
+@property (strong, nonatomic) NSNumber* value;
 @property (assign, nonatomic) BOOL isFloat;
 
 @end
 
 @interface BGNExpString : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSString* value;
+@property (strong, nonatomic) NSString* value;
 
 @end
 
@@ -195,7 +195,7 @@ typedef enum {
 
 @interface BGNExpProj : NSObject <BGNExpression>
 
-@property (retain, nonatomic) id <BGNExpression> base;
+@property (strong, nonatomic) id <BGNExpression> base;
 
 @property (copy, nonatomic) NSString* proj;
 
@@ -203,14 +203,14 @@ typedef enum {
 
 @interface BGNExpApp : NSObject <BGNExpression>
 
-@property (retain, nonatomic) id <BGNExpression> function;
-@property (retain, nonatomic) id <BGNExpression> argument;
+@property (strong, nonatomic) id <BGNExpression> function;
+@property (strong, nonatomic) id <BGNExpression> argument;
 
 @end
 
 @interface BGNExpPrimOp : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSArray* args;
+@property (strong, nonatomic) NSArray* args;
 @property (copy, nonatomic) NSString* name;
 
 @end
@@ -223,9 +223,9 @@ typedef enum {
 
 @interface BGNExpIfThenElse : NSObject <BGNExpression>
 
-@property (retain, nonatomic) id <BGNExpression> condition;
-@property (retain, nonatomic) id <BGNExpression> thenCase;
-@property (retain, nonatomic) id <BGNExpression> elseCase;
+@property (strong, nonatomic) id <BGNExpression> condition;
+@property (strong, nonatomic) id <BGNExpression> thenCase;
+@property (strong, nonatomic) id <BGNExpression> elseCase;
 
 @end
 
@@ -238,7 +238,7 @@ typedef enum {
 @interface BGNExpConstructor : NSObject <BGNExpression>
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
@@ -246,43 +246,43 @@ typedef enum {
 
 @interface BGNCaseArm : NSObject
 
-@property (retain, nonatomic) id <BGNPattern> pattern;
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNPattern> pattern;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
 @interface BGNExpCase : NSObject <BGNExpression>
 
-@property (retain, nonatomic) id <BGNExpression> test;
-@property (retain, nonatomic) NSArray* branches;
+@property (strong, nonatomic) id <BGNExpression> test;
+@property (strong, nonatomic) NSArray* branches;
 
 @end
 
 @interface BGNExpRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
 @interface BGNExpLambda : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSArray* arguments; // BGNBindingArgument
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) NSArray* arguments; // BGNBindingArgument
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
 @interface BGNExpCheck : NSObject <BGNExpression>
 
-@property (retain, nonatomic) id <BGNExpression> body;
-@property (retain, nonatomic) id <BGNType> type;
+@property (strong, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) id <BGNType> type;
 
 @end
 
 @interface BGNExpModuleProj : NSObject <BGNExpression>
 
-@property (retain, nonatomic) NSString* moduleName;
-@property (retain, nonatomic) NSString* proj;
+@property (strong, nonatomic) NSString* moduleName;
+@property (strong, nonatomic) NSString* proj;
 
 @end
 
@@ -295,14 +295,14 @@ typedef enum {
 
 @interface BGNStmtLet : NSObject <BGNStatement>
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) id <BGNExpression> body;
 
 @end
 
 @interface BGNStmtExp : NSObject <BGNStatement>
 
-@property (retain, nonatomic) id <BGNExpression> exp;
+@property (strong, nonatomic) id <BGNExpression> exp;
 
 @end
 
@@ -340,8 +340,8 @@ typedef enum {
 
 @interface BGNPatternRecordField : NSObject
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNPattern> body;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) id <BGNPattern> body;
 
 @end
 
@@ -353,7 +353,7 @@ typedef enum {
 
 @interface BGNPatternConstructor : NSObject <BGNPattern>
 
-@property (retain, nonatomic) NSString* constructor;
-@property (retain, nonatomic) id <BGNPattern> body;
+@property (strong, nonatomic) NSString* constructor;
+@property (strong, nonatomic) id <BGNPattern> body;
 
 @end

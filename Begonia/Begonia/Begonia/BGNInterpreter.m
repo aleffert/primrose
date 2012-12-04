@@ -26,8 +26,8 @@
 
 @interface BGNInterpreter ()
 
-@property (retain, nonatomic) BGNModuleManager* moduleManager;
-@property (retain, nonatomic) BGNEnvironment* environment;
+@property (strong, nonatomic) BGNModuleManager* moduleManager;
+@property (strong, nonatomic) BGNEnvironment* environment;
 
 @end
 
@@ -62,8 +62,8 @@
     }];
 }
 
-- (id)objectNamed:(NSString*)name {
-    id <BGNValue> value = [self.environment valueNamed:@"x" inModule:@"Test"];
+- (id)objectNamed:(NSString*)name inModule:(NSString *)module {
+    id <BGNValue> value = [self.environment valueNamed:name inModule:module];
     if([value isKindOfClass:[BGNValueExternalObject class]]) {
         return ((BGNValueExternalObject*)value).object;
     }
@@ -194,25 +194,25 @@
     for(NSUInteger i = 2; i < signature.numberOfArguments; i++) {
         const char* argType = [signature getArgumentTypeAtIndex:i];
         id <BGNValue> value = arguments[i - 2];
-        if(strcmp(argType, @encode(CGFloat))) {
+        if(!strcmp(argType, @encode(CGFloat))) {
             NSAssert([value isKindOfClass:[BGNValueFloat class]], @"FFIError: Passing %@ to ffi call expecting float named %@", value, name);
             BGNValueFloat* wrappedV = (BGNValueFloat*)value;
             CGFloat v = wrappedV.value;
             [invocation setArgument:&v atIndex:i];
         }
-        else if(strcmp(argType, @encode(NSUInteger)) || strcmp(argType, @encode(NSInteger))) {
+        else if(!strcmp(argType, @encode(NSUInteger)) || !strcmp(argType, @encode(NSInteger))) {
             NSAssert([value isKindOfClass:[BGNValueInt class]], @"FFIError: Passing %@ to ffi call expecting int named %@", value, name);
             BGNValueInt* wrappedV = (BGNValueInt*)value;
             NSInteger v = wrappedV.value;
             [invocation setArgument:&v atIndex:i];
         }
-        else if(strcmp(argType, @encode(BOOL))) {
+        else if(!strcmp(argType, @encode(BOOL))) {
             NSAssert([value isKindOfClass:[BGNValueBool class]], @"FFIError: Passing %@ to ffi call expecting bool named %@", value, name);
             BGNValueBool* wrappedV = (BGNValueBool*)value;
             BOOL v = wrappedV.value;
             [invocation setArgument:&v atIndex:i];
         }
-        else if(strcmp(argType, @encode(CGPoint))) {
+        else if(!strcmp(argType, @encode(CGPoint))) {
             NSAssert([value isKindOfClass:[BGNValueConstructor class]], @"FFIError: Expecting Point calling out to CGPoint FFI argument method %@, argument %@", name, value);
             BGNValueConstructor* data = (BGNValueConstructor*)value;
             NSAssert([data.value isKindOfClass:[BGNValueRecord class]], @"FFIError: Expecting datatype with record body coercing to CGPoint. Found %@ for method", data.value, name);
@@ -227,7 +227,7 @@
             CGPoint v = CGPointMake(x, y);
             [invocation setArgument:&v atIndex:i];
         }
-        else if(strcmp(argType, @encode(CGRect))) {
+        else if(!strcmp(argType, @encode(CGRect))) {
             NSAssert([value isKindOfClass:[BGNValueConstructor class]], @"FFIError: Expecting Rect calling out to CGPoint FFI argument method %@, argument %@", name, value);
             BGNValueConstructor* data = (BGNValueConstructor*)value;
             NSAssert([data.value isKindOfClass:[BGNValueRecord class]], @"FFIError: Expecting datatype with record body coercing to CGRect. Found %@ for method", data.value, name);
@@ -248,7 +248,7 @@
             CGRect v = CGRectMake(x, y, width, height);
             [invocation setArgument:&v atIndex:i];
         }
-        else if(strcmp(argType, @encode(id))) {
+        else if(!strcmp(argType, @encode(id))) {
             if([value isKindOfClass:[BGNValueString class]]) {
                 NSString* string = ((BGNValueString*)value).value;
                 [invocation setArgument:&string atIndex:i];
@@ -263,6 +263,7 @@
         }
         // TODO deal with blocks. UGH
     }
+    [invocation retainArguments];
     [invocation invoke];
     const char* returnType = signature.methodReturnType;
     if(!strcmp(returnType, @encode(void))) {
@@ -530,7 +531,7 @@
             NSArray* args = [record.fields map:^(BGNValueRecordField* field) {
                 return field.value;
             }];
-            return [self callExternalMethodNamed:selector onObject:object args:args];
+            return [self callExternalMethodNamed:selector onObject:object.object args:args];
         }
         else {
             NSAssert(NO, @"StaticError: Unexpected value in function position: %@", function);

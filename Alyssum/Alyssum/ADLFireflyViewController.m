@@ -8,6 +8,8 @@
 
 #import "ADLFireflyViewController.h"
 
+#import "BGNInterpreter.h"
+
 @interface ADLFireflyViewController ()
 
 @property (strong, nonatomic) CATextLayer* rainText;
@@ -31,31 +33,10 @@
 }
 
 - (UIBezierPath*)fullCloudPath {
-    UIBezierPath* path = [UIBezierPath bezierPath];
-    
-    CGFloat margin = 10;
-    CGFloat width = 1024;
-    CGFloat minY = -margin;
-    CGFloat maxY = 440;
-    CGFloat minX = -margin;
-    CGFloat maxX = width + margin;
-    CGFloat bumpCount = 5;
-    CGFloat bumpHeight = 30;
-    CGFloat bumpWidth = (maxX - minX) / bumpCount;
-    
-    [path moveToPoint:CGPointMake(minX, maxY)];
-    [path addLineToPoint:CGPointMake(minX, minY)];
-    [path addLineToPoint:CGPointMake(maxX, minY)];
-    [path addLineToPoint:CGPointMake(maxX, maxY)];
-    for (NSUInteger i = 0; i < bumpCount; i++) {
-        CGFloat farX = maxX - i * bumpWidth;
-        CGFloat nearX = farX - bumpWidth;
-        [path addCurveToPoint:CGPointMake(farX - bumpWidth / 2, maxY + bumpHeight) controlPoint1: CGPointMake(farX, maxY + bumpHeight) controlPoint2: CGPointMake(farX, maxY+bumpHeight)];
-        [path addCurveToPoint:CGPointMake(nearX, maxY) controlPoint1:CGPointMake(nearX + bumpWidth / 2, maxY + bumpHeight) controlPoint2:CGPointMake(nearX, maxY + bumpHeight) ];
-    }
-    
-    [path closePath];
-    return path;
+    BGNInterpreter* interpreter = [[BGNInterpreter alloc] init];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"Script/cloud" ofType:@"bgn"];
+    [interpreter.moduleLoader loadModuleNamed:@"Cloud" atPath:path];
+    return [interpreter objectNamed:@"cloudPath" inModule:@"Cloud"];
 }
 
 - (void)viewDidLoad
@@ -87,7 +68,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    // Release any stronged subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 

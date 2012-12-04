@@ -29,7 +29,7 @@
 
 @interface BGNValueString : NSObject <BGNValue>
 
-@property (retain, nonatomic) NSString* value;
+@property (strong, nonatomic) NSString* value;
 
 @end
 
@@ -42,23 +42,23 @@
 
 @interface BGNValueFunction : NSObject <BGNValue>
 
-@property (retain, nonatomic) NSArray* vars; // BGNBindingArgument
-@property (retain, nonatomic) id <BGNExpression> body;
-@property (retain, nonatomic) BGNEnvironment* env;
+@property (strong, nonatomic) NSArray* vars; // BGNBindingArgument
+@property (strong, nonatomic) id <BGNExpression> body;
+@property (strong, nonatomic) BGNEnvironment* env;
 
 @end
 
 @interface BGNValueConstructor : NSObject <BGNValue>
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNValue> value;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) id <BGNValue> value;
 
 @end
 
 @interface BGNValueRecordField : NSObject
 
 @property (copy, nonatomic) NSString* name;
-@property (retain, nonatomic) id <BGNValue> value;
+@property (strong, nonatomic) id <BGNValue> value;
 
 @end
 

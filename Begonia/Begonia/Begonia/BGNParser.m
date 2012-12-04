@@ -24,7 +24,7 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 
 @interface BGNPathToken : NSObject
 
-@property (retain, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* name;
 
 @end
 
@@ -186,10 +186,10 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
     
     return [BGNPrecedenceParser makeThen:^(BGNPrecedenceParser* parser) {
         parser.unOp = ^(BGNPrecedenceTokenOp* token, id arg) {
-            if([arg isKindOfClass:[BGNExpVariable class]]) {
-                BGNExpVariable* argExp = (BGNExpVariable*)arg;
-                if([argExp.name isEqualToString:@"-"]) {
-                    argExp.name = @"$UMINUS";
+            if([token.value isKindOfClass:[BGNExpVariable class]]) {
+                BGNExpVariable* funExp = token.value;
+                if([funExp.name isEqualToString:@"-"]) {
+                    funExp.name = @"$UMINUS";
                 }
             }
             return [BGNExpApp makeThen:^(BGNExpApp* app) {
@@ -549,10 +549,12 @@ static NSString* BGNParserErrorDomain = @"BGNParserErrorDomain";
 #pragma mark Statements
 
 - (void)parser:(PKParser*)parser didMatchExpStmt:(PKAssembly*)a {
+    [a pop];
     id <BGNExpression> lastExp = [a pop];
     NSArray* stmts = [a popWhileMatching:^(id object) {
         return [object conformsToProtocol:@protocol(BGNStatement)];
     }];
+    [a pop];
     BGNExpStmts* exp = [[BGNExpStmts alloc] init];
     exp.statements = [stmts arrayByAddingObject:[BGNStmtExp makeThen:^(BGNStmtExp* o) {
         o.exp = lastExp;

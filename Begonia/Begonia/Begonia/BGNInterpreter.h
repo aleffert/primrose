@@ -14,12 +14,12 @@ typedef void (^StringBlock)(NSString* error);
 
 @interface BGNInterpreter : NSObject <BGNModuleManagerDelegate>
 
-@property (retain, nonatomic) CALayer* display;
+@property (strong, nonatomic) CALayer* display;
 @property (copy, nonatomic) StringBlock errorHandler;
 @property (readonly, nonatomic) id <BGNModuleLoader> moduleLoader;
 
 - (void)importModuleNamed:(NSString*)name bindings:(NSDictionary*)bindings;
 - (void)interpretFile:(NSString*)path;
-- (id)objectNamed:(NSString*)name;
+- (id)objectNamed:(NSString*)name inModule:(NSString*)module;
 
 @end

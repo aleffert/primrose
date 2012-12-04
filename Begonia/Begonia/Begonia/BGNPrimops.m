@@ -82,7 +82,7 @@
         }];
     }
     else {
-        NSAssert([right isKindOfClass:[BGNValueFloat class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
+        NSAssert([right isKindOfClass:[BGNValueInt class]], @"StaticError: Expecting arithmetic arguments to match %@ and %@", left, right);
         return [BGNValueInt makeThen:^(BGNValueInt* f) {
             f.value = ints(((BGNValueInt*)left).value, ((BGNValueInt*)right).value);
         }];
@@ -163,7 +163,7 @@
     }
     else {
         NSAssert([value isKindOfClass:[BGNValueFloat class]], @"StaticError: Unexpected unary minus argument: %@", args);
-        return [BGNValueInt makeThen:^(BGNValueFloat* f) {
+        return [BGNValueFloat makeThen:^(BGNValueFloat* f) {
             f.value = -((BGNValueFloat*)value).value;
         }];
     }

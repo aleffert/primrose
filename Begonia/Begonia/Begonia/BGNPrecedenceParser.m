@@ -152,13 +152,8 @@
         return @{@"op" : op.value, @"a" : exp1, @"b" : exp2};
     };
     NSArray* tokens = @[
-    [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* i){i.value = @"f";}],
+    [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* i){i.value = @"-";}],
     [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* i){i.value = @"x";}],
-    [BGNPrecedenceTokenOp makeThen:^(BGNPrecedenceTokenOp* i){i.value = @"+";}],
-    [BGNPrecedenceTokenOp makeThen:^(BGNPrecedenceTokenOp* i){i.value = @"-";}],
-    [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* i){i.value = @"g";}],
-    [BGNPrecedenceTokenOp makeThen:^(BGNPrecedenceTokenOp* i){i.value = @"*";}],
-    [BGNPrecedenceTokenAtom makeThen:^(BGNPrecedenceTokenAtom* i){i.value = @"y";}]
     ];
     NSArray* result = [parser parseTokens:tokens];
     NSLog(@"got result %@", result);

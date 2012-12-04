@@ -53,7 +53,7 @@ expNum = Number;
 expString = QuotedString;
 expVar = ident | opSymbol;
 expLambda = 'fun'! bindingArguments '='! exp;
-expStmt = '('! eol* (stmt stmtBreak!)* exp eol* ')'! ;
+expStmt = '(' eol* (stmt stmtBreak!)* exp eol* ')' ;
 expIf  = 'if' eol* exp eol* 'then' eol* exp eol* 'else' exp eol*;
 expCase = 'case' exp eol* caseClause+ 'end';
 caseClause = '|' pattern '=>' exp eol*;

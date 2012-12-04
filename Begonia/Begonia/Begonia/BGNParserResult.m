@@ -9,7 +9,7 @@
 #import "BGNParserResult.h"
 
 @interface BGNModuleParserResult : NSObject <BGNParserResult>
-@property (retain, nonatomic) BGNModule* module;
+@property (strong, nonatomic) BGNModule* module;
 @end
 
 @implementation BGNModuleParserResult
@@ -22,7 +22,7 @@
 
 
 @interface BGNErrorParserResult : NSObject <BGNParserResult>
-@property (retain, nonatomic) NSError* error;
+@property (strong, nonatomic) NSError* error;
 @end
 
 @implementation BGNErrorParserResult
