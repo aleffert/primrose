@@ -1,3 +1,0 @@
-#!/bin/csh
-
-build/Debug/MYNetwork Test_BLIPListener -Log YES -LogBLIP YES $*
