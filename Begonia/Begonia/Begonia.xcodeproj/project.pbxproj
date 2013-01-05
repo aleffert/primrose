@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		776620A51698EBAB00261D73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776620A41698EBAB00261D73 /* CFNetwork.framework */; };
+		776620A71698EBC500261D73 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 776620A61698EBC500261D73 /* libicucore.dylib */; };
+		776620A91698EBF400261D73 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776620A81698EBF400261D73 /* CoreServices.framework */; };
+		776620AB1698EC0100261D73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776620AA1698EC0100261D73 /* Security.framework */; };
 		778157761698A4F900C797C5 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157521698A4F900C797C5 /* CollectionUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157771698A4F900C797C5 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157541698A4F900C797C5 /* ConcurrentOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157781698A4F900C797C5 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157561698A4F900C797C5 /* ExceptionUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -18,7 +22,6 @@
 		778157801698A4F900C797C5 /* MYURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157661698A4F900C797C5 /* MYURLUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157811698A4F900C797C5 /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781576D1698A4F900C797C5 /* Target.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157821698A4F900C797C5 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781576F1698A4F900C797C5 /* Test.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		778157831698A4F900C797C5 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157741698A4F900C797C5 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157C01698A50800C797C5 /* BLIPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578B1698A50800C797C5 /* BLIPConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157C11698A50800C797C5 /* BLIPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578D1698A50800C797C5 /* BLIPDispatcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		778157C21698A50800C797C5 /* BLIPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578F1698A50800C797C5 /* BLIPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -117,6 +120,102 @@
 		77AFB781166DA89A001C4EE5 /* NSObject+BGNConstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */; };
 		77AFB783166DA89D001C4EE5 /* NSMutableArray+BGNStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */; };
 		77AFB784166DA8A1001C4EE5 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378616334A1B006B5EF4 /* NSArray+Functional.m */; };
+		77B89C491698DEBD00ACB237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AF959C166C5B70002CDE61 /* Foundation.framework */; };
+		77B89C4C1698DEBD00ACB237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B89C4B1698DEBD00ACB237 /* main.m */; };
+		77B89C501698DEBD00ACB237 /* begonia_client.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B89C4F1698DEBD00ACB237 /* begonia_client.1 */; };
+		77B89C551698E43400ACB237 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157DB1698A67F00C797C5 /* IPAddress.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C561698E43400ACB237 /* BLIPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578B1698A50800C797C5 /* BLIPConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C571698E43400ACB237 /* BLIPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578D1698A50800C797C5 /* BLIPDispatcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C581698E43400ACB237 /* BLIPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781578F1698A50800C797C5 /* BLIPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C591698E43400ACB237 /* BLIPProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157911698A50800C797C5 /* BLIPProperties.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5A1698E43400ACB237 /* BLIPReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157931698A50800C797C5 /* BLIPReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5B1698E43400ACB237 /* BLIPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157951698A50800C797C5 /* BLIPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5C1698E43400ACB237 /* BLIPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157981698A50800C797C5 /* BLIPWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5D1698E43E00ACB237 /* MYAddressLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157A41698A50800C797C5 /* MYAddressLookup.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5E1698E43E00ACB237 /* MYBonjourBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157A61698A50800C797C5 /* MYBonjourBrowser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C5F1698E43E00ACB237 /* MYBonjourQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157A81698A50800C797C5 /* MYBonjourQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C601698E43E00ACB237 /* MYBonjourRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157AA1698A50800C797C5 /* MYBonjourRegistration.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C611698E43E00ACB237 /* MYBonjourService.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157AC1698A50800C797C5 /* MYBonjourService.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C621698E45D00ACB237 /* NSArray+ParseKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99BF166D94C5002CDE61 /* NSArray+ParseKitAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C631698E45D00ACB237 /* NSString+ParseKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C1166D94C5002CDE61 /* NSString+ParseKitAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C641698E45D00ACB237 /* PKAlternation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C2166D94C5002CDE61 /* PKAlternation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C651698E45D00ACB237 /* PKAny.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C3166D94C5002CDE61 /* PKAny.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C661698E45D00ACB237 /* PKAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C4166D94C5002CDE61 /* PKAssembly.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C671698E45D00ACB237 /* PKCaseInsensitiveLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C5166D94C5002CDE61 /* PKCaseInsensitiveLiteral.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C681698E45D00ACB237 /* PKChar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C6166D94C5002CDE61 /* PKChar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C691698E45D00ACB237 /* PKCharacterAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C7166D94C5002CDE61 /* PKCharacterAssembly.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6A1698E45D00ACB237 /* PKCollectionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C8166D94C5002CDE61 /* PKCollectionParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6B1698E45D00ACB237 /* PKComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99C9166D94C5002CDE61 /* PKComment.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6C1698E45D00ACB237 /* PKCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CA166D94C5002CDE61 /* PKCommentState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6D1698E45D00ACB237 /* PKDelimitedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CB166D94C5002CDE61 /* PKDelimitedString.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6E1698E45D00ACB237 /* PKDelimitState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CC166D94C5002CDE61 /* PKDelimitState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C6F1698E45D00ACB237 /* PKDifference.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CD166D94C5002CDE61 /* PKDifference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C701698E45D00ACB237 /* PKDigit.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CE166D94C5002CDE61 /* PKDigit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C711698E45D00ACB237 /* PKEmailState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99CF166D94C5002CDE61 /* PKEmailState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C721698E45D00ACB237 /* PKEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D0166D94C5002CDE61 /* PKEmpty.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C731698E45D00ACB237 /* PKGrammarParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D2166D94C5002CDE61 /* PKGrammarParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C741698E45D00ACB237 /* PKHashtagState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D3166D94C5002CDE61 /* PKHashtagState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C751698E45D00ACB237 /* PKIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D4166D94C5002CDE61 /* PKIntersection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C761698E45D00ACB237 /* PKLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D5166D94C5002CDE61 /* PKLetter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C771698E45D00ACB237 /* PKLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D6166D94C5002CDE61 /* PKLiteral.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C781698E45D00ACB237 /* PKLowercaseWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D7166D94C5002CDE61 /* PKLowercaseWord.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C791698E45D00ACB237 /* PKMultiLineCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D8166D94C5002CDE61 /* PKMultiLineCommentState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7A1698E45D00ACB237 /* PKNegation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99D9166D94C5002CDE61 /* PKNegation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7B1698E45D00ACB237 /* PKNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DA166D94C5002CDE61 /* PKNumber.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7C1698E45D00ACB237 /* PKNumberState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DB166D94C5002CDE61 /* PKNumberState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7D1698E45D00ACB237 /* PKParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DC166D94C5002CDE61 /* PKParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7E1698E45D00ACB237 /* PKParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DD166D94C5002CDE61 /* PKParserFactory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C7F1698E45D00ACB237 /* PKPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DE166D94C5002CDE61 /* PKPattern.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C801698E45D00ACB237 /* PKQuotedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99DF166D94C5002CDE61 /* PKQuotedString.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C811698E45D00ACB237 /* PKQuoteState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E0166D94C5002CDE61 /* PKQuoteState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C821698E45D00ACB237 /* PKReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E1166D94C5002CDE61 /* PKReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C831698E45D00ACB237 /* PKRepetition.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E2166D94C5002CDE61 /* PKRepetition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C841698E45D00ACB237 /* PKSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E3166D94C5002CDE61 /* PKSequence.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C851698E45D00ACB237 /* PKSingleLineCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E4166D94C5002CDE61 /* PKSingleLineCommentState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C861698E45D00ACB237 /* PKSpecificChar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E5166D94C5002CDE61 /* PKSpecificChar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C871698E45D00ACB237 /* PKSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E6166D94C5002CDE61 /* PKSymbol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C881698E45D00ACB237 /* PKSymbolNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E7166D94C5002CDE61 /* PKSymbolNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C891698E45D00ACB237 /* PKSymbolRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E8166D94C5002CDE61 /* PKSymbolRootNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8A1698E45D00ACB237 /* PKSymbolState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99E9166D94C5002CDE61 /* PKSymbolState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8B1698E45D00ACB237 /* PKTerminal.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99EA166D94C5002CDE61 /* PKTerminal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8C1698E45D00ACB237 /* PKToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99EB166D94C5002CDE61 /* PKToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8D1698E45D00ACB237 /* PKTokenArraySource.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99EC166D94C5002CDE61 /* PKTokenArraySource.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8E1698E45D00ACB237 /* PKTokenAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99ED166D94C5002CDE61 /* PKTokenAssembly.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C8F1698E45D00ACB237 /* PKTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99EE166D94C5002CDE61 /* PKTokenizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C901698E45D00ACB237 /* PKTokenizerState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99EF166D94C5002CDE61 /* PKTokenizerState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C911698E45D00ACB237 /* PKTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F0166D94C5002CDE61 /* PKTrack.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C921698E45D00ACB237 /* PKTrackException.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F1166D94C5002CDE61 /* PKTrackException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C931698E45D00ACB237 /* PKTwitterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F2166D94C5002CDE61 /* PKTwitterState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C941698E45D00ACB237 /* PKUppercaseWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F3166D94C5002CDE61 /* PKUppercaseWord.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C951698E45D00ACB237 /* PKURLState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F4166D94C5002CDE61 /* PKURLState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C961698E45D00ACB237 /* PKWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F5166D94C5002CDE61 /* PKWhitespace.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C971698E45D00ACB237 /* PKWhitespaceState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F6166D94C5002CDE61 /* PKWhitespaceState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C981698E45D00ACB237 /* PKWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F7166D94C5002CDE61 /* PKWord.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C991698E45D00ACB237 /* PKWordState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99F8166D94C5002CDE61 /* PKWordState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9A1698E45D00ACB237 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AF99FA166D94C5002CDE61 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9B1698E47200ACB237 /* MYDNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157AF1698A50800C797C5 /* MYDNSService.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9C1698E47200ACB237 /* MYPortMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157B11698A50800C797C5 /* MYPortMapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9D1698E47200ACB237 /* PortMapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157B21698A50800C797C5 /* PortMapperTest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9E1698E47700ACB237 /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157B61698A50800C797C5 /* TCPConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89C9F1698E47700ACB237 /* TCPEndpoint+Certs.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157B71698A50800C797C5 /* TCPEndpoint+Certs.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA01698E47700ACB237 /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157B91698A50800C797C5 /* TCPEndpoint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA11698E47700ACB237 /* TCPListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157BB1698A50800C797C5 /* TCPListener.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA21698E47700ACB237 /* TCPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157BD1698A50800C797C5 /* TCPStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA31698E47700ACB237 /* TCPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157BF1698A50800C797C5 /* TCPWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA41698E47F00ACB237 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157521698A4F900C797C5 /* CollectionUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA51698E47F00ACB237 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157541698A4F900C797C5 /* ConcurrentOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA61698E47F00ACB237 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157561698A4F900C797C5 /* ExceptionUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA71698E47F00ACB237 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157581698A4F900C797C5 /* Logging.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA81698E47F00ACB237 /* MYDynamicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781575C1698A4F900C797C5 /* MYDynamicObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CA91698E47F00ACB237 /* MYErrorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781575E1698A4F900C797C5 /* MYErrorUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CAA1698E47F00ACB237 /* MYRegexUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157601698A4F900C797C5 /* MYRegexUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CAB1698E47F00ACB237 /* MYStreamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157621698A4F900C797C5 /* MYStreamUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CAC1698E47F00ACB237 /* MYURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 778157661698A4F900C797C5 /* MYURLUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CAD1698E47F00ACB237 /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781576D1698A4F900C797C5 /* Target.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CAE1698E47F00ACB237 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7781576F1698A4F900C797C5 /* Test.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		77B89CB01698E48F00ACB237 /* NSObject+BGNConstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */; };
+		77B89CB11698E48F00ACB237 /* NSMutableArray+BGNStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378316332796006B5EF4 /* NSMutableArray+BGNStack.m */; };
+		77B89CB21698E48F00ACB237 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BF378616334A1B006B5EF4 /* NSArray+Functional.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -129,12 +228,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77B89C451698DEBD00ACB237 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				77B89C501698DEBD00ACB237 /* begonia_client.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7705AAF01669BB1400ACF87A /* BGNServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNServer.h; sourceTree = "<group>"; };
 		7705AAF11669BB1400ACF87A /* BGNServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNServer.m; sourceTree = "<group>"; };
-		773EC343160EAE8D00DF8624 /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		773EC346160EAE8D00DF8624 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		773EC347160EAE8D00DF8624 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		773EC348160EAE8D00DF8624 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -164,6 +272,10 @@
 		773EC3E5161D516500DF8624 /* BGNEndOfLineTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNEndOfLineTokenizerState.h; sourceTree = "<group>"; };
 		773EC3E6161D516500DF8624 /* BGNEndOfLineTokenizerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNEndOfLineTokenizerState.m; sourceTree = "<group>"; };
 		773EC3EC1620B18700DF8624 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = begonia.grammar; sourceTree = SOURCE_ROOT; };
+		776620A41698EBAB00261D73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		776620A61698EBC500261D73 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
+		776620A81698EBF400261D73 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		776620AA1698EC0100261D73 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		778157511698A4F900C797C5 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
 		778157521698A4F900C797C5 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
 		778157531698A4F900C797C5 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentOperation.h; sourceTree = "<group>"; };
@@ -186,7 +298,6 @@
 		778157681698A4F900C797C5 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MYUtilities_Debug.xcconfig; sourceTree = "<group>"; };
 		778157691698A4F900C797C5 /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYUtilities_Prefix.pch; sourceTree = "<group>"; };
 		7781576A1698A4F900C797C5 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MYUtilities_Release.xcconfig; sourceTree = "<group>"; };
-		7781576B1698A4F900C797C5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		7781576C1698A4F900C797C5 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
 		7781576D1698A4F900C797C5 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target.m; sourceTree = "<group>"; };
 		7781576E1698A4F900C797C5 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
@@ -359,6 +470,10 @@
 		77AF9A32166D956A002CDE61 /* PKWhitespaceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWhitespaceState.h; sourceTree = "<group>"; };
 		77AF9A33166D956A002CDE61 /* PKWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWord.h; sourceTree = "<group>"; };
 		77AF9A34166D956A002CDE61 /* PKWordState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKWordState.h; sourceTree = "<group>"; };
+		77B89C471698DEBD00ACB237 /* begonia-client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "begonia-client"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B89C4B1698DEBD00ACB237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		77B89C4E1698DEBD00ACB237 /* begonia-client-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "begonia-client-Prefix.pch"; sourceTree = "<group>"; };
+		77B89C4F1698DEBD00ACB237 /* begonia_client.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = begonia_client.1; sourceTree = "<group>"; };
 		77BF377E1633263A006B5EF4 /* NSObject+BGNConstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BGNConstruction.h"; sourceTree = "<group>"; };
 		77BF377F1633263A006B5EF4 /* NSObject+BGNConstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BGNConstruction.m"; sourceTree = "<group>"; };
 		77BF378216332796006B5EF4 /* NSMutableArray+BGNStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+BGNStack.h"; sourceTree = "<group>"; };
@@ -385,8 +500,6 @@
 		77D4EA00165DCE6800CA3C65 /* BGNPrelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNPrelude.m; sourceTree = "<group>"; };
 		77EE6A98164738880088C1F5 /* BGNModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNModuleManager.h; sourceTree = "<group>"; };
 		77EE6A99164738880088C1F5 /* BGNModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNModuleManager.m; sourceTree = "<group>"; };
-		7F7F98A2839141F3A9137BE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB1E54DE29BB4536B3849353 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +508,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				77AF959D166C5B70002CDE61 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77B89C441698DEBD00ACB237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776620AB1698EC0100261D73 /* Security.framework in Frameworks */,
+				776620A91698EBF400261D73 /* CoreServices.framework in Frameworks */,
+				776620A71698EBC500261D73 /* libicucore.dylib in Frameworks */,
+				776620A51698EBAB00261D73 /* CFNetwork.framework in Frameworks */,
+				77B89C491698DEBD00ACB237 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +540,7 @@
 			children = (
 				778157D91698A51300C797C5 /* Vendor */,
 				773EC349160EAE8D00DF8624 /* Begonia */,
+				77B89C4A1698DEBD00ACB237 /* begonia-client */,
 				773EC342160EAE8D00DF8624 /* Frameworks */,
 				773EC340160EAE8D00DF8624 /* Products */,
 			);
@@ -424,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				77AF959B166C5B70002CDE61 /* libBegonia.a */,
+				77B89C471698DEBD00ACB237 /* begonia-client */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,12 +558,13 @@
 		773EC342160EAE8D00DF8624 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				776620AA1698EC0100261D73 /* Security.framework */,
+				776620A81698EBF400261D73 /* CoreServices.framework */,
+				776620A61698EBC500261D73 /* libicucore.dylib */,
+				776620A41698EBAB00261D73 /* CFNetwork.framework */,
 				773EC38A160EC4BD00DF8624 /* QuartzCore.framework */,
-				773EC343160EAE8D00DF8624 /* Cocoa.framework */,
 				77AF959C166C5B70002CDE61 /* Foundation.framework */,
 				773EC345160EAE8D00DF8624 /* Other Frameworks */,
-				DB1E54DE29BB4536B3849353 /* libPods.a */,
-				7F7F98A2839141F3A9137BE6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -546,7 +674,6 @@
 				778157681698A4F900C797C5 /* MYUtilities_Debug.xcconfig */,
 				778157691698A4F900C797C5 /* MYUtilities_Prefix.pch */,
 				7781576A1698A4F900C797C5 /* MYUtilities_Release.xcconfig */,
-				7781576B1698A4F900C797C5 /* README.md */,
 				7781576C1698A4F900C797C5 /* Target.h */,
 				7781576D1698A4F900C797C5 /* Target.m */,
 				7781576E1698A4F900C797C5 /* Test.h */,
@@ -816,6 +943,24 @@
 			path = ParseKit;
 			sourceTree = "<group>";
 		};
+		77B89C4A1698DEBD00ACB237 /* begonia-client */ = {
+			isa = PBXGroup;
+			children = (
+				77B89C4B1698DEBD00ACB237 /* main.m */,
+				77B89C4F1698DEBD00ACB237 /* begonia_client.1 */,
+				77B89C4D1698DEBD00ACB237 /* Supporting Files */,
+			);
+			path = "begonia-client";
+			sourceTree = "<group>";
+		};
+		77B89C4D1698DEBD00ACB237 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77B89C4E1698DEBD00ACB237 /* begonia-client-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		77BF378816334A20006B5EF4 /* Foundation Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +994,23 @@
 			productReference = 77AF959B166C5B70002CDE61 /* libBegonia.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		77B89C461698DEBD00ACB237 /* begonia-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77B89C531698DEBD00ACB237 /* Build configuration list for PBXNativeTarget "begonia-client" */;
+			buildPhases = (
+				77B89C431698DEBD00ACB237 /* Sources */,
+				77B89C441698DEBD00ACB237 /* Frameworks */,
+				77B89C451698DEBD00ACB237 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "begonia-client";
+			productName = "begonia-client";
+			productReference = 77B89C471698DEBD00ACB237 /* begonia-client */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -873,6 +1035,7 @@
 			projectRoot = "";
 			targets = (
 				77AF959A166C5B70002CDE61 /* Begonia */,
+				77B89C461698DEBD00ACB237 /* begonia-client */,
 			);
 		};
 /* End PBXProject section */
@@ -968,7 +1131,6 @@
 				778157801698A4F900C797C5 /* MYURLUtils.m in Sources */,
 				778157811698A4F900C797C5 /* Target.m in Sources */,
 				778157821698A4F900C797C5 /* Test.m in Sources */,
-				778157831698A4F900C797C5 /* GTMNSData+zlib.m in Sources */,
 				778157C01698A50800C797C5 /* BLIPConnection.m in Sources */,
 				778157C11698A50800C797C5 /* BLIPDispatcher.m in Sources */,
 				778157C21698A50800C797C5 /* BLIPMessage.m in Sources */,
@@ -991,6 +1153,107 @@
 				778157D61698A50800C797C5 /* TCPStream.m in Sources */,
 				778157D71698A50800C797C5 /* TCPWriter.m in Sources */,
 				778157DC1698A67F00C797C5 /* IPAddress.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77B89C431698DEBD00ACB237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B89C4C1698DEBD00ACB237 /* main.m in Sources */,
+				77B89C551698E43400ACB237 /* IPAddress.m in Sources */,
+				77B89C561698E43400ACB237 /* BLIPConnection.m in Sources */,
+				77B89C571698E43400ACB237 /* BLIPDispatcher.m in Sources */,
+				77B89C581698E43400ACB237 /* BLIPMessage.m in Sources */,
+				77B89C591698E43400ACB237 /* BLIPProperties.m in Sources */,
+				77B89C5A1698E43400ACB237 /* BLIPReader.m in Sources */,
+				77B89C5B1698E43400ACB237 /* BLIPRequest.m in Sources */,
+				77B89C5C1698E43400ACB237 /* BLIPWriter.m in Sources */,
+				77B89C5D1698E43E00ACB237 /* MYAddressLookup.m in Sources */,
+				77B89C5E1698E43E00ACB237 /* MYBonjourBrowser.m in Sources */,
+				77B89C5F1698E43E00ACB237 /* MYBonjourQuery.m in Sources */,
+				77B89C601698E43E00ACB237 /* MYBonjourRegistration.m in Sources */,
+				77B89C611698E43E00ACB237 /* MYBonjourService.m in Sources */,
+				77B89C621698E45D00ACB237 /* NSArray+ParseKitAdditions.m in Sources */,
+				77B89C631698E45D00ACB237 /* NSString+ParseKitAdditions.m in Sources */,
+				77B89C641698E45D00ACB237 /* PKAlternation.m in Sources */,
+				77B89C651698E45D00ACB237 /* PKAny.m in Sources */,
+				77B89C661698E45D00ACB237 /* PKAssembly.m in Sources */,
+				77B89C671698E45D00ACB237 /* PKCaseInsensitiveLiteral.m in Sources */,
+				77B89C681698E45D00ACB237 /* PKChar.m in Sources */,
+				77B89C691698E45D00ACB237 /* PKCharacterAssembly.m in Sources */,
+				77B89C6A1698E45D00ACB237 /* PKCollectionParser.m in Sources */,
+				77B89C6B1698E45D00ACB237 /* PKComment.m in Sources */,
+				77B89C6C1698E45D00ACB237 /* PKCommentState.m in Sources */,
+				77B89C6D1698E45D00ACB237 /* PKDelimitedString.m in Sources */,
+				77B89C6E1698E45D00ACB237 /* PKDelimitState.m in Sources */,
+				77B89C6F1698E45D00ACB237 /* PKDifference.m in Sources */,
+				77B89C701698E45D00ACB237 /* PKDigit.m in Sources */,
+				77B89C711698E45D00ACB237 /* PKEmailState.m in Sources */,
+				77B89C721698E45D00ACB237 /* PKEmpty.m in Sources */,
+				77B89C731698E45D00ACB237 /* PKGrammarParser.m in Sources */,
+				77B89C741698E45D00ACB237 /* PKHashtagState.m in Sources */,
+				77B89C751698E45D00ACB237 /* PKIntersection.m in Sources */,
+				77B89C761698E45D00ACB237 /* PKLetter.m in Sources */,
+				77B89C771698E45D00ACB237 /* PKLiteral.m in Sources */,
+				77B89C781698E45D00ACB237 /* PKLowercaseWord.m in Sources */,
+				77B89C791698E45D00ACB237 /* PKMultiLineCommentState.m in Sources */,
+				77B89C7A1698E45D00ACB237 /* PKNegation.m in Sources */,
+				77B89C7B1698E45D00ACB237 /* PKNumber.m in Sources */,
+				77B89C7C1698E45D00ACB237 /* PKNumberState.m in Sources */,
+				77B89C7D1698E45D00ACB237 /* PKParser.m in Sources */,
+				77B89C7E1698E45D00ACB237 /* PKParserFactory.m in Sources */,
+				77B89C7F1698E45D00ACB237 /* PKPattern.m in Sources */,
+				77B89C801698E45D00ACB237 /* PKQuotedString.m in Sources */,
+				77B89C811698E45D00ACB237 /* PKQuoteState.m in Sources */,
+				77B89C821698E45D00ACB237 /* PKReader.m in Sources */,
+				77B89C831698E45D00ACB237 /* PKRepetition.m in Sources */,
+				77B89C841698E45D00ACB237 /* PKSequence.m in Sources */,
+				77B89C851698E45D00ACB237 /* PKSingleLineCommentState.m in Sources */,
+				77B89C861698E45D00ACB237 /* PKSpecificChar.m in Sources */,
+				77B89C871698E45D00ACB237 /* PKSymbol.m in Sources */,
+				77B89C881698E45D00ACB237 /* PKSymbolNode.m in Sources */,
+				77B89C891698E45D00ACB237 /* PKSymbolRootNode.m in Sources */,
+				77B89C8A1698E45D00ACB237 /* PKSymbolState.m in Sources */,
+				77B89C8B1698E45D00ACB237 /* PKTerminal.m in Sources */,
+				77B89C8C1698E45D00ACB237 /* PKToken.m in Sources */,
+				77B89C8D1698E45D00ACB237 /* PKTokenArraySource.m in Sources */,
+				77B89C8E1698E45D00ACB237 /* PKTokenAssembly.m in Sources */,
+				77B89C8F1698E45D00ACB237 /* PKTokenizer.m in Sources */,
+				77B89C901698E45D00ACB237 /* PKTokenizerState.m in Sources */,
+				77B89C911698E45D00ACB237 /* PKTrack.m in Sources */,
+				77B89C921698E45D00ACB237 /* PKTrackException.m in Sources */,
+				77B89C931698E45D00ACB237 /* PKTwitterState.m in Sources */,
+				77B89C941698E45D00ACB237 /* PKUppercaseWord.m in Sources */,
+				77B89C951698E45D00ACB237 /* PKURLState.m in Sources */,
+				77B89C961698E45D00ACB237 /* PKWhitespace.m in Sources */,
+				77B89C971698E45D00ACB237 /* PKWhitespaceState.m in Sources */,
+				77B89C981698E45D00ACB237 /* PKWord.m in Sources */,
+				77B89C991698E45D00ACB237 /* PKWordState.m in Sources */,
+				77B89C9A1698E45D00ACB237 /* RegexKitLite.m in Sources */,
+				77B89C9B1698E47200ACB237 /* MYDNSService.m in Sources */,
+				77B89C9C1698E47200ACB237 /* MYPortMapper.m in Sources */,
+				77B89C9D1698E47200ACB237 /* PortMapperTest.m in Sources */,
+				77B89C9E1698E47700ACB237 /* TCPConnection.m in Sources */,
+				77B89C9F1698E47700ACB237 /* TCPEndpoint+Certs.m in Sources */,
+				77B89CA01698E47700ACB237 /* TCPEndpoint.m in Sources */,
+				77B89CA11698E47700ACB237 /* TCPListener.m in Sources */,
+				77B89CA21698E47700ACB237 /* TCPStream.m in Sources */,
+				77B89CA31698E47700ACB237 /* TCPWriter.m in Sources */,
+				77B89CA41698E47F00ACB237 /* CollectionUtils.m in Sources */,
+				77B89CA51698E47F00ACB237 /* ConcurrentOperation.m in Sources */,
+				77B89CA61698E47F00ACB237 /* ExceptionUtils.m in Sources */,
+				77B89CA71698E47F00ACB237 /* Logging.m in Sources */,
+				77B89CA81698E47F00ACB237 /* MYDynamicObject.m in Sources */,
+				77B89CA91698E47F00ACB237 /* MYErrorUtils.m in Sources */,
+				77B89CAA1698E47F00ACB237 /* MYRegexUtils.m in Sources */,
+				77B89CAB1698E47F00ACB237 /* MYStreamUtils.m in Sources */,
+				77B89CAC1698E47F00ACB237 /* MYURLUtils.m in Sources */,
+				77B89CAD1698E47F00ACB237 /* Target.m in Sources */,
+				77B89CAE1698E47F00ACB237 /* Test.m in Sources */,
+				77B89CB01698E48F00ACB237 /* NSObject+BGNConstruction.m in Sources */,
+				77B89CB11698E48F00ACB237 /* NSMutableArray+BGNStack.m in Sources */,
+				77B89CB21698E48F00ACB237 /* NSArray+Functional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1363,32 @@
 			};
 			name = Release;
 		};
+		77B89C511698DEBD00ACB237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "begonia-client/begonia-client-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/include/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		77B89C521698DEBD00ACB237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "begonia-client/begonia-client-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/ParseKit/include/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1117,6 +1406,15 @@
 			buildConfigurations = (
 				77AF95A6166C5B70002CDE61 /* Debug */,
 				77AF95A7166C5B70002CDE61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77B89C531698DEBD00ACB237 /* Build configuration list for PBXNativeTarget "begonia-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B89C511698DEBD00ACB237 /* Debug */,
+				77B89C521698DEBD00ACB237 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

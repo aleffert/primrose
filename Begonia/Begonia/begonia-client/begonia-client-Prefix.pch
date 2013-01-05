@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'begonia-client' target in the 'begonia-client' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
