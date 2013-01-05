@@ -49,7 +49,7 @@
 		7785860F166D974C008BE2C1 /* Begonia.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Begonia.xcodeproj; path = ../Begonia/Begonia/Begonia.xcodeproj; sourceTree = "<group>"; };
 		77858627166DA5C6008BE2C1 /* Script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Script; path = Alyssum/Script; sourceTree = "<group>"; };
 		77AFB785166DAA56001C4EE5 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		77AFB787166DACF1001C4EE5 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = begonia.grammar; path = ../../Begonia/Begonia/begonia.grammar; sourceTree = "<group>"; };
+		77AFB787166DACF1001C4EE5 /* begonia.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = begonia.grammar; path = ../../Begonia/Begonia/begonia.grammar; sourceTree = "<group>"; };
 		77AFB789166DC9E7001C4EE5 /* ADLDebugPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLDebugPath.h; sourceTree = "<group>"; };
 		77AFB78A166DC9E7001C4EE5 /* ADLDebugPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLDebugPath.m; sourceTree = "<group>"; };
 		77D4F78715FD834D00A58CA7 /* Alyssum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alyssum.app; sourceTree = BUILT_PRODUCTS_DIR; };

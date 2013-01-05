@@ -1,0 +1,15 @@
+import Cocoa
+
+local uiBezierPath = Cocoa.classNamed.ADLDebugPath : CocoaClass
+
+let make {} = {
+	path = uiBezierPath.alloc.init
+	addLine {to : Point} = path {addLineToPoint = to}
+    addCurve {to : Point, control1 : Point, control2 : Point} = path {
+        addCurveToPoint = to
+        controlPoint1 = control1
+        controlPoint2 = control2
+    }
+	move {to : Point} = path {moveToPoint = to}
+	close {} = path.closePath
+}

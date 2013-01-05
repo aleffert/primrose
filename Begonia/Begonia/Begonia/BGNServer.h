@@ -12,7 +12,7 @@
 
 @interface BGNServer : NSObject <NSPortDelegate>
 
-- (void)startServerAtPoint:(NSUInteger)port;
+- (void)startServerAtPort:(NSUInteger)port;
 - (void)stopServer;
 
 @property (strong, readonly) BGNInterpreter* interpreter;
